@@ -33,9 +33,9 @@ class Region extends Model {
   }
 
   static associate(models) {
-    this.hasMany(models.Client, {
-      as: 'client',
-      foreignKey: 'client_id',
+    this.hasMany(models.Customer, {
+      as: 'customer',
+      foreignKey: 'customer_id',
     });
 
     this.hasMany(models.Product, {
