@@ -1,7 +1,8 @@
-module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable(
-      'customers',
+import Sequelize, { Model } from 'sequelize';
+
+class Customer extends Model {
+  static init(sequelize) {
+    super.init(
       {
         id: {
           type: Sequelize.DataTypes.INTEGER,
@@ -25,19 +26,22 @@ module.exports = {
             key: 'id',
           },
         },
-        created_at: {
-          type: Sequelize.DataTypes.DATE,
-          allowNull: true,
-        },
-        updated_at: {
-          type: Sequelize.DataTypes.DATE,
-          allowNull: true,
-        },
+      },
+      {
+        sequelize,
+        tableName: 'customers'
       }
     );
-  },
 
-  down: async (queryInterface) => {
-    await queryInterface.dropTable('customers');
+    return this;
   }
-};
+
+  static associate(models) {
+    this.belongsTo(models.Region, {
+      as: 'customer',
+      foreignKey: 'region_id',
+    });
+  }
+}
+
+export default Customer;
