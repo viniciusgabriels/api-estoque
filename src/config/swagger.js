@@ -1,13 +1,14 @@
 require('dotenv').config();
 
 const host = process.env.API_URL;
-const user = require('../app/documention/user');
+const category = require('../app/documentation/category');
+const product = require('../app/documentation/product');
 
 module.exports = {
   info: {
     version: '1.0.0',
-    title: 'Doc minha API',
-    description: 'Minha descrição',
+    title: 'Documentação da API de controle de estoque',
+    description: 'API para controle de estoque desenvolvida em JavaScript',
   },
   host,
   basePath: '/',
@@ -24,6 +25,7 @@ module.exports = {
     },
   },
   definitions: {
-    user,
+    category,
+    product,
   },
 };

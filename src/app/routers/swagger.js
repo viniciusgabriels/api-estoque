@@ -5,7 +5,7 @@ import swaggerDocumention from '../../swagger-documention.json';
 const routes = new Router();
 
 routes.use(
-  '/documention',
+  '/documentation',
   swaggerUi.serve,
   swaggerUi.setup(swaggerDocumention)
 );
