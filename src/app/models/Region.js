@@ -25,7 +25,7 @@ class Region extends Model {
       },
       {
         sequelize,
-        tableName: 'products',
+        tableName: 'region',
       }
     );
 
@@ -35,12 +35,12 @@ class Region extends Model {
   static associate(models) {
     this.hasMany(models.Customer, {
       as: 'customer',
-      foreignKey: 'customer_id',
+      foreignKey: 'region_id',
     });
 
-    this.hasMany(models.Product, {
-    as: 'product',
-    foreignKey: 'product_id',
+    this.hasMany(models.Storage, {
+    as: 'storage',
+    foreignKey: 'region_id',
     });
   }
 }
