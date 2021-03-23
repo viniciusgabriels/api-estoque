@@ -1,25 +1,25 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('regioes_proximas', {
+    await queryInterface.createTable('nearby_regions', {
       id: {
         type: Sequelize.DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
       },
-      id_regiao: {
+      id_region: {
         type: Sequelize.DataTypes.INTEGER,
         allowNull: false,
         references: {
-          model: 'regiao',
+          model: 'region',
           key: 'id',
         },
       },
-      id_regiao_proxima: {
+      id_nearby_region: {
         type: Sequelize.DataTypes.INTEGER,
         allowNull: false,
         references: {
-          model: 'regiao',
+          model: 'region',
           key: 'id',
         },
       },
@@ -35,6 +35,6 @@ module.exports = {
   },
 
   down: async (queryInterface) => {
-    await queryInterface.dropTable('regioes_proximas');
+    await queryInterface.dropTable('nearby_regions');
   },
 };
