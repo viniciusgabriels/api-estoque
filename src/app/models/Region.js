@@ -31,7 +31,7 @@ class Region extends Model {
     });
 
     this.hasMany(models.Stock, {
-      as: 'storage',
+      as: 'stock',
       foreignKey: 'region_id',
     });
   }

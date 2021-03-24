@@ -1,15 +1,15 @@
 import request from 'supertest';
 import app from '../../src/app';
 
-describe('Product', () => {
+describe('product', () => {
   describe('create', () => {
     it('should create a new product', async () => {
       expect.assertions(3);
-      
+
       const category = await request(app).post('/categories').send({
         name: 'Hadware Product 1',
       });
-      
+
       const response = await request(app).post('/products').send({
         name: 'Monitor LED 21Polegadas',
         price: '799.99',
@@ -85,12 +85,14 @@ describe('Product', () => {
         categoryId: category.body.id,
       });
 
-      const response = await request(app).put(`/products/${product.body.id}`).send({
-        name: 'Monitor LED 23Polegadas',
-        price: '1299.90',
-        status: true,
-        categoryId: category.body.id,
-      });
+      const response = await request(app)
+        .put(`/products/${product.body.id}`)
+        .send({
+          name: 'Monitor LED 23Polegadas',
+          price: '1299.90',
+          status: true,
+          categoryId: category.body.id,
+        });
 
       expect(response.status).toBe(200);
       expect(response.body.price).toBe('1299.90');
@@ -103,7 +105,7 @@ describe('Product', () => {
         name: '',
         price: '999.99',
         status: true,
-        categoryId: ''
+        categoryId: '',
       });
 
       expect(response.status).toBe(400);
@@ -119,24 +121,24 @@ describe('Product', () => {
       expect(response.status).toBe(200);
     });
   });
-  
-//   describe('show', () => {
-//     it('should list a category by pk', async () => {
-//       expect.assertions(1);
 
-//       const response = await request(app).get('/categories/1');
+  //   describe('show', () => {
+  //     it('should list a category by pk', async () => {
+  //       expect.assertions(1);
 
-//       expect(response.status).toBe(200);
-//     });
-//   });
-  
-//   describe('delete', () => {
-//     it('should delete a category by pk', async () => {
-//       expect.assertions(1);
-      
-//       const response = await request(app).delete('/categories/1');
+  //       const response = await request(app).get('/categories/1');
 
-//       expect(response.status).toBe(204);
-//     });
-//   });
+  //       expect(response.status).toBe(200);
+  //     });
+  //   });
+
+  //   describe('delete', () => {
+  //     it('should delete a category by pk', async () => {
+  //       expect.assertions(1);
+
+  //       const response = await request(app).delete('/categories/1');
+
+  //       expect(response.status).toBe(204);
+  //     });
+  //   });
 });
