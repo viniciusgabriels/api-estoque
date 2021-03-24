@@ -25,10 +25,10 @@ class Type extends Model {
   }
 
   static associate(models) {
-    this.hasMany(models.Order, {
-      as: 'order_type',
-      foreignKey: 'type_id',
-    })
+    // this.hasMany(models.Order, {
+    //   as: 'order_type',
+    //   foreignKey: 'type_id',
+    // });
   }
 }
 
