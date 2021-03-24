@@ -12,14 +12,14 @@ class ProductController {
     if (name) {
       where.name = name;
     }
-    
+
     if (category_id) {
       where.category_id = categoryId;
     }
 
     const products = await Product.findAndCountAll({
       where,
-      attributes: ['id', 'name', 'description', 'price', 'category_id' ],
+      attributes: ['id', 'name', 'description', 'price', 'category_id'],
     });
 
     return response.json(products);
@@ -32,12 +32,15 @@ class ProductController {
   async store(request, response) {
     const { name, description, price, status, categoryId } = request.body;
 
-    return response.json(await Product.create({ 
-      name, 
-      description, 
-      price, 
-      status, 
-      category_id: categoryId}));
+    return response.json(
+      await Product.create({
+        name,
+        description,
+        price,
+        status,
+        category_id: categoryId,
+      })
+    );
   }
 
   async update(request, response) {
