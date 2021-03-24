@@ -36,7 +36,7 @@ describe('Category', () => {
       expect.assertions(2);
 
       const response = await request(app).put('/categories/1').send({
-        name: 'Processor'
+        name: 'Processor',
       });
 
       expect(response.status).toBe(200);
@@ -47,7 +47,7 @@ describe('Category', () => {
       expect.assertions(1);
 
       const response = await request(app).put('/categories/1').send({
-        name: ''
+        name: '',
       });
 
       expect(response.status).toBe(400);

@@ -4,19 +4,22 @@ import app from '../../src/app';
 describe('customer', () => {
   describe('create', () => {
     it('should create a new customer', async () => {
-      expect.assertions(1);
+      expect.assertions(4);
 
-      await request(app).post('/region').send({
+      const region = await request(app).post('/region').send({
         name: 'Região teste',
       });
 
       const response = await request(app).post('/customers').send({
         name: 'Customer teste',
         phone: 12345,
-        region_id: 1,
+        regionId: region.body.id,
       });
 
-      expect(response.status).toBe(400);
+      expect(response.status).toBe(201);
+      expect(response.body).toHaveProperty('id');
+      expect(response.body.name).toBe('Customer teste');
+      expect(response.body.phone).toBe(12345);
     });
   });
 });
