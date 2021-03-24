@@ -6,8 +6,8 @@ class CustomerController {
       const data = await Customer.findAll({
         attributes: ['id', 'name', 'phone'],
         order: [['id', 'DESC']],
-      })
-      
+      });
+
       return res.json(data);
     } catch (error) {
       return res.status(error.status || 400).json(error);
@@ -22,7 +22,7 @@ class CustomerController {
         attributes: ['id', 'name', 'phone'],
         where: { id },
       });
-      
+
       return res.json(data);
     } catch (error) {
       return res.status(error.status || 400).json(error);
@@ -37,7 +37,7 @@ class CustomerController {
         name,
         phone,
         region_id: regionId,
-      })
+      });
 
       return res.status(201).json(data);
     } catch (error) {
@@ -47,20 +47,20 @@ class CustomerController {
 
   async update(req, res) {
     const { id } = req.params;
-    const { name, phone, regionId  } = req.body;
-    
+    const { name, phone, regionId } = req.body;
+
     try {
       const data = await Customer.update(
         {
-        name,
-        phone,
-        region_id: regionId,
-      },
-      {
-        where: { id },
-        returning: ['id', 'name', 'phone']
-      }
-      )
+          name,
+          phone,
+          region_id: regionId,
+        },
+        {
+          where: { id },
+          returning: ['id', 'name', 'phone'],
+        }
+      );
 
       return data[1];
     } catch (error) {
@@ -72,11 +72,13 @@ class CustomerController {
     const { id } = req.params;
 
     try {
-      /////////////// Fazer o detroy das ordens
+      /// //////////// Fazer o detroy das ordens
 
       await Customer.destroy({
         where: { id },
       });
+
+      return res.sendStatus(204);
     } catch (error) {
       return res.status(error.status || 400).json(error);
     }
