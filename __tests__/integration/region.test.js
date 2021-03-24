@@ -20,7 +20,7 @@ describe('Region', () => {
     it('should return one region', async () => {
       expect.assertions(1);
 
-      const region1 = await request(app).get('/region/:id', RegionController.show()).setEncoding({
+      const region1 = await request(app).get('/region/:id', RegionController.show()).send({
         id: 1,
       })
 
