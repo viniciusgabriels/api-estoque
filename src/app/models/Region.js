@@ -38,7 +38,7 @@ class Region extends Model {
       foreignKey: 'region_id',
     });
 
-    this.hasMany(models.Storage, {
+    this.hasMany(models.Stock, {
       as: 'storage',
       foreignKey: 'region_id',
     });

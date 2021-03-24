@@ -4,17 +4,17 @@ class Stock extends Model {
   static init(sequelize) {
     super.init(
       {
-         id: {
+        id: {
           type: Sequelize.DataTypes.INTEGER,
           allowNull: false,
           autoIncrement: true,
           primaryKey: true,
         },
-         local: {
+        local: {
           type: Sequelize.DataTypes.INTEGER,
           allowNull: false,
         },
-         region_id: {
+        region_id: {
           type: Sequelize.DataTypes.INTEGER,
           allowNull: false,
           references: {
@@ -24,20 +24,20 @@ class Stock extends Model {
         },
       },
       {
-         sequelize,
-         tableName: 'stock',
+        sequelize,
+        tableName: 'stock',
       }
-     );
+    );
 
-     return this;
-   }
+    return this;
+  }
 
   static associate(models) {
     this.belongsTo(models.Region, {
       as: 'stock',
       foreignKey: 'region_id',
-     });
-   },
- }
+    });
+  }
+}
 
 export default Stock;
