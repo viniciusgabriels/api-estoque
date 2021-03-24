@@ -13,12 +13,15 @@ class ProductController {
   async store(request, response) {
     const { name, description, price, status, category_id } = request.body;
 
-    return response.json(await Product.create({ 
-      name, 
-      description, 
-      price, 
-      status, 
-      category_id}));
+    return response.json(
+      await Product.create({
+        name,
+        description,
+        price,
+        status,
+        category_id,
+      })
+    );
   }
 
   async update(request, response) {
