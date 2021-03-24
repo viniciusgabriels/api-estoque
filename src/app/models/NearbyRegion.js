@@ -9,23 +9,23 @@ class NearbyRegion extends Model {
           allowNull: false,
           autoIncrement: true,
           primaryKey: true,
-      },
+        },
         region_id: {
           type: Sequelize.DataTypes.INTEGER,
           allowNull: false,
           references: {
             model: 'region',
             key: 'id',
+          },
         },
-      },
         nearby_region_id: {
           type: Sequelize.DataTypes.INTEGER,
           allowNull: false,
           references: {
             model: 'region',
             key: 'id',
+          },
         },
-      },
       },
       {
         sequelize,
@@ -50,4 +50,3 @@ class NearbyRegion extends Model {
 }
 
 export default NearbyRegion;
-

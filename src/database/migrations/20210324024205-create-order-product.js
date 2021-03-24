@@ -6,7 +6,7 @@ module.exports = {
         allowNull: false,
         primaryKey: true,
         references: {
-          model: 'order',
+          model: 'orders',
           key: 'id',
         },
       },
@@ -33,11 +33,11 @@ module.exports = {
       },
       created_at: {
         type: Sequelize.DataTypes.DATE,
-        allowNull: false,
+        allowNull: true,
       },
       updated_at: {
         type: Sequelize.DataTypes.DATE,
-        allowNull: false,
+        allowNull: true,
       },
     });
   },

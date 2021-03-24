@@ -1,6 +1,8 @@
 import { Router } from 'express';
 import NearbyRegionController from '../controllers/NearbyRegionController';
 
+// Criar o controller 
+
 const routes = new Router();
 
 routes.get('/nearbyregion', NearbyRegionController.index);

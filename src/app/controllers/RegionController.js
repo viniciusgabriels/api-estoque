@@ -2,7 +2,7 @@ import Region from '../models/Region';
 
 class RegionController {
   async index(request, response) {
-    const regions = await Region.findAll()
+    const regions = await Region.findAll();
 
     return response.json(regions);
   }

@@ -14,14 +14,6 @@ class Region extends Model {
           type: Sequelize.DataTypes.STRING,
           allowNull: false,
         },
-        created_at: {
-          type: Sequelize.DataTypes.DATE,
-          allowNull: false,
-        },
-        updated_at: {
-          type: Sequelize.DataTypes.DATE,
-          allowNull: false,
-        },
       },
       {
         sequelize,
@@ -38,7 +30,7 @@ class Region extends Model {
       foreignKey: 'region_id',
     });
 
-    this.hasMany(models.Storage, {
+    this.hasMany(models.Stock, {
       as: 'storage',
       foreignKey: 'region_id',
     });

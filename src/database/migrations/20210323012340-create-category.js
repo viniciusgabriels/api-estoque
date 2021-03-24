@@ -13,15 +13,15 @@ module.exports = {
       },
       created_at: {
         type: Sequelize.DataTypes.DATE,
-        allowNull: false,
+        allowNull: true,
       },
       updated_at: {
         type: Sequelize.DataTypes.DATE,
-        allowNull: false,
+        allowNull: true,
       },
     });
   },
-  down: async queryInterface => {
+  down: async (queryInterface) => {
     await queryInterface.dropTable({
       tableName: 'categories',
     });

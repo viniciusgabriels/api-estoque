@@ -44,10 +44,10 @@ class OrderProduct extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.Order, {
-      as: 'order',
-      foreignKey: 'order_id',
-    });
+    // this.belongsTo(models.Order, {
+    //   as: 'order',
+    //   foreignKey: 'order_id',
+    // });
     this.hasMany(models.ProductStock, {
       as: 'product_stock',
       foreignKey: 'product_stock_id',
