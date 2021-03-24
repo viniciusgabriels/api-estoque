@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for models/ProductStock.js</title>
+    <title>Code coverage report for controllers/OrderController.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">models</a> ProductStock.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> OrderController.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/56</span>
+                <span class='fraction'>0/53</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/56</span>
+                <span class='fraction'>0/53</span>
             </div>
         
             
@@ -110,10 +110,7 @@
 <a name='L51'></a><a href='#L51'>51</a>
 <a name='L52'></a><a href='#L52'>52</a>
 <a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L54'></a><a href='#L54'>54</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -166,65 +163,59 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import Sequelize, { Model } from 'sequelize';</span></span></span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import Order from '../models/Order';</span></span></span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >class ProductStock extends Model {</span>
-<span class="cstat-no" title="statement not covered" >  static init(sequelize) {</span>
-<span class="cstat-no" title="statement not covered" >    super.init(</span>
-<span class="cstat-no" title="statement not covered" >      {</span>
-<span class="cstat-no" title="statement not covered" >        id: {</span>
-<span class="cstat-no" title="statement not covered" >          type: Sequelize.DataTypes.INTEGER,</span>
-<span class="cstat-no" title="statement not covered" >          allowNull: false,</span>
-<span class="cstat-no" title="statement not covered" >          autoIncrement: true,</span>
-<span class="cstat-no" title="statement not covered" >          primaryKey: true,</span>
-<span class="cstat-no" title="statement not covered" >        },</span>
-<span class="cstat-no" title="statement not covered" >        quantity: {</span>
-<span class="cstat-no" title="statement not covered" >          type: Sequelize.DataTypes.INTEGER,</span>
-<span class="cstat-no" title="statement not covered" >          allowNull: false,</span>
-<span class="cstat-no" title="statement not covered" >        },</span>
-<span class="cstat-no" title="statement not covered" >        stock_id: {</span>
-<span class="cstat-no" title="statement not covered" >          type: Sequelize.DataTypes.INTEGER,</span>
-<span class="cstat-no" title="statement not covered" >          allowNull: false,</span>
-<span class="cstat-no" title="statement not covered" >          references: {</span>
-<span class="cstat-no" title="statement not covered" >            model: 'stock',</span>
-<span class="cstat-no" title="statement not covered" >            key: 'id',</span>
-<span class="cstat-no" title="statement not covered" >          },</span>
-<span class="cstat-no" title="statement not covered" >        },</span>
-<span class="cstat-no" title="statement not covered" >        product_id: {</span>
-<span class="cstat-no" title="statement not covered" >          type: Sequelize.DataTypes.INTEGER,</span>
-<span class="cstat-no" title="statement not covered" >          allowNull: false,</span>
-<span class="cstat-no" title="statement not covered" >          references: {</span>
-<span class="cstat-no" title="statement not covered" >            model: 'product',</span>
-<span class="cstat-no" title="statement not covered" >            key: 'id',</span>
-<span class="cstat-no" title="statement not covered" >          },</span>
-<span class="cstat-no" title="statement not covered" >        },</span>
-<span class="cstat-no" title="statement not covered" >      },</span>
-<span class="cstat-no" title="statement not covered" >      {</span>
-<span class="cstat-no" title="statement not covered" >        sequelize,</span>
-<span class="cstat-no" title="statement not covered" >        tableName: 'product_stock',</span>
-<span class="cstat-no" title="statement not covered" >      }</span>
-<span class="cstat-no" title="statement not covered" >    );</span>
+<span class="cstat-no" title="statement not covered" >class OrderController {</span>
+<span class="cstat-no" title="statement not covered" >  async index(request, response) {</span>
+<span class="cstat-no" title="statement not covered" >    const order = await Order.findAndCountAll();</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    return this;</span>
+<span class="cstat-no" title="statement not covered" >    return response.json(order);</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  static associate(models) {</span>
-<span class="cstat-no" title="statement not covered" >    this.belongsTo(models.Stock, {</span>
-<span class="cstat-no" title="statement not covered" >      as: 'stock',</span>
-<span class="cstat-no" title="statement not covered" >      foreignKey: 'stock_id',</span>
+<span class="cstat-no" title="statement not covered" >  async show(request, response) {</span>
+<span class="cstat-no" title="statement not covered" >    const { id } = request.params;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    const order = await Order.findOne({ where: { id } });</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    return response.json(order);</span>
+<span class="cstat-no" title="statement not covered" >  }</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  async store(request, response) {</span>
+<span class="cstat-no" title="statement not covered" >    const { type, ClientId, date } = request.body;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    const order = await Order.create({</span>
+<span class="cstat-no" title="statement not covered" >      type,</span>
+<span class="cstat-no" title="statement not covered" >      ClientId,</span>
+<span class="cstat-no" title="statement not covered" >      date,</span>
 <span class="cstat-no" title="statement not covered" >    });</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    this.belongsTo(models.Product, {</span>
-<span class="cstat-no" title="statement not covered" >      as: 'product',</span>
-<span class="cstat-no" title="statement not covered" >      foreignKey: 'product_id',</span>
-<span class="cstat-no" title="statement not covered" >    });</span>
+<span class="cstat-no" title="statement not covered" >    return response.json(order);</span>
+<span class="cstat-no" title="statement not covered" >  }</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  async update(request, response) {</span>
+<span class="cstat-no" title="statement not covered" >    const { id } = request.params;</span>
+<span class="cstat-no" title="statement not covered" >    const { date, type } = request.body;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    const order = await Order.findByPk(id);</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    order.date = date;</span>
+<span class="cstat-no" title="statement not covered" >    order.type = type;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    order.save();</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    return response.json(order);</span>
+<span class="cstat-no" title="statement not covered" >  }</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  async delete(request, response) {</span>
+<span class="cstat-no" title="statement not covered" >    const { id } = request.params;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    const order = await Order.destroy({ where: { id } });</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    return response.sendStatus(202);</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >export default ProductStock;</span>
+<span class="cstat-no" title="statement not covered" >export default new OrderController();</span>
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
