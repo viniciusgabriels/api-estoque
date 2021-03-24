@@ -14,13 +14,7 @@ class ProductStockController {
   async store(request, response) {
     const { quantity, productId, stockId } = request.body;
 
-<<<<<<< HEAD
-    return response.json(
-      await ProductStock.create({ quantity, product_id, stock_id })
-    );
-=======
     return response.json(await ProductStock.create({ quantity, product_id: productId, stock_id: stockId }));
->>>>>>> 1c9ff7e02912cf3780f45e5fa2ebcbf0e66bfc69
   }
 
   async update(request, response) {

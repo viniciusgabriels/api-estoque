@@ -29,8 +29,13 @@ module.exports = {
       },
     });
   },
+<<<<<<< HEAD
+    
+   down: async (queryInterface) => {
+=======
 
   down: async (queryInterface) => {
+>>>>>>> 8d36afa92ffc4bff586fe18afe59f2f53ac4cd74
     await queryInterface.dropTable('stock');
   },
 };

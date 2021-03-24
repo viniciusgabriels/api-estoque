@@ -77,8 +77,14 @@ describe('Category', () => {
   describe('delete', () => {
     it('should delete a category by pk', async () => {
       expect.assertions(1);
+
+      const createCategory = await request(app).post('/categories').send({
+        name: 'Category 1',
+      });
       
-      const response = await request(app).delete('/categories/1');
+      const idCategory = createCategory.body.id; 
+
+      const response = await request(app).delete(`/categories/${idCategory}`);
 
       expect(response.status).toBe(204);
     });
