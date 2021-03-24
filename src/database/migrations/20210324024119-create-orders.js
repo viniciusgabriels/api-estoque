@@ -1,29 +1,25 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('product_stock', {
+    await queryInterface.createTable('orders', {
       id: {
         type: Sequelize.DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
       },
-      quantity: {
-        type: Sequelize.DataTypes.STRING,
+      data: {
+        type: Sequelize.DataTypes.DATE,
         allowNull: false,
       },
-      stock_id: {
+      type: {
+        type: Sequelize.DataTypes.STRING(100),
+        allowNull: false,
+      },
+      customer_id: {
         type: Sequelize.DataTypes.INTEGER,
         allowNull: false,
         references: {
-          model: 'stock',
-          key: 'id',
-        },
-      },
-      product_id: {
-        type: Sequelize.DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'products',
+          model: 'customers',
           key: 'id',
         },
       },
@@ -39,6 +35,6 @@ module.exports = {
   },
 
   down: async (queryInterface) => {
-    await queryInterface.dropTable('product_stock');
+    await queryInterface.dropTable('orders');
   },
 };
