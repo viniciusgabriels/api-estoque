@@ -1,28 +1,17 @@
-import Category from '../models/Category';
+import Region from '../models/Region';
 
-class CategoryController {
+class RegionController {
   async index(request, response) {
-    const { name } = request.query;
+    const regions = await Region.findAll()
 
-    const where = {};
-
-    if (name) {
-      where.name = name;
-    }
-
-    const categories = await Category.findAndCountAll({
-      where,
-      attributes: ['id', 'name'],
-    });
-
-    return response.json(categories);
+    return response.json(regions);
   }
 
   async show(request, response) {
     const { id } = request;
 
     return response.json(
-      await Category.findByPk(id, {
+      await Region.findByPk(id, {
         attributes: ['id', 'name'],
       })
     );
@@ -31,26 +20,26 @@ class CategoryController {
   async store(request, response) {
     const { name } = request.body;
 
-    return response.json(await Category.create({ name }));
+    return response.json(await Region.create({ name }));
   }
 
   async update(request, response) {
     const { id } = request.params;
     const { name } = request.body;
 
-    const category = await Category.findByPk(id);
+    const region = await Region.findByPk(id);
 
-    category.name = name;
+    region.name = name;
 
-    category.save();
+    region.save();
 
-    return response.json(category);
+    return response.json(region);
   }
 
   async delete(request, response) {
     const { id } = request.params;
 
-    await Category.destroy({
+    await Region.destroy({
       where: {
         id,
       },
@@ -60,4 +49,4 @@ class CategoryController {
   }
 }
 
-export default new CategoryController();
+export default new RegionController();
