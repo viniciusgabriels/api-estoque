@@ -11,8 +11,8 @@ module.exports = {
         type: Sequelize.DataTypes.DATE,
         allowNull: false,
       },
-      type: {
-        type: Sequelize.DataTypes.STRING(100),
+      type_id: {
+        type: Sequelize.DataTypes.INTEGER,
         allowNull: false,
       },
       customer_id: {

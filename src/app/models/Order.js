@@ -31,7 +31,7 @@ class Order extends Model {
           allowNull: true,
         },
         type_id: {
-          type: Sequelize.DataTypes.STRING,
+          type: Sequelize.DataTypes.INTEGER,
           allowNull: false,
           references: {
             model: 'type',
@@ -47,7 +47,7 @@ class Order extends Model {
     return this;
   }
   static associate(models) {
-    this.hasMany(models.Type, {
+    this.belongsTo(models.Type, {
       as: 'type',
       foreignKey: 'type_id',
     });
