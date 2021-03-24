@@ -1,6 +1,19 @@
+import swagger from './swagger';
+
 import category from './category';
 import product from './product';
-import swagger from './swagger';
 import customer from './customer';
+import region from './region';
+import stock from './stock';
+import productStock from './productStock';
+// import nearbyRegions from './nearbyRegions';
 
-export default [category, product, swagger, customer];
+export default [
+  category,
+  product,
+  swagger,
+  customer,
+  region,
+  stock,
+  productStock,
+];
