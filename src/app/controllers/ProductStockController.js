@@ -3,7 +3,7 @@ import ProductStock from '../models/ProductStock';
 
 class ProductStockController {
   async index(request, response) {
-      return response.json(await ProductStock.findAll())
+    return response.json(await ProductStock.findAll());
   }
 
   async show(request, response) {
@@ -14,9 +14,10 @@ class ProductStockController {
   async store(request, response) {
     const { quantity, product_id, stock_is } = request.body;
 
-    return response.json(await ProductStock.create({ quantity, product_id, stock_id }));
+    return response.json(
+      await ProductStock.create({ quantity, product_id, stock_id })
+    );
   }
-
 
   async update(request, response) {
     const { id } = request.params;
@@ -31,7 +32,6 @@ class ProductStockController {
       )
     );
   }
-
 
   async delete(request, response) {
     const { id } = request.params;

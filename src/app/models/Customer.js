@@ -29,7 +29,7 @@ class Customer extends Model {
       },
       {
         sequelize,
-        tableName: 'customers'
+        tableName: 'customers',
       }
     );
 
