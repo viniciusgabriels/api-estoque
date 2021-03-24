@@ -6,6 +6,7 @@ import customer from './customer';
 import region from './region';
 import stock from './stock';
 import productStock from './productStock';
+import order from './order';
 // import nearbyRegions from './nearbyRegions';
 
 export default [
@@ -16,4 +17,5 @@ export default [
   region,
   stock,
   productStock,
+  order,
 ];
