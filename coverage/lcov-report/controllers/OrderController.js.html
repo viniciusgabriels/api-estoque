@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for controllers/RegionController.js</title>
+    <title>Code coverage report for controllers/OrderController.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> RegionController.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> OrderController.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/52</span>
+                <span class='fraction'>0/53</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/52</span>
+                <span class='fraction'>0/53</span>
             </div>
         
             
@@ -108,7 +108,9 @@
 <a name='L49'></a><a href='#L49'>49</a>
 <a name='L50'></a><a href='#L50'>50</a>
 <a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -159,69 +161,69 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import Region from '../models/Region';</span></span></span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import Order from '../models/Order';</span></span></span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >class RegionController {</span>
+<span class="cstat-no" title="statement not covered" >class OrderController {</span>
 <span class="cstat-no" title="statement not covered" >  async index(request, response) {</span>
-<span class="cstat-no" title="statement not covered" >    const regions = await Region.findAll();</span>
+<span class="cstat-no" title="statement not covered" >    const order = await Order.findAndCountAll();</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    return response.json(regions);</span>
+<span class="cstat-no" title="statement not covered" >    return response.json(order);</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >  async show(request, response) {</span>
-<span class="cstat-no" title="statement not covered" >    const { id } = request;</span>
+<span class="cstat-no" title="statement not covered" >    const { id } = request.params;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    return response.json(</span>
-<span class="cstat-no" title="statement not covered" >      await Region.findByPk(id, {</span>
-<span class="cstat-no" title="statement not covered" >        attributes: ['id', 'name'],</span>
-<span class="cstat-no" title="statement not covered" >      })</span>
-<span class="cstat-no" title="statement not covered" >    );</span>
+<span class="cstat-no" title="statement not covered" >    const order = await Order.findOne({ where: { id } });</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    return response.json(order);</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >  async store(request, response) {</span>
-<span class="cstat-no" title="statement not covered" >    const { name } = request.body;</span>
+<span class="cstat-no" title="statement not covered" >    const { type, ClientId, date } = request.body;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    return response.json(await Region.create({ name }));</span>
+<span class="cstat-no" title="statement not covered" >    const order = await Order.create({</span>
+<span class="cstat-no" title="statement not covered" >      type,</span>
+<span class="cstat-no" title="statement not covered" >      ClientId,</span>
+<span class="cstat-no" title="statement not covered" >      date,</span>
+<span class="cstat-no" title="statement not covered" >    });</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    return response.json(order);</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >  async update(request, response) {</span>
 <span class="cstat-no" title="statement not covered" >    const { id } = request.params;</span>
-<span class="cstat-no" title="statement not covered" >    const { name } = request.body;</span>
+<span class="cstat-no" title="statement not covered" >    const { date, type } = request.body;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    const region = await Region.findByPk(id);</span>
+<span class="cstat-no" title="statement not covered" >    const order = await Order.findByPk(id);</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    region.name = name;</span>
+<span class="cstat-no" title="statement not covered" >    order.date = date;</span>
+<span class="cstat-no" title="statement not covered" >    order.type = type;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    region.save();</span>
+<span class="cstat-no" title="statement not covered" >    order.save();</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    return response.json(region);</span>
+<span class="cstat-no" title="statement not covered" >    return response.json(order);</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >  async delete(request, response) {</span>
 <span class="cstat-no" title="statement not covered" >    const { id } = request.params;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    await Region.destroy({</span>
-<span class="cstat-no" title="statement not covered" >      where: {</span>
-<span class="cstat-no" title="statement not covered" >        id,</span>
-<span class="cstat-no" title="statement not covered" >      },</span>
-<span class="cstat-no" title="statement not covered" >    });</span>
+<span class="cstat-no" title="statement not covered" >    const order = await Order.destroy({ where: { id } });</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    return response.sendStatus(204);</span>
+<span class="cstat-no" title="statement not covered" >    return response.sendStatus(202);</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >export default new RegionController();</span></pre></td></tr></table></pre>
+<span class="cstat-no" title="statement not covered" >export default new OrderController();</span>
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-<<<<<<< HEAD
-                at Wed Mar 24 2021 19:18:05 GMT-0300 (Brasilia Standard Time)
-=======
                 at Wed Mar 24 2021 20:42:04 GMT-0300 (Horário Padrão de Brasília)
->>>>>>> e10c2084bb1c9c882a4b2e9a480b46ce4e70b6db
             </div>
         </div>
         <script src="../prettify.js"></script>
