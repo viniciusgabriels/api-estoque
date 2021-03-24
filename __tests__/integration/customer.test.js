@@ -5,18 +5,18 @@ describe('customer', () => {
   describe('create', () => {
     it('should create a new customer', async () => {
       expect.assertions(1);
-      
-      const response = await request(app).post('/region').send({
-        name: 'Região teste'
+
+      await request(app).post('/region').send({
+        name: 'Região teste',
       });
 
       const response = await request(app).post('/customers').send({
         name: 'Customer teste',
         phone: 12345,
         region_id: 1,
-      })
+      });
 
       expect(response.status).toBe(200);
-    })
-  })
-})
+    });
+  });
+});
