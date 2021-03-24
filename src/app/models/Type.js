@@ -24,12 +24,12 @@ class Type extends Model {
     return this;
   }
 
-  static associate(models) {
-    // this.hasMany(models.Order, {
-    //   as: 'order_type',
-    //   foreignKey: 'type_id',
-    // });
-  }
+  // static associate(models) {
+  //   // this.hasMany(models.Order, {
+  //   //   as: 'order_type',
+  //   //   foreignKey: 'type_id',
+  //   // });
+  // }
 }
 
 export default Type;
