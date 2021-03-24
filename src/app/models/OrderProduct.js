@@ -4,6 +4,24 @@ class OrderProduct extends Model {
   static init(sequelize) {
     super.init(
       {
+        order_id: {
+          type: Sequelize.DataTypes.INTEGER,
+          allowNull: false,
+          primaryKey: true,
+          references: {
+            model: 'order',
+            key: 'id',
+          },
+        },
+        product_stock_id: {
+          type: Sequelize.DataTypes.INTEGER,
+          allowNull: false,
+          primaryKey: true,
+          references: {
+            model: 'product_stock',
+            key: 'id',
+          },
+        },
         status: {
           type: Sequelize.DataTypes.STRING,
           allowNull: false,
@@ -15,22 +33,6 @@ class OrderProduct extends Model {
         preco_venda: {
           type: Sequelize.DataTypes.FLOAT,
           allowNull: false,
-        },
-        order_id: {
-          type: Sequelize.DataTypes.INTEGER,
-          allowNull: true,
-          references: {
-            model: 'order',
-            key: 'id',
-          },
-        },
-        product_stock_id: {
-          type: Sequelize.DataTypes.INTEGER,
-          allowNull: true,
-          references: {
-            model: 'product_stock',
-            key: 'id',
-          },
         },
       },
       {

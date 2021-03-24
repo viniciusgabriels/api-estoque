@@ -7,7 +7,7 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
       },
-      id_region: {
+      region_id: {
         type: Sequelize.DataTypes.INTEGER,
         allowNull: false,
         references: {
@@ -15,7 +15,7 @@ module.exports = {
           key: 'id',
         },
       },
-      id_nearby_region: {
+      nearby_region_id: {
         type: Sequelize.DataTypes.INTEGER,
         allowNull: false,
         references: {

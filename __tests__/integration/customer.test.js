@@ -9,7 +9,6 @@ describe('customer', () => {
       const response = await request(app).post('/customers').send({
         name: 'Teste',
         phone: 12345,
-        
       })
     })
   })
