@@ -20,17 +20,11 @@ describe('region', () => {
     it('should return one region', async () => {
       expect.assertions(1);
 
-<<<<<<< HEAD
-      const region1 = await request(app).get('/region/:id', RegionController.show()).send({
-        id: 1,
-      })
-=======
       const region1 = await request(app)
         .get('/region/:id', RegionController.show())
-        .setEncoding({
+        .send({
           id: 1,
         });
->>>>>>> befea66bd2dce44b39dc59dc9bd49384b4cd165c
 
       expect(region1.status).toBe(200);
       expect(region1.body).toHaveProperty('id');
