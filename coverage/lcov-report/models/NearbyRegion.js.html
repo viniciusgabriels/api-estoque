@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for models/OrderProduct.js</title>
+    <title>Code coverage report for models/NearbyRegion.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">models</a> OrderProduct.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">models</a> NearbyRegion.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/58</span>
+                <span class='fraction'>0/52</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/58</span>
+                <span class='fraction'>0/52</span>
             </div>
         
             
@@ -110,12 +110,7 @@
 <a name='L51'></a><a href='#L51'>51</a>
 <a name='L52'></a><a href='#L52'>52</a>
 <a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L54'></a><a href='#L54'>54</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -167,51 +162,39 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import Sequelize, { Model } from 'sequelize';</span></span></span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >class OrderProduct extends Model {</span>
+<span class="cstat-no" title="statement not covered" >class NearbyRegion extends Model {</span>
 <span class="cstat-no" title="statement not covered" >  static init(sequelize) {</span>
 <span class="cstat-no" title="statement not covered" >    super.init(</span>
 <span class="cstat-no" title="statement not covered" >      {</span>
-<span class="cstat-no" title="statement not covered" >        order_id: {</span>
+<span class="cstat-no" title="statement not covered" >        id: {</span>
 <span class="cstat-no" title="statement not covered" >          type: Sequelize.DataTypes.INTEGER,</span>
 <span class="cstat-no" title="statement not covered" >          allowNull: false,</span>
+<span class="cstat-no" title="statement not covered" >          autoIncrement: true,</span>
 <span class="cstat-no" title="statement not covered" >          primaryKey: true,</span>
-<span class="cstat-no" title="statement not covered" >          references: {</span>
-<span class="cstat-no" title="statement not covered" >            model: 'order',</span>
-<span class="cstat-no" title="statement not covered" >            key: 'id',</span>
-<span class="cstat-no" title="statement not covered" >          },</span>
-<span class="cstat-no" title="statement not covered" >        },</span>
-<span class="cstat-no" title="statement not covered" >        product_stock_id: {</span>
+<span class="cstat-no" title="statement not covered" >      },</span>
+<span class="cstat-no" title="statement not covered" >        region_id: {</span>
 <span class="cstat-no" title="statement not covered" >          type: Sequelize.DataTypes.INTEGER,</span>
 <span class="cstat-no" title="statement not covered" >          allowNull: false,</span>
-<span class="cstat-no" title="statement not covered" >          primaryKey: true,</span>
 <span class="cstat-no" title="statement not covered" >          references: {</span>
-<span class="cstat-no" title="statement not covered" >            model: 'product_stock',</span>
+<span class="cstat-no" title="statement not covered" >            model: 'region',</span>
 <span class="cstat-no" title="statement not covered" >            key: 'id',</span>
-<span class="cstat-no" title="statement not covered" >          },</span>
 <span class="cstat-no" title="statement not covered" >        },</span>
-<span class="cstat-no" title="statement not covered" >        status: {</span>
-<span class="cstat-no" title="statement not covered" >          type: Sequelize.DataTypes.STRING,</span>
+<span class="cstat-no" title="statement not covered" >      },</span>
+<span class="cstat-no" title="statement not covered" >        nearby_region_id: {</span>
+<span class="cstat-no" title="statement not covered" >          type: Sequelize.DataTypes.INTEGER,</span>
 <span class="cstat-no" title="statement not covered" >          allowNull: false,</span>
+<span class="cstat-no" title="statement not covered" >          references: {</span>
+<span class="cstat-no" title="statement not covered" >            model: 'region',</span>
+<span class="cstat-no" title="statement not covered" >            key: 'id',</span>
 <span class="cstat-no" title="statement not covered" >        },</span>
-<span class="cstat-no" title="statement not covered" >        quantity: {</span>
-<span class="cstat-no" title="statement not covered" >          type: Sequelize.DataTypes.STRING,</span>
-<span class="cstat-no" title="statement not covered" >          allowNull: false,</span>
-<span class="cstat-no" title="statement not covered" >        },</span>
-<span class="cstat-no" title="statement not covered" >        preco_venda: {</span>
-<span class="cstat-no" title="statement not covered" >          type: Sequelize.DataTypes.FLOAT,</span>
-<span class="cstat-no" title="statement not covered" >          allowNull: false,</span>
-<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >      },</span>
 <span class="cstat-no" title="statement not covered" >      },</span>
 <span class="cstat-no" title="statement not covered" >      {</span>
 <span class="cstat-no" title="statement not covered" >        sequelize,</span>
+<span class="cstat-no" title="statement not covered" >        tableName: 'nearby_regions',</span>
 <span class="cstat-no" title="statement not covered" >      }</span>
 <span class="cstat-no" title="statement not covered" >    );</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -219,18 +202,20 @@
 <span class="cstat-no" title="statement not covered" >  }</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >  static associate(models) {</span>
-<span class="cstat-no" title="statement not covered" >    this.belongsTo(models.Order, {</span>
-<span class="cstat-no" title="statement not covered" >      as: 'order',</span>
-<span class="cstat-no" title="statement not covered" >      foreignKey: 'order_id',</span>
+<span class="cstat-no" title="statement not covered" >    this.belongsTo(models.Region, {</span>
+<span class="cstat-no" title="statement not covered" >      as: 'region',</span>
+<span class="cstat-no" title="statement not covered" >      foreignKey: 'region_id',</span>
 <span class="cstat-no" title="statement not covered" >    });</span>
-<span class="cstat-no" title="statement not covered" >    this.hasMany(models.ProductStock, {</span>
-<span class="cstat-no" title="statement not covered" >      as: 'product_stock',</span>
-<span class="cstat-no" title="statement not covered" >      foreignKey: 'product_stock_id',</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    this.belongsTo(models.Region, {</span>
+<span class="cstat-no" title="statement not covered" >      as: 'region',</span>
+<span class="cstat-no" title="statement not covered" >      foreignKey: 'nearby_region_id',</span>
 <span class="cstat-no" title="statement not covered" >    });</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >export default OrderProduct;</span>
+<span class="cstat-no" title="statement not covered" >export default NearbyRegion;</span>
+&nbsp;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

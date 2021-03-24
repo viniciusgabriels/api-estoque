@@ -27,8 +27,8 @@ module.exports = {
         type: Sequelize.DataTypes.DATE,
         allowNull: false,
       },
+    });
   },
-    )}
     
    down: async (queryInterface) => {
     await queryInterface.dropTable('stock');
