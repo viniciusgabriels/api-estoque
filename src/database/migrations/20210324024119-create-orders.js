@@ -14,6 +14,18 @@ module.exports = {
       type_id: {
         type: Sequelize.DataTypes.INTEGER,
         allowNull: false,
+        references: {
+          model: 'type',
+          key: 'id',
+        }
+      },
+      origin_order_id: {
+        type: Sequelize.DataTypes.INTEGER,
+        allowNull: true,
+        references: {
+          model: 'orders',
+          key: 'id',
+        },
       },
       customer_id: {
         type: Sequelize.DataTypes.INTEGER,
