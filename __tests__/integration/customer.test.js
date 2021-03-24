@@ -16,7 +16,7 @@ describe('customer', () => {
         region_id: 1,
       });
 
-      expect(response.status).toBe(200);
+      expect(response.status).toBe(201);
     });
   });
 });
