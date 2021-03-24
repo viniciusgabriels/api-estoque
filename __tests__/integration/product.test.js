@@ -1,13 +1,8 @@
 import request from 'supertest';
 import app from '../../src/app';
 
-<<<<<<< HEAD
 describe('Product', () => {
   describe('create', () => {
-=======
-describe('product', () => {
-  describe('create', async () => {
->>>>>>> 8d36afa92ffc4bff586fe18afe59f2f53ac4cd74
     it('should create a new product', async () => {
       expect.assertions(3);
 
@@ -19,7 +14,7 @@ describe('product', () => {
         name: 'Monitor LED 21Polegadas',
         price: '799.99',
         status: true,
-        category_id: category.body.id,
+        categoryId: category.body.id,
       });
 
       expect(response.status).toBe(200);
@@ -38,7 +33,7 @@ describe('product', () => {
         name: 'mo',
         price: '799.99',
         status: true,
-        category_id: category.body.id,
+        categoryId: category.body.id,
       });
 
       expect(response.status).toBe(400);
@@ -55,7 +50,7 @@ describe('product', () => {
         name: 'Monitor',
         price: '',
         status: true,
-        category_id: category.body.id,
+        categoryId: category.body.id,
       });
 
       expect(response.status).toBe(400);
@@ -68,7 +63,7 @@ describe('product', () => {
         name: 'Monitor',
         price: '899.59',
         status: true,
-        category_id: '',
+        categoryId: '',
       });
 
       expect(response.status).toBe(400);
@@ -83,11 +78,18 @@ describe('product', () => {
         name: 'Hadware Product 4',
       });
 
-      const response = await request(app).put('/products/1').send({
+      const product = await request(app).post('/products').send({
+        name: 'Monitor LED 23Polegadas',
+        price: '1099.90',
+        status: true,
+        categoryId: category.body.id,
+      });
+
+      const response = await request(app).put(`/products/${product.body.id}`).send({
         name: 'Monitor LED 21Polegadas',
         price: '999.99',
         status: true,
-        category_id: category.body.id,
+        categoryId: category.body.id,
       });
 
       expect(response.status).toBe(200);
@@ -101,14 +103,13 @@ describe('product', () => {
         name: '',
         price: '999.99',
         status: true,
-        category_id: ''
+        categoryId: ''
       });
 
       expect(response.status).toBe(400);
     });
   });
 
-<<<<<<< HEAD
   describe('list', () => {
     it('should list the products', async () => {
       expect.assertions(1);
@@ -138,35 +139,4 @@ describe('product', () => {
 //       expect(response.status).toBe(204);
 //     });
 //   });
-=======
-  //   describe('list', () => {
-  //     it('should list the categories', async () => {
-  //       expect.assertions(1);
-
-  //       const response = await request(app).get('/categories');
-
-  //       expect(response.status).toBe(200);
-  //     });
-  //   });
-
-  //   describe('show', () => {
-  //     it('should list a category by pk', async () => {
-  //       expect.assertions(1);
-
-  //       const response = await request(app).get('/categories/1');
-
-  //       expect(response.status).toBe(200);
-  //     });
-  //   });
-
-  //   describe('delete', () => {
-  //     it('should delete a category by pk', async () => {
-  //       expect.assertions(1);
-
-  //       const response = await request(app).delete('/categories/1');
-
-  //       expect(response.status).toBe(204);
-  //     });
-  //   });
->>>>>>> 8d36afa92ffc4bff586fe18afe59f2f53ac4cd74
 });

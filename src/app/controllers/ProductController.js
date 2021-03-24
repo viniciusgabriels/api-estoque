@@ -1,6 +1,4 @@
 import { Op } from 'sequelize';
-import category from '../documentation/category';
-import { description } from '../documentation/product';
 import Product from '../models/Product';
 
 class ProductController {
