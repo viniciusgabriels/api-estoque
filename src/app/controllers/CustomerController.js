@@ -62,7 +62,7 @@ class CustomerController {
         }
       );
 
-      return data[1];
+      return res.json(data[1]);
     } catch (error) {
       return res.status(error.status || 400).json(error);
     }
