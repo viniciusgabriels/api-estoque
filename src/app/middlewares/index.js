@@ -1,3 +1,4 @@
 import log from './log';
+import validateData from './region'
 
-export default [log];
+export default [log, validateData];
