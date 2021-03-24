@@ -6,7 +6,7 @@ module.exports = {
         allowNull: false,
         primaryKey: true,
         references: {
-          model: 'order',
+          model: 'orders',
           key: 'id',
         },
       },

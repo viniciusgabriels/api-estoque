@@ -5,11 +5,11 @@ describe('Product', () => {
   describe('create', () => {
     it('should create a new product', async () => {
       expect.assertions(3);
-
+      
       const category = await request(app).post('/categories').send({
         name: 'Hadware Product 1',
       });
-
+      
       const response = await request(app).post('/products').send({
         name: 'Monitor LED 21Polegadas',
         price: '799.99',
@@ -25,7 +25,7 @@ describe('Product', () => {
     it('shouldn´t create a new product without product name or length < 3', async () => {
       expect.assertions(1);
 
-      const category = await request(app).post('/categories').send({
+      const category1 = await request(app).post('/categories').send({
         name: 'Hadware Product 2',
       });
 
@@ -33,7 +33,7 @@ describe('Product', () => {
         name: 'mo',
         price: '799.99',
         status: true,
-        categoryId: category.body.id,
+        categoryId: category1.body.id,
       });
 
       expect(response.status).toBe(400);
@@ -42,7 +42,7 @@ describe('Product', () => {
     it('shouldn´t create a new product without product price or length < 3', async () => {
       expect.assertions(1);
 
-      const category = await request(app).post('/categories').send({
+      const category2 = await request(app).post('/categories').send({
         name: 'Hadware Product 3',
       });
 
@@ -50,7 +50,7 @@ describe('Product', () => {
         name: 'Monitor',
         price: '',
         status: true,
-        categoryId: category.body.id,
+        categoryId: category2.body.id,
       });
 
       expect(response.status).toBe(400);
@@ -86,14 +86,14 @@ describe('Product', () => {
       });
 
       const response = await request(app).put(`/products/${product.body.id}`).send({
-        name: 'Monitor LED 21Polegadas',
-        price: '999.99',
+        name: 'Monitor LED 23Polegadas',
+        price: '1299.90',
         status: true,
         categoryId: category.body.id,
       });
 
       expect(response.status).toBe(200);
-      expect(response.body.price).toBe('999.99');
+      expect(response.body.price).toBe('1299.90');
     });
 
     it('shouldn´t update a exist product without data', async () => {

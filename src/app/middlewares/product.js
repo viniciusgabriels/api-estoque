@@ -1,9 +1,9 @@
 import Product from '../models/Product';
 
 function validateData(request, response, next) {
-  const { name, price, category_id } = request.body;
+  const { name, price, categoryId } = request.body;
 
-  if (!name || name.length < 3 || !price || !category_id) {
+  if (!name || name.length < 3 || !price || !categoryId) {
     return response.status(400).json({
       message: `Invalid data`,
     });

@@ -22,7 +22,7 @@ class ProductStock extends Model {
             key: 'id',
           },
         },
-		product_id: {
+        product_id: {
           type: Sequelize.DataTypes.INTEGER,
           allowNull: false,
           references: {
@@ -33,7 +33,7 @@ class ProductStock extends Model {
       },
       {
         sequelize,
-        tableName: 'product_stock'
+        tableName: 'product_stock',
       }
     );
 
@@ -47,8 +47,8 @@ class ProductStock extends Model {
     });
 
     this.belongsTo(models.Product, {
-    as: 'product',
-    foreignKey: 'product_id',
+      as: 'product',
+      foreignKey: 'product_id',
     });
   }
 }
