@@ -25,7 +25,7 @@ class Stock extends Model {
       },
       {
          sequelize,
-         tableName: 'stock'
+         tableName: 'stock',
       }
      );
 
@@ -37,7 +37,7 @@ class Stock extends Model {
       as: 'stock',
       foreignKey: 'region_id',
      });
-   }
+   },
  }
 
 export default Stock;

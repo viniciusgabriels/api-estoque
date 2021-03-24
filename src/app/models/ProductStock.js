@@ -1,6 +1,6 @@
 import Sequelize, { Model } from 'sequelize';
 
-class Customer extends Model {
+class ProductStock extends Model {
   static init(sequelize) {
     super.init(
       {
@@ -10,26 +10,30 @@ class Customer extends Model {
           autoIncrement: true,
           primaryKey: true,
         },
-        name: {
-          type: Sequelize.DataTypes.STRING(100),
-          allowNull: false,
-        },
-        phone: {
+        quantity: {
           type: Sequelize.DataTypes.INTEGER,
           allowNull: false,
         },
-        region_id: {
+        stock_id: {
           type: Sequelize.DataTypes.INTEGER,
           allowNull: false,
           references: {
-            model: 'region',
+            model: 'stock',
+            key: 'id',
+          },
+        },
+		product_id: {
+          type: Sequelize.DataTypes.INTEGER,
+          allowNull: false,
+          references: {
+            model: 'product',
             key: 'id',
           },
         },
       },
       {
         sequelize,
-        tableName: 'customers',
+        tableName: 'product_stock'
       }
     );
 
@@ -37,11 +41,16 @@ class Customer extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.Region, {
-      as: 'customer',
-      foreignKey: 'region_id',
+    this.belongsTo(models.Stock, {
+      as: 'stock',
+      foreignKey: 'stock_id',
+    });
+
+    this.belongsTo(models.Product, {
+    as: 'product',
+    foreignKey: 'product_id',
     });
   }
 }
 
-export default Customer;
+export default ProductStock;

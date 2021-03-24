@@ -39,11 +39,10 @@ class Region extends Model {
     });
 
     this.hasMany(models.Storage, {
-    as: 'storage',
-    foreignKey: 'region_id',
+      as: 'storage',
+      foreignKey: 'region_id',
     });
   }
 }
 
 export default Region;
-

@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import CustomerController from '../controllers/CustomerController';
 
-const routes = new Router()
+const routes = new Router();
 
 routes.get('/customers', CustomerController.index);
 routes.get('/customers/:id', CustomerController.show);
