@@ -30,12 +30,13 @@ class CustomerController {
   }
 
   async store(req, res) {
-    const { name, phone } = req.body;
+    const { name, phone, regionId } = req.body;
 
     try {
       const data = await Customer.create({
         name,
         phone,
+        region_id: regionId,
       })
 
       return res.status(201).json(data);
@@ -46,13 +47,14 @@ class CustomerController {
 
   async update(req, res) {
     const { id } = req.params;
-    const { name, phone } = req.body;
+    const { name, phone, regionId  } = req.body;
     
     try {
       const data = await Customer.update(
         {
         name,
         phone,
+        region_id: regionId,
       },
       {
         where: { id },

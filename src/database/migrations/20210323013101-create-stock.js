@@ -12,13 +12,13 @@ module.exports = {
         allowNull: false,
       },
       region_id: {
-          type: Sequelize.DataTypes.INTEGER,
-          allowNull: false,
-          references: {
-            model: 'region',
-            key: 'id',
-          },
+        type: Sequelize.DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'region',
+          key: 'id',
         },
+      },
       created_at: {
         type: Sequelize.DataTypes.DATE,
         allowNull: false,
@@ -27,10 +27,10 @@ module.exports = {
         type: Sequelize.DataTypes.DATE,
         allowNull: false,
       },
+    });
   },
-    )}
-    
-   down: async (queryInterface) => {
+
+  down: async (queryInterface) => {
     await queryInterface.dropTable('stock');
-  }
+  },
 };
