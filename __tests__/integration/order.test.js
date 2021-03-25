@@ -2,7 +2,7 @@ import request from 'supertest';
 import app from '../../src/app';
 
 describe('Order', () => {
-  describe('get', () => {
+  describe('get', async () => {
     it('Should list all orders', () => {
       expect.assertions(1);
 
