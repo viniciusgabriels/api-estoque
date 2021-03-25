@@ -26,10 +26,9 @@ class Region extends Model {
 
   static associate(models) {
     this.hasMany(models.Customer, {
-      as: 'customer',
+      as: 'customers',
       foreignKey: 'region_id',
     });
-
     this.hasMany(models.Stock, {
       as: 'stock',
       foreignKey: 'region_id',

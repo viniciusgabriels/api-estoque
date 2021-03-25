@@ -10,7 +10,7 @@ class Order extends Model {
           autoIncrement: true,
           primaryKey: true,
         },
-        client_id: {
+        customer_id: {
           type: Sequelize.DataTypes.INTEGER,
           allowNull: false,
           references: {
@@ -18,14 +18,7 @@ class Order extends Model {
             key: 'id',
           },
         },
-        origin_order_id: {
-          type: Sequelize.DataTypes.INTEGER,
-          allowNull: true,
-          references: {
-            model: 'orders',
-            key: 'id',
-          },
-        },
+
         data: {
           type: Sequelize.DataTypes.DATE,
           allowNull: true,
@@ -51,17 +44,13 @@ class Order extends Model {
       as: 'type',
       foreignKey: 'type_id',
     });
-    this.hasMany(models.OrderProduct, {
-      as: 'order_product',
-      foreignKey: 'order_product_id',
-    });
     this.belongsTo(models.Customer, {
-      as: 'customer',
+      as: 'customers2',
       foreignKey: 'customer_id',
     });
-    this.belongsToMany(models.Stock, {
-      as: 'stock',
-      foreignKey: 'stock_id',
+    this.hasMany(models.OrderProduct, {
+      as: 'order',
+      foreignKey: 'order_product_id',
     });
   }
 }

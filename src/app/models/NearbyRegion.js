@@ -41,9 +41,8 @@ class NearbyRegion extends Model {
       as: 'region',
       foreignKey: 'region_id',
     });
-
     this.belongsTo(models.Region, {
-      as: 'region',
+      as: 'nearby_region',
       foreignKey: 'nearby_region_id',
     });
   }

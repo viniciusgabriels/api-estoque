@@ -45,7 +45,6 @@ class ProductStock extends Model {
       as: 'stock',
       foreignKey: 'stock_id',
     });
-
     this.belongsTo(models.Product, {
       as: 'product',
       foreignKey: 'product_id',
