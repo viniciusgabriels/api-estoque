@@ -2,8 +2,8 @@ import request from 'supertest';
 import app from '../../src/app';
 
 describe('Order', () => {
-  describe('get', async () => {
-    it('Should list all orders', () => {
+  describe('get',  () => {
+    it('Should list all orders', async () => {
       expect.assertions(1);
 
       const order = await request(app).get('/orders')
