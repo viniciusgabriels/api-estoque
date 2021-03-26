@@ -1,4 +1,5 @@
 import Customer from '../models/Customer';
+import Order from '../models/Order';
 
 class CustomerController {
   async index(req, res) {
@@ -72,7 +73,9 @@ class CustomerController {
     const { id } = req.params;
 
     try {
-      /// //////////// Fazer o detroy das ordens
+      await Order.destroy({
+        where: { customer_id: id },
+      });
 
       await Customer.destroy({
         where: { id },
