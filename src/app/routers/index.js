@@ -8,6 +8,7 @@ import stock from './stock';
 import productStock from './productStock';
 import order from './order';
 import nearbyRegion from './nearbyRegions';
+import orderProduct from './orderProduct';
 
 // import nearbyRegions from './nearbyRegions';
 
@@ -21,4 +22,5 @@ export default [
   productStock,
   order,
   nearbyRegion,
+  orderProduct,
 ];
