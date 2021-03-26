@@ -1,3 +1,5 @@
+/* eslint-disable no-underscore-dangle */
+
 import request from 'supertest';
 import app from '../../src/app';
 
@@ -24,44 +26,36 @@ describe('customer', () => {
   });
 
   describe('update data customer', () => {
-    it('should update a customer', async () => {
-      expect.assertions(1);
+    it('should update a customer data', async () => {
+      expect.assertions(3);
 
-      const region2 = await request(app).post('/region').send({
+      const region = await request(app).post('/region').send({
         name: 'Região teste 2',
       });
 
-      const customer2 = await request(app).post('/customers').send({
+      const customer = await request(app).post('/customers').send({
         name: 'Customer teste 2',
         phone: 12345,
-        regionId: region2.body.id,
+        regionId: region.body.id,
       });
 
       const response = await request(app)
-        .put(`/customers/${customer2.body.id}`)
+        .put(`/customers/${customer.body.id}`)
         .send({
           name: 'Customer update teste',
-          phone: 12345,
-          regionId: region2.body.id,
+          phone: 12346,
+          regionId: region.body.id,
         });
 
       expect(response.status).toBe(200);
+      expect(response.request._data.name).toBe('Customer update teste');
+      expect(response.request._data.phone).toBe(12346);
     });
   });
 
   describe('show all customers', () => {
     it('should show all customers', async () => {
       expect.assertions(1);
-
-      const region3 = await request(app).post('/region').send({
-        name: 'Região teste 2',
-      });
-
-      await request(app).post('/customers').send({
-        name: 'Customer teste 3',
-        phone: 12345,
-        regionId: region3.body.id,
-      });
 
       const response = await request(app).get('/customers');
 
@@ -71,23 +65,45 @@ describe('customer', () => {
 
   describe('show one customer', () => {
     it('should find and show only one customer', async () => {
-      expect.assertions(1);
+      expect.assertions(3);
 
-      const region4 = await request(app).post('/region').send({
-        name: 'Região teste 2',
+      const region = await request(app).post('/region').send({
+        name: 'Região teste 3',
       });
 
-      const customer4 = await request(app).post('/customers').send({
+      const customer = await request(app).post('/customers').send({
         name: 'Customer teste 4',
         phone: 12345,
-        regionId: region4.body.id,
+        regionId: region.body.id,
       });
 
-      const response = await request(app).get(
-        `/customers/${customer4.body.id}`
-      );
+      const response = await request(app).get(`/customers/${customer.body.id}`);
 
       expect(response.status).toBe(200);
+      expect(response.body.name).toBe('Customer teste 4');
+      expect(response.body.phone).toBe(12345);
+    });
+  });
+
+  describe('delete customer', () => {
+    it('should delete all customer data', async () => {
+      expect.assertions(1);
+
+      const region = await request(app).post('/region').send({
+        name: 'Região teste 3',
+      });
+
+      const customer = await request(app).post('/customers').send({
+        name: 'Customer teste 4',
+        phone: 12345,
+        regionId: region.body.id,
+      });
+
+      const response = await request(app).delete(
+        `/customers/${customer.body.id}`
+      );
+
+      expect(response.status).toBe(204);
     });
   });
 });
