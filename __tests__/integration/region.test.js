@@ -3,23 +3,11 @@ import app from '../../src/app';
 import RegionController from '../../src/app/controllers/RegionController';
 
 describe('region', () => {
-  describe('index', () => {
-    it('should return all regions', async () => {
-      expect.assertions(1);
-
-      const regions = await request(app).get('/region', RegionController.index());
-
-      expect(regions.status).toBe(200);
-    });
-  });
   describe('show', () => {
     it('should return one region', async () => {
       expect.assertions(2);
 
-      const region1 = await request(app).get(
-      '/region/:id', 
-      RegionController.show()
-      ).send({
+      const region1 = await request(app).get('/region/:id').send({
         id: 1,
       });
 
@@ -31,22 +19,13 @@ describe('region', () => {
     it('should create a new region', async () => {
       expect.assertions(4);
 
-      const region2 = await request(app).post(
-      '/categories', 
-      RegionController.store()
-      ).send({
+      const region2 = await request(app).post('/categories').send({
         name: 'Sul',
       });
-      const region3 = await request(app).post(
-      '/categories',
-      RegionController.store()
-      ).send({
+      const region3 = await request(app).post('/categories').send({
         name: 'Norte',
       });
-      const region4 = await request(app).post(
-      '/categories',
-      RegionController.store()
-      ).send({
+      const region4 = await request(app).post('/categories').send({
         name: '',
       });
 
@@ -61,10 +40,7 @@ describe('region', () => {
       expect.assertions(3);
 
       const region5 = await request(app)
-        .put(
-        '/region/1', 
-        RegionController.update()
-        )
+        .put('/region/1')
         .send({
           name: 'novo',
         });
@@ -78,12 +54,7 @@ describe('region', () => {
     it('should delete a new', async () => {
       expect.assertions(1);
 
-      const region6 = await request(app)
-        .delete(
-        '/region/1',
-        RegionController.delete()
-        )
-        .send();
+      const region6 = await request(app).delete('/region/1');
         
       expect(region6.status).toBe(204);
     });
