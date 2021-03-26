@@ -6,6 +6,13 @@ describe('nearby egrion', () => {
     it('should return one nearby region relation', async () => {
       expect.assertions(2);
 
+      await request(app)
+      .post('/nearbyregion')
+      .send({
+        region: 1,
+        nearbyRegion: 2,
+      });
+
       const nearby1 = await request(app)
       .get('/nearbyregion/1');
 
