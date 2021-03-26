@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import StockController from '../controllers/StockController';
 
-const routes = new Router()
+const routes = new Router();
 
 routes.get('/Stock', StockController.index);
 routes.get('/Stock/:id', StockController.show);

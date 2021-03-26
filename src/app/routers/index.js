@@ -9,6 +9,7 @@ import productStock from './productStock';
 import order from './order';
 import nearbyRegion from './nearbyRegions';
 import orderProduct from './orderProduct';
+import type from './type';
 
 // import nearbyRegions from './nearbyRegions';
 
@@ -23,4 +24,5 @@ export default [
   order,
   nearbyRegion,
   orderProduct,
+  type,
 ];
