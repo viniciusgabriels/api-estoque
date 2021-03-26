@@ -7,7 +7,7 @@ describe('region', () => {
     it('should return all regions', async () => {
       expect.assertions(1);
 
-      const regions = await request(app).get('/region');
+      const regions = await request(app).get('/region', RegionController.index());
 
       expect(regions.status).toBe(200);
     });
@@ -16,7 +16,10 @@ describe('region', () => {
     it('should return one region', async () => {
       expect.assertions(2);
 
-      const region1 = await request(app).get('/region/:id').send({
+      const region1 = await request(app).get(
+      '/region/:id', 
+      RegionController.show()
+      ).send({
         id: 1,
       });
 
@@ -28,13 +31,22 @@ describe('region', () => {
     it('should create a new region', async () => {
       expect.assertions(4);
 
-      const region2 = await request(app).post('/categories').send({
+      const region2 = await request(app).post(
+      '/categories', 
+      RegionController.store()
+      ).send({
         name: 'Sul',
       });
-      const region3 = await request(app).post('/categories').send({
+      const region3 = await request(app).post(
+      '/categories',
+      RegionController.store()
+      ).send({
         name: 'Norte',
       });
-      const region4 = await request(app).post('/categories').send({
+      const region4 = await request(app).post(
+      '/categories',
+      RegionController.store()
+      ).send({
         name: '',
       });
 
@@ -49,7 +61,10 @@ describe('region', () => {
       expect.assertions(3);
 
       const region5 = await request(app)
-        .put('/region/1', RegionController.update())
+        .put(
+        '/region/1', 
+        RegionController.update()
+        )
         .send({
           name: 'novo',
         });
@@ -57,15 +72,17 @@ describe('region', () => {
       expect(region5.status).toBe(200);
       expect(region5.body).toHaveProperty('id');
       expect(region5.body.name).toBe('novo');
-
     });
   });
-  describe('update', () => {
-    it('should update a new region', async () => {
+  describe('delete', () => {
+    it('should delete a new', async () => {
       expect.assertions(1);
 
       const region6 = await request(app)
-        .delete('/region/1', RegionController.show())
+        .delete(
+        '/region/1',
+        RegionController.delete()
+        )
         .send();
         
       expect(region6.status).toBe(204);
