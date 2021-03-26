@@ -49,7 +49,7 @@ describe('region', () => {
       expect.assertions(3);
 
       const region5 = await request(app)
-        .put('/region/1', validateData, RegionController.update())
+        .put('/region/1', RegionController.update())
         .send({
           name: 'novo',
         });
@@ -65,7 +65,7 @@ describe('region', () => {
       expect.assertions(1);
 
       const region6 = await request(app)
-        .delete('/region/1', validateData, RegionController.show())
+        .delete('/region/1', RegionController.show())
         .send();
         
       expect(region6.status).toBe(204);
