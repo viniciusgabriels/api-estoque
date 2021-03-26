@@ -50,11 +50,10 @@ class Product extends Model {
       as: 'categories',
       foreignKey: 'category_id',
     });
-
-    // this.hasMany(models.ProductStock, {
-    //   as: 'product_stock',
-    //   foreignKey: 'product_id',
-    // });
+    this.hasMany(models.ProductStock, {
+      as: 'product_stock',
+      foreignKey: 'product_id',
+    });
   }
 }
 

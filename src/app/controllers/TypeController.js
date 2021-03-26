@@ -1,11 +1,10 @@
-import Customer from '../models/Customer';
-import Order from '../models/Order';
+import Type from '../models/Type';
 
-class CustomerController {
+class TypeController {
   async index(req, res) {
     try {
-      const data = await Customer.findAll({
-        attributes: ['id', 'name', 'phone'],
+      const data = await Type.findAll({
+        attributes: ['id', 'description'],
         order: [['id', 'DESC']],
       });
 
@@ -19,8 +18,8 @@ class CustomerController {
     const { id } = req.params;
 
     try {
-      const data = await Customer.findOne({
-        attributes: ['id', 'name', 'phone'],
+      const data = await Type.findOne({
+        attributes: ['id', 'description'],
         where: { id },
       });
 
@@ -31,13 +30,11 @@ class CustomerController {
   }
 
   async store(req, res) {
-    const { name, phone, regionId } = req.body;
+    const { description } = req.body;
 
     try {
-      const data = await Customer.create({
-        name,
-        phone,
-        region_id: regionId,
+      const data = await Type.create({
+        description,
       });
 
       return res.status(201).json(data);
@@ -48,18 +45,16 @@ class CustomerController {
 
   async update(req, res) {
     const { id } = req.params;
-    const { name, phone, regionId } = req.body;
+    const { description } = req.body;
 
     try {
-      const data = await Customer.update(
+      const data = await Type.update(
         {
-          name,
-          phone,
-          region_id: regionId,
+          description,
         },
         {
           where: { id },
-          returning: ['id', 'name', 'phone'],
+          returning: ['id', 'description'],
         }
       );
 
@@ -73,11 +68,7 @@ class CustomerController {
     const { id } = req.params;
 
     try {
-      await Order.destroy({
-        where: { customer_id: id },
-      });
-
-      await Customer.destroy({
+      await Type.destroy({
         where: { id },
       });
 
@@ -88,4 +79,4 @@ class CustomerController {
   }
 }
 
-export default new CustomerController();
+export default new TypeController();

@@ -38,8 +38,12 @@ class Customer extends Model {
 
   static associate(models) {
     this.belongsTo(models.Region, {
-      as: 'customer',
+      as: 'region',
       foreignKey: 'region_id',
+    });
+    this.hasMany(models.Order, {
+      as: 'order_customer',
+      foreignKey: 'customer_id',
     });
   }
 }

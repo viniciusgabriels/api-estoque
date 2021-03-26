@@ -37,6 +37,7 @@ class OrderProduct extends Model {
       },
       {
         sequelize,
+        tableName: 'order_product',
       }
     );
 
@@ -45,7 +46,7 @@ class OrderProduct extends Model {
 
   static associate(models) {
     this.belongsTo(models.Order, {
-      as: 'order',
+      as: 'order_product',
       foreignKey: 'order_id',
     });
     this.hasMany(models.ProductStock, {
