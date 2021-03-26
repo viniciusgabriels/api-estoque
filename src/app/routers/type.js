@@ -9,7 +9,8 @@ routes.get('/types/:id', validateTypeExists, TypeController.show);
 routes.post('/types', validateData, TypeController.store);
 routes.put(
   '/types/:id',
-  validateTypeExists.validateData,
+  validateTypeExists,
+  validateData,
   TypeController.update
 );
 routes.delete('/types/:id', validateTypeExists, TypeController.delete);
