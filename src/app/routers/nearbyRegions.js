@@ -9,7 +9,7 @@ const routes = new Router();
 routes.get('/nearbyregion', NearbyRegionController.index);
 routes.get('/nearbyregion/:id', NearbyRegionController.show);
 routes.post('/nearbyregion', validateNumber, NearbyRegionController.store);
-routes.put('/nearbyregion/:id', NearbyRegionController.update);
+routes.put('/nearbyregion/:id', validateNumber, NearbyRegionController.update);
 routes.delete('/nearbyregion/:id', NearbyRegionController.delete);
 
 export default routes;
