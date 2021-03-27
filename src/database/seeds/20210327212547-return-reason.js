@@ -2,7 +2,7 @@ module.exports = {
   up: async (queryInterface) => {
     await queryInterface.bulkInsert(
       {
-        tableName: 'return',
+        tableName: 'return_reason',
       },
       [
         {
@@ -27,7 +27,7 @@ module.exports = {
   down: async (queryInterface) => {
     await queryInterface.bulkDelete(
       {
-        tableName: 'return',
+        tableName: 'return_reason',
       },
       null,
       {}
