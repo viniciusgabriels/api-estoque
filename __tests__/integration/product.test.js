@@ -56,7 +56,7 @@ describe('product', () => {
       expect(response.status).toBe(400);
     });
 
-    it('shouldn´t create a new product without product price or length < 3', async () => {
+    it('shouldn´t create a new product without product without category', async () => {
       expect.assertions(1);
 
       const response = await request(app).post('/products').send({
@@ -122,23 +122,47 @@ describe('product', () => {
     });
   });
 
-  //   describe('show', () => {
-  //     it('should list a category by pk', async () => {
-  //       expect.assertions(1);
+  describe('show', () => {
+    it('should list a product by pk', async () => {
+      expect.assertions(1);
 
-  //       const response = await request(app).get('/categories/1');
+      const category = await request(app).post('/categories').send({
+        name: 'Hadware Product 5',
+      });
 
-  //       expect(response.status).toBe(200);
-  //     });
-  //   });
+      const insertProdut = await request(app).post('/products').send({
+        name: 'Monitor LED 21Polegadas 5',
+        price: '799.99',
+        status: true,
+        categoryId: category.body.id,
+      });
 
-  //   describe('delete', () => {
-  //     it('should delete a category by pk', async () => {
-  //       expect.assertions(1);
+      const response = await request(app).get(`/products/${insertProdut.id}`);
 
-  //       const response = await request(app).delete('/categories/1');
+      expect(response.status).toBe(200);
+    });
+  });
 
-  //       expect(response.status).toBe(204);
-  //     });
-  //   });
+  describe('delete', () => {
+    it('should delete a category by pk', async () => {
+      expect.assertions(1);
+
+      const category = await request(app).post('/categories').send({
+        name: 'Hadware Product 6',
+      });
+
+      const insertProdut = await request(app).post('/products').send({
+        name: 'Monitor LED 21Polegadas 6',
+        price: '799.99',
+        status: true,
+        categoryId: category.body.id,
+      });
+
+      const response = await request(app).delete(
+        `/products/${insertProdut.id}`
+      );
+
+      expect(response.status).toBe(204);
+    });
+  });
 });

@@ -7,6 +7,14 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
       },
+      quantity: {
+        type: Sequelize.DataTypes.INTEGER,
+        allowNull: false,
+      },
+      price: {
+        type: Sequelize.DataTypes.FLOAT,
+        allowNull: false,
+      },
       order_id: {
         type: Sequelize.DataTypes.INTEGER,
         allowNull: false,
@@ -24,14 +32,6 @@ module.exports = {
           model: 'product_stock',
           key: 'id',
         },
-      },
-      quantity: {
-        type: Sequelize.DataTypes.INTEGER,
-        allowNull: false,
-      },
-      price: {
-        type: Sequelize.DataTypes.FLOAT,
-        allowNull: false,
       },
       created_at: {
         type: Sequelize.DataTypes.DATE,

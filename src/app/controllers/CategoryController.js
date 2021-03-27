@@ -1,4 +1,3 @@
-import { Op } from 'sequelize';
 import Category from '../models/Category';
 
 class CategoryController {
