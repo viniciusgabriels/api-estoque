@@ -11,7 +11,7 @@ class Stock extends Model {
           primaryKey: true,
         },
         local: {
-          type: Sequelize.DataTypes.INTEGER,
+          type: Sequelize.DataTypes.STRING,
           allowNull: false,
         },
         region_id: {
