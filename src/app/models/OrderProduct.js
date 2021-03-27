@@ -4,12 +4,18 @@ class OrderProduct extends Model {
   static init(sequelize) {
     super.init(
       {
+        id: {
+          type: Sequelize.DataTypes.INTEGER,
+          allowNull: false,
+          autoIncrement: true,
+          primaryKey: true,
+        },
         order_id: {
           type: Sequelize.DataTypes.INTEGER,
           allowNull: false,
           primaryKey: true,
           references: {
-            model: 'order',
+            model: 'orders',
             key: 'id',
           },
         },
@@ -22,15 +28,11 @@ class OrderProduct extends Model {
             key: 'id',
           },
         },
-        status: {
-          type: Sequelize.DataTypes.STRING,
-          allowNull: false,
-        },
         quantity: {
-          type: Sequelize.DataTypes.STRING,
+          type: Sequelize.DataTypes.INTEGER,
           allowNull: false,
         },
-        preco_venda: {
+        price: {
           type: Sequelize.DataTypes.FLOAT,
           allowNull: false,
         },
@@ -49,7 +51,7 @@ class OrderProduct extends Model {
       as: 'order_product',
       foreignKey: 'order_id',
     });
-    this.hasMany(models.ProductStock, {
+    this.belongsTo(models.ProductStock, {
       as: 'product_stock',
       foreignKey: 'product_stock_id',
     });

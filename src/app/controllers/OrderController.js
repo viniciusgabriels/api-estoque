@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Order from '../models/Order';
 
 class OrderController {
@@ -16,13 +17,28 @@ class OrderController {
   }
 
   async store(request, response) {
-    const { type, ClientId, date } = request.body;
+    const { typeId, customerId, product } = request.body;
 
     const order = await Order.create({
-      type,
-      ClientId,
-      date,
+      type_id: typeId,
+      customer_id: customerId,
+      date: new Date(),
     });
+
+    const { id } = order;
+
+    await axios({
+      method: 'post',
+      url: `http://localhost:3333/order-product`,
+      data: {
+        id,
+        product,
+      },
+    })
+      .then((resProduct) => {
+        console.log(resProduct);
+      })
+      .catch((error) => console.log(error));
 
     return response.json(order);
   }
