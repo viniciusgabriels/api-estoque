@@ -1,7 +1,7 @@
 import request from 'supertest';
 import app from '../../src/app';
 
-describe('Category', () => {
+describe('category', () => {
   describe('create', () => {
     it('should create a new category', async () => {
       expect.assertions(3);
@@ -19,11 +19,11 @@ describe('Category', () => {
       expect.assertions(2);
 
       const response = await request(app).post('/categories').send({
-        name: 'Ab'
+        name: 'Ab',
       });
-      
+
       const response2 = await request(app).post('/categories').send({
-        name: ''
+        name: '',
       });
 
       expect(response.status).toBe(400);
@@ -63,7 +63,7 @@ describe('Category', () => {
       expect(response.status).toBe(200);
     });
   });
-  
+
   describe('show', () => {
     it('should list a category by pk', async () => {
       expect.assertions(1);
@@ -73,7 +73,7 @@ describe('Category', () => {
       expect(response.status).toBe(200);
     });
   });
-  
+
   describe('delete', () => {
     it('should delete a category by pk', async () => {
       expect.assertions(1);
@@ -81,8 +81,8 @@ describe('Category', () => {
       const createCategory = await request(app).post('/categories').send({
         name: 'Category 1',
       });
-      
-      const idCategory = createCategory.body.id; 
+
+      const idCategory = createCategory.body.id;
 
       const response = await request(app).delete(`/categories/${idCategory}`);
 

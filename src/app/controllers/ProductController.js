@@ -1,4 +1,3 @@
-import { Op } from 'sequelize';
 import Product from '../models/Product';
 
 class ProductController {
@@ -24,7 +23,13 @@ class ProductController {
   }
 
   async show(request, response) {
-    //
+    const { productId } = request;
+
+    return response.json(
+      await Product.findByPk(productId, {
+        attributes: ['id', 'name', 'description', 'price'],
+      })
+    );
   }
 
   async store(request, response) {
@@ -59,7 +64,15 @@ class ProductController {
   }
 
   async delete(request, response) {
-    //
+    const { id } = request.params;
+
+    await Product.destroy({
+      where: {
+        id,
+      },
+    });
+
+    return response.sendStatus(204);
   }
 }
 
