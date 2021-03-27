@@ -1,16 +1,16 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.addColumn('order_product', 'return_id', {
+    await queryInterface.addColumn('order_product', 'return_reason_id', {
       type: Sequelize.DataTypes.INTEGER,
       allowNull: true,
       references: {
-        model: 'return',
+        model: 'return_reason',
         key: 'id',
       },
     });
   },
 
   down: async (queryInterface) => {
-    await queryInterface.removeColumn('order_product', 'return_id');
+    await queryInterface.removeColumn('order_product', 'return_reason_id');
   },
 };
