@@ -13,21 +13,21 @@ const routes = new Router();
 routes.get(
   '/return-reason',
   ReturnReason.index
-  // #swagger.tags = ['Categories']
+  // #swagger.tags = ['Return Reason']
   // #swagger.description = 'Endpoint para buscar todas as categorias'
   /*
-  #swagger.parameters['name'] = {
+  #swagger.parameters['description'] = {
     in: 'query',
-    description: 'Nome da categoria',
+    description: 'Descrição do motivo da devolução',
     required: false,
     type: 'string'
   } */
   /* 
   #swagger.response[200] = {
-    description: 'Categories list',
+    description: 'Return reason list',
     schema: {
       minimum: 1
-      $ref: "#/definitions/categories"
+      $ref: "#/definitions/return-reason"
     }
     responses: {
       '200': {
@@ -41,11 +41,11 @@ routes.get(
   '/return-reason/:id',
   [validateId, validateReturnReasonExist],
   ReturnReason.show
-  // #swagger.tags = ['Categories']
-  // #swagger.description = 'Endpoint para buscar uma categotia'
+  // #swagger.tags = ['Return Reason']
+  // #swagger.description = 'Endpoint para buscar um motivo de devolução'
   /*  #swagger.parameters['id'] = {
     in: 'path',
-    description: 'ID da categoria',
+    description: 'ID do motivo',
     required: true,
     type: 'integer',
   } 
@@ -55,20 +55,20 @@ routes.post(
   '/return-reason',
   validateData,
   ReturnReason.store
-  // #swagger.tags = ['Categories']
-  // #swagger.description = 'Endpoint para cadastrar uma categotia'
+  // #swagger.tags = ['Return Reason']
+  // #swagger.description = 'Endpoint para cadastrar uma motivo de devolução'
   // #swagger.security = [{Bearer: []}]
   /*
-  #swagger.parameters['name'] = {
+  #swagger.parameters['description'] = {
     in: 'body',
-    description: 'Nome da categoria',
+    description: 'Descrição do motivo de devolução',
     required: true,
     type: 'string'
   } */
   /* #swagger.response[200] = {
-    description: 'Categoria cadastrada com sucesso',
+    description: 'Motivo cadastrado com sucesso',
     schema: {
-      $ref: "#/definitions/category"
+      $ref: "#/definitions/return-reason"
     }
   }
   */
@@ -77,25 +77,25 @@ routes.put(
   '/return-reason/:id',
   [validateData, validateId, validateReturnReasonExist],
   ReturnReason.update
-  // #swagger.tags = ['Categories']
+  // #swagger.tags = ['Return Reason']
   // #swagger.description = 'Endpoint para atualizar uma categotia'
   // #swagger.security = [{Bearer: []}]
   /* #swagger.parameters['id'] = {
     in: 'path',
-    description: 'ID da categoria',
+    description: 'ID do motivo',
     required: true,
     type: 'integer',
   } */
-  /* #swagger.parameters['name'] = {
+  /* #swagger.parameters['description'] = {
     in: 'body',
-    description: 'Nome da categoria',
+    description: 'Descrição do motivo de devolução',
     required: true,
     type: 'string'
   } */
   /* #swagger.response[200] = {
-    description: 'Categoria atualizada com sucesso',
+    description: 'Motivo atualizado com sucesso',
     schema: {
-      $ref: "#/definitions/category"
+      $ref: "#/definitions/return-reason"
     }
   }
   */
@@ -104,19 +104,19 @@ routes.delete(
   '/return-reason/:id',
   [validateId, validateReturnReasonExist, returnReasonExistInOrderProduct],
   ReturnReason.delete
-  // #swagger.tags = ['Categories']
-  // #swagger.description = 'Endpoint para deletar uma categotia'
+  // #swagger.tags = ['Return Reason']
+  // #swagger.description = 'Endpoint para deletar um motivo de devolução'
   // #swagger.security = [{Bearer: []}]
   /*  #swagger.parameters['id'] = {
     in: 'path',
-    description: 'ID da categoria',
+    description: 'ID do motivo',
     required: true,
     type: 'integer',
   } 
   */
   /*
   #swagger.response[204] = {
-    description: 'Categoria deletada com sucesso',
+    description: 'Motivo de devolução deletado com sucesso',
     schema: {
       $ref: "#/definitions/category"
     }
