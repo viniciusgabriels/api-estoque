@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import NearbyRegionController from '../controllers/NearbyRegionController';
+import { validateNumber } from '../middlewares/nearby';
 
 // Criar o controller 
 
@@ -7,7 +8,7 @@ const routes = new Router();
 
 routes.get('/nearbyregion', NearbyRegionController.index);
 routes.get('/nearbyregion/:id', NearbyRegionController.show);
-routes.post('/nearbyregion', NearbyRegionController.store);
+routes.post('/nearbyregion', validateNumber, NearbyRegionController.store);
 routes.put('/nearbyregion/:id', NearbyRegionController.update);
 routes.delete('/nearbyregion/:id', NearbyRegionController.delete);
 

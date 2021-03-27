@@ -28,7 +28,7 @@ describe('region', () => {
       expect(region2.status).toBe(200);
       expect(region2.body).toHaveProperty('id');
       expect(region3.body.name).toBe('Norte');
-     // expect(region4.status).toBe(400);
+      expect(region4.status).toBe(400);
     });
   });
   describe('update', () => {
