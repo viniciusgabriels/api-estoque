@@ -1,4 +1,5 @@
 import Category from '../models/Category';
+import Product from '../models/Product';
 
 function validateData(request, response, next) {
   const { name } = request.body;
@@ -17,7 +18,7 @@ function validateId(request, response, next) {
 
   const parsed = Number.parseInt(id);
 
-  if (Number.isNaN(parsed)) {
+  if (Number.isNaN(parsed) || parsed < 1) {
     return response.status(400).json({
       message: 'Invalid ID',
     });
@@ -42,4 +43,23 @@ async function validateCategoryExist(request, response, next) {
   next();
 }
 
-export { validateData, validateId, validateCategoryExist };
+async function categoryExistInProducts(request, response, next) {
+  const category = await Product.findOne({
+    where: { category_id: request.categoryId },
+  });
+
+  if (category) {
+    return response.status(400).json({
+      message: 'Unable to delete! Linked category to products',
+    });
+  }
+
+  next();
+}
+
+export {
+  validateData,
+  validateId,
+  validateCategoryExist,
+  categoryExistInProducts,
+};

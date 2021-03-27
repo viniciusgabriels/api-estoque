@@ -19,13 +19,13 @@ class CategoryController {
   }
 
   async show(request, response) {
-    const { id } = request;
+    const { categoryId } = request;
 
-    return response.json(
-      await Category.findByPk(id, {
-        attributes: ['id', 'name'],
-      })
-    );
+    const category = await Category.findByPk(categoryId, {
+      attributes: ['id', 'name'],
+    });
+
+    return response.json(category);
   }
 
   async store(request, response) {

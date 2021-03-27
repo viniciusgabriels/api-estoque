@@ -5,6 +5,7 @@
     "title": "Documentação da API de controle de estoque",
     "description": "API para controle de estoque desenvolvida em JavaScript"
   },
+  "host": "localhost:3333",
   "basePath": "/",
   "tags": [],
   "schemes": [
@@ -27,88 +28,68 @@
   "paths": {
     "/products": {
       "get": {
-        "tags": [],
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      },
-      "post": {
-        "tags": [],
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-    },
-    "/products/{id}": {
-      "get": {
-        "tags": [],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
+        "tags": [
+          "Products"
         ],
-        "responses": {}
-      },
-      "put": {
-        "tags": [],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {}
-      },
-      "delete": {
-        "tags": [],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {}
-      }
-    },
-    "/categories": {
-      "get": {
-        "tags": [],
-        "description": "",
+        "description": "Endpoint para buscar todos os produtos",
         "parameters": [
           {
             "name": "name",
             "in": "query",
-            "type": "string"
+            "type": "string",
+            "description": "Nome do produto",
+            "required": false
+          },
+          {
+            "name": "categoryId",
+            "in": "query",
+            "type": "string",
+            "description": "ID da categoria",
+            "required": false
           }
         ],
         "responses": {}
       },
       "post": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "Products"
+        ],
+        "description": "Endpoint para cadastrar um novo produto",
         "parameters": [
           {
-            "name": "obj",
+            "name": "name",
             "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "example": "any"
-                }
-              }
-            }
+            "description": "Nome do produto",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "in": "body",
+            "description": "Descrição do produto",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "price",
+            "in": "body",
+            "description": "Valor do produto",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "status",
+            "in": "body",
+            "description": "Status do produto, ativo? true ou false",
+            "required": true,
+            "type": "boolean"
+          },
+          {
+            "name": "categoryId",
+            "in": "body",
+            "description": "ID da categoria do produto",
+            "required": true,
+            "type": "integer"
           }
         ],
         "responses": {
@@ -118,46 +99,77 @@
         }
       }
     },
-    "/categories/{id}": {
+    "/products/{id}": {
       "get": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "Products"
+        ],
+        "description": "Endpoint para listar um produto",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID do produto"
           }
         ],
         "responses": {
           "400": {
             "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       },
       "put": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "Products"
+        ],
+        "description": "Endpoint para atualizar um produto",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
+            "type": "integer",
+            "description": "ID da categoria"
+          },
+          {
+            "name": "name",
+            "in": "body",
+            "description": "Nome do produto",
+            "required": true,
             "type": "string"
           },
           {
-            "name": "obj",
+            "name": "description",
             "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "example": "any"
-                }
-              }
-            }
+            "description": "Descrição do produto",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "price",
+            "in": "body",
+            "description": "Valor do produto",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "status",
+            "in": "body",
+            "description": "Status do produto, ativo? true ou false",
+            "required": true,
+            "type": "boolean"
+          },
+          {
+            "name": "categoryId",
+            "in": "body",
+            "description": "ID da categoria do produto",
+            "required": true,
+            "type": "integer"
           }
         ],
         "responses": {
@@ -170,14 +182,138 @@
         }
       },
       "delete": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "Products"
+        ],
+        "description": "Endpoint para deletar um produto",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
+            "type": "integer",
+            "description": "ID do produto"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/categories": {
+      "get": {
+        "tags": [
+          "Categories"
+        ],
+        "description": "Endpoint para buscar todas as categorias",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string",
+            "description": "Nome da categoria",
+            "required": false
+          }
+        ],
+        "responses": {}
+      },
+      "post": {
+        "tags": [
+          "Categories"
+        ],
+        "description": "Endpoint para cadastrar uma categotia",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "body",
+            "description": "Nome da categoria",
+            "required": true,
             "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/categories/{id}": {
+      "get": {
+        "tags": [
+          "Categories"
+        ],
+        "description": "Endpoint para buscar uma categotia",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID da categoria"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Categories"
+        ],
+        "description": "Endpoint para atualizar uma categotia",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID da categoria"
+          },
+          {
+            "name": "name",
+            "in": "body",
+            "description": "Nome da categoria",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Categories"
+        ],
+        "description": "Endpoint para deletar uma categotia",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID da categoria"
           }
         ],
         "responses": {
