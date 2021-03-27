@@ -18,8 +18,7 @@ class Order extends Model {
             key: 'id',
           },
         },
-
-        data: {
+        date: {
           type: Sequelize.DataTypes.DATE,
           allowNull: true,
         },
@@ -51,7 +50,7 @@ class Order extends Model {
     });
     this.hasMany(models.OrderProduct, {
       as: 'order',
-      foreignKey: 'order_product_id',
+      foreignKey: 'order_id',
     });
   }
 }

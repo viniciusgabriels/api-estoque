@@ -1,29 +1,51 @@
+/* eslint-disable camelcase */
 import OrderProduct from '../models/OrderProduct';
+import Order from '../models/Order';
+import ProductStock from '../models/ProductStock';
 
 class OrderProductController {
   async index(request, response) {
-    return response.json(await OrderProduct.findAll());
-  }
-
-  async show(request, response) {
-    const { id } = request.params;
-    return response.json(await OrderProduct.findOne({ where: { id } }));
-  }
-
-  async store(request, response) {
-    const { quantity, productId, stockId } = request.body;
-
     return response.json(
-      await OrderProduct.create({
-        quantity,
-        product_id: productId,
-        stock_id: stockId,
+      await OrderProduct.findAll({
+        attributes: ['order_id', 'product_stock_id', 'quantity', 'price'],
       })
     );
   }
 
+  async show(request, response) {
+    const { orderId, id } = request.params;
+    return response.json(
+      await OrderProduct.findOne({
+        attributes: ['order_id', 'product_stock_id', 'quantity', 'price'],
+        where: {
+          order_id: orderId,
+          product_stock_id: id,
+        },
+      })
+    );
+  }
+
+  store(request, response) {
+    const { id, product } = request.body;
+
+    return response.json(
+      product.forEach(async (element) => {
+        const { product_stock_id, quantity, price } = element;
+        await OrderProduct.create({
+          order_id: id,
+          quantity,
+          product_stock_id,
+          price,
+        });
+      })
+    );
+    // console.log(insertOrderProduct);
+
+    // return response.status(200);
+  }
+
   async update(request, response) {
-    const { id } = request.params;
+    /* const { id } = request.params;
     const { quantity, productId, stockId } = request.body;
     return response.json(
       await OrderProduct.create(
@@ -33,13 +55,13 @@ class OrderProductController {
           returning: true,
         }
       )
-    );
+    ); */
   }
 
   async delete(request, response) {
-    const { id } = request.params;
+    /* const { id } = request.params;
     await OrderProduct.destroy({ where: { id } });
-    response.sendStatus(202);
+    response.sendStatus(202); */
   }
 }
 

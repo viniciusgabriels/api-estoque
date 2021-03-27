@@ -7,7 +7,7 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
       },
-      data: {
+      date: {
         type: Sequelize.DataTypes.DATE,
         allowNull: false,
       },
@@ -17,7 +17,7 @@ module.exports = {
         references: {
           model: 'type',
           key: 'id',
-        }
+        },
       },
       origin_order_id: {
         type: Sequelize.DataTypes.INTEGER,

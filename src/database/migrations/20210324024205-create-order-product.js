@@ -1,6 +1,12 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('order_product', {
+      id: {
+        type: Sequelize.DataTypes.INTEGER,
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+      },
       order_id: {
         type: Sequelize.DataTypes.INTEGER,
         allowNull: false,
@@ -19,15 +25,11 @@ module.exports = {
           key: 'id',
         },
       },
-      status: {
-        type: Sequelize.DataTypes.STRING,
-        allowNull: false,
-      },
       quantity: {
-        type: Sequelize.DataTypes.STRING,
+        type: Sequelize.DataTypes.INTEGER,
         allowNull: false,
       },
-      preco_venda: {
+      price: {
         type: Sequelize.DataTypes.FLOAT,
         allowNull: false,
       },
