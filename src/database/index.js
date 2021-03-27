@@ -10,6 +10,7 @@ import Order from '../app/models/Order';
 import NearbyRegion from '../app/models/NearbyRegion';
 import OrderProduct from '../app/models/OrderProduct';
 import ProductStock from '../app/models/ProductStock';
+import ReturnReason from '../app/models/ReturnReason';
 
 const models = [
   Category,
@@ -20,6 +21,7 @@ const models = [
   Product,
   ProductStock,
   Region,
+  ReturnReason,
   Stock,
   Type,
 ];

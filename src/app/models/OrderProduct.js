@@ -34,7 +34,6 @@ class OrderProduct extends Model {
             key: 'id',
           },
         },
-
         quantity: {
           type: Sequelize.DataTypes.INTEGER,
           allowNull: false,
