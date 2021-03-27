@@ -26,8 +26,8 @@ class ReturnReason extends Model {
 
   static associate(models) {
     this.hasMany(models.OrderProduct, {
-      as: 'return_id',
-      foreignKey: 'return_id',
+      as: 'return_reason_id',
+      foreignKey: 'return_reason_id',
     });
   }
 }
