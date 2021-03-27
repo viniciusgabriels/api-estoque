@@ -3,6 +3,7 @@ require('dotenv').config();
 const host = process.env.API_URL;
 const category = require('../app/documentation/category');
 const product = require('../app/documentation/product');
+const returnReason = require('../app/documentation/returnReason');
 
 module.exports = {
   info: {
@@ -27,5 +28,6 @@ module.exports = {
   definitions: {
     category,
     product,
+    returnReason,
   },
 };

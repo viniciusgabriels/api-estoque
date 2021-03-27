@@ -350,6 +350,122 @@
           }
         ]
       }
+    },
+    "/return-reason": {
+      "get": {
+        "tags": [
+          "Motivo da devolução"
+        ],
+        "description": "Endpoint para buscar todas as categorias",
+        "parameters": [
+          {
+            "name": "description",
+            "in": "query",
+            "type": "string",
+            "description": "Descrição do motivo da devolução",
+            "required": false
+          }
+        ],
+        "responses": {}
+      },
+      "post": {
+        "tags": [
+          "Motivo da devolução"
+        ],
+        "description": "Endpoint para cadastrar uma motivo de devolução",
+        "parameters": [
+          {
+            "name": "description",
+            "in": "body",
+            "description": "Descrição do motivo de devolução",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/return-reason/{id}": {
+      "get": {
+        "tags": [
+          "Motivo da devolução"
+        ],
+        "description": "Endpoint para buscar um motivo de devolução",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do motivo"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Motivo da devolução"
+        ],
+        "description": "Endpoint para atualizar uma categotia",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do motivo"
+          },
+          {
+            "name": "description",
+            "in": "body",
+            "description": "Descrição do motivo de devolução",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Motivo da devolução"
+        ],
+        "description": "Endpoint para deletar um motivo de devolução",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do motivo"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -383,7 +499,7 @@
         },
         "price": {
           "type": "string",
-          "example": "Preço"
+          "example": "Valor do produto"
         },
         "status": {
           "type": "string",
@@ -392,6 +508,19 @@
         "category_id": {
           "type": "string",
           "example": "ID da categoria"
+        }
+      }
+    },
+    "returnReason": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "ID"
+        },
+        "description": {
+          "type": "string",
+          "example": "Descrição"
         }
       }
     }

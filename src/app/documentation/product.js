@@ -2,7 +2,7 @@ module.exports = {
   id: 'ID',
   name: 'Nome',
   description: 'Descrição',
-  price: 'Preço',
+  price: 'Valor do produto',
   status: 'Status',
-  category_id: 'ID da categoria'
-}
+  category_id: 'ID da categoria',
+};
