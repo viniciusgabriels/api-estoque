@@ -1,4 +1,5 @@
 import Region from '../models/Region';
+import NearbyRegion from '../models/NearbyRegion';
 
 class RegionController {
   async index(request, response) {
@@ -38,6 +39,18 @@ class RegionController {
 
   async delete(request, response) {
     const { id } = request.params;
+
+    await NearbyRegion.destroy({
+      where: {
+        region_id: id,
+      },
+    });
+
+    await NearbyRegion.destroy({
+      where: {
+        nearby_region_id: id,
+      },
+    });
 
     await Region.destroy({
       where: {
