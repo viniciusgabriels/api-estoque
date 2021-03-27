@@ -11,56 +11,62 @@ describe('nearby egrion', () => {
       expect(nearby1.status).toBe(200);
     });
   });
-  // describe('store', () => {
-  //   it('should create a new nearby region relation', async () => {
-  //     expect.assertions(2);
+  describe('store', () => {
+    it('should create a new nearby region relation', async () => {
+      expect.assertions(2);
 
-  //     const nearby2 = await request(app)
-  //     .post('/nearbyregion')
-  //     .send({
-  //       region: 1,
-  //       nearbyRegion: 2,
-  //     });
-  //     const nearby3 = await request(app)
-  //     .post('/nearbyregion')
-  //     .send({
-  //         region: '1',
-  //         nearbyRegion: '1',
-  //       });
-  //     const nearby4 = await request(app)
-  //     .post('/nearbyregion')
-  //     .send({
-  //         region: 1,
-  //         nearbyRegion: 2,
-  //       });
-  //       const nearby5 = await request(app)
-  //       .post('/nearbyregion')
-  //       .send({
-  //         region: 'text',
-  //         nearbyRegion: 'other text',
-  //       });
+      const nearby2 = await request(app)
+      .post('/nearbyregion')
+      .send({
+        region: 1,
+        nearbyRegion: 2
+      });
+      const nearby3 = await request(app)
+      .post('/nearbyregion')
+      .send({
+          region: '1',
+          nearbyRegion: '1'
+        });
+      const nearby4 = await request(app)
+      .post('/nearbyregion')
+      .send({
+          region: 1,
+          nearbyRegion: 2
+        });
+        const nearby5 = await request(app)
+        .post('/nearbyregion')
+        .send({
+          region: 'text',
+          nearbyRegion: 'other text'
+        });
 
-  //     expect(nearby2.status).toBe(200);
-  //     expect(nearby2.body).toHaveProperty('id');
-  //     // expect(nearby3.status).toBe(400);
-  //     // expect(nearby4.status).toBe(400);
-  //     // expect(nearby5.status).toBe(400);
-  //   });
-  // });
+      expect(nearby2.status).toBe(200);
+      expect(nearby2.body).toHaveProperty('id');
+      // expect(nearby3.status).toBe(400);
+      // expect(nearby4.status).toBe(400);
+      // expect(nearby5.status).toBe(400);
+    });
+  });
   describe('update', () => {
     it('should update a new relation', async () => {
-      expect.assertions(3);
+      expect.assertions(2);
+
+      const createNearby = await request(app).post('/nearbyregion').send({
+        region: 2,
+        nearbyRegion: 3,
+      });
+      
+      const idNearby = createNearby.body.id; 
 
       const nearby6 = await request(app)
-        .put('/nearbyregion/1')
+        .put(`/region/${idNearby}`)
         .send({
-          region: 1,
-          nearbyRegion: 2,
+          region: 4,
+          nearbyRegion: 5
         });
 
       expect(nearby6.status).toBe(200);
-      expect(nearby6.body).toHaveProperty('id');
-      expect(nearby6.body.region_id).toBe(1);
+      expect(nearby6.body.region_id).toBe(4);
 
     });
   });
@@ -70,7 +76,7 @@ describe('nearby egrion', () => {
     
       const createNearby = await request(app).post('/nearbyregion').send({
         region: 1,
-        nearbyRegion: 2,
+        nearbyRegion: 2
       });
       
       const idNearby = createNearby.body.id; 
