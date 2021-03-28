@@ -6,9 +6,9 @@ describe('orderProduct', () => {
     it('should create a new order_product', async () => {
       expect.assertions(1);
 
-      const region = await request(app).post('/region').send({
+      /* const region = await request(app).post('/region').send({
         name: 'Região teste',
-      });
+      }); */
 
       const response = await request(app).post('/customers').send({
         name: 'Customer teste',
