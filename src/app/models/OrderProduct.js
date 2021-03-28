@@ -13,7 +13,6 @@ class OrderProduct extends Model {
         order_id: {
           type: Sequelize.DataTypes.INTEGER,
           allowNull: false,
-          primaryKey: true,
           references: {
             model: 'orders',
             key: 'id',
@@ -22,9 +21,16 @@ class OrderProduct extends Model {
         product_stock_id: {
           type: Sequelize.DataTypes.INTEGER,
           allowNull: false,
-          primaryKey: true,
           references: {
             model: 'product_stock',
+            key: 'id',
+          },
+        },
+        return_reason_id: {
+          type: Sequelize.DataTypes.INTEGER,
+          allowNull: true,
+          references: {
+            model: 'return_reason',
             key: 'id',
           },
         },
@@ -54,6 +60,10 @@ class OrderProduct extends Model {
     this.belongsTo(models.ProductStock, {
       as: 'product_stock',
       foreignKey: 'product_stock_id',
+    });
+    this.belongsTo(models.ReturnReason, {
+      as: 'return_reason',
+      foreignKey: 'return_reason_id',
     });
   }
 }

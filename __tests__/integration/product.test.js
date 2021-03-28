@@ -137,14 +137,16 @@ describe('product', () => {
         categoryId: category.body.id,
       });
 
-      const response = await request(app).get(`/products/${insertProdut.id}`);
+      const response = await request(app).get(
+        `/products/${insertProdut.body.id}`
+      );
 
       expect(response.status).toBe(200);
     });
   });
 
   describe('delete', () => {
-    it('should delete a category by pk', async () => {
+    it('should delete a product by pk', async () => {
       expect.assertions(1);
 
       const category = await request(app).post('/categories').send({
@@ -159,7 +161,7 @@ describe('product', () => {
       });
 
       const response = await request(app).delete(
-        `/products/${insertProdut.id}`
+        `/products/${insertProdut.body.id}`
       );
 
       expect(response.status).toBe(204);

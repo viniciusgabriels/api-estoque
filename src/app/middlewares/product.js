@@ -1,9 +1,10 @@
 import Product from '../models/Product';
+import ProductStock from '../models/ProductStock';
 
 function validateData(request, response, next) {
-  const { name, price, categoryId } = request.body;
+  const { name, description, price, status, categoryId } = request.body;
 
-  if (!name || name.length < 3 || !price || !categoryId) {
+  if (!name || name.length < 3 || !price || !status || !categoryId) {
     return response.status(400).json({
       message: `Invalid data`,
     });
@@ -42,4 +43,23 @@ async function validateProductExist(request, response, next) {
   next();
 }
 
-export { validateData, validateId, validateProductExist };
+async function productExistInProductStock(request, response, next) {
+  const product = await ProductStock.findOne({
+    where: { product_id: request.productId },
+  });
+
+  if (product) {
+    return response.status(400).json({
+      message: 'Unable to delete! Linked product',
+    });
+  }
+
+  next();
+}
+
+export {
+  validateData,
+  validateId,
+  validateProductExist,
+  productExistInProductStock,
+};

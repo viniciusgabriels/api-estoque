@@ -1,28 +1,30 @@
 import swagger from './swagger';
 
 import category from './category';
-import product from './product';
 import customer from './customer';
-import region from './region';
-import stock from './stock';
-import productStock from './productStock';
-import order from './order';
 import nearbyRegion from './nearbyRegions';
+import order from './order';
 import orderProduct from './orderProduct';
+import product from './product';
+import productStock from './productStock';
+import region from './region';
+import returnReason from './returnReason';
+import stock from './stock';
 import type from './type';
 
 // import nearbyRegions from './nearbyRegions';
 
 export default [
   category,
-  product,
-  swagger,
   customer,
-  region,
-  stock,
-  productStock,
-  order,
   nearbyRegion,
+  order,
   orderProduct,
+  product,
+  productStock,
+  region,
+  returnReason,
+  stock,
+  swagger,
   type,
 ];

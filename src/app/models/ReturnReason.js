@@ -1,6 +1,6 @@
 import Sequelize, { Model } from 'sequelize';
 
-class Category extends Model {
+class ReturnReason extends Model {
   static init(sequelize) {
     super.init(
       {
@@ -10,14 +10,14 @@ class Category extends Model {
           autoIncrement: true,
           primaryKey: true,
         },
-        name: {
+        description: {
           type: Sequelize.DataTypes.STRING,
           allowNull: false,
         },
       },
       {
         sequelize,
-        tableName: 'categories',
+        tableName: 'return_reason',
       }
     );
 
@@ -25,11 +25,11 @@ class Category extends Model {
   }
 
   static associate(models) {
-    this.hasMany(models.Product, {
-      as: 'category',
-      foreignKey: 'category_id',
+    this.hasMany(models.OrderProduct, {
+      as: 'return_reason',
+      foreignKey: 'return_reason_id',
     });
   }
 }
 
-export default Category;
+export default ReturnReason;
