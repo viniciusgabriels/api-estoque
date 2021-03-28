@@ -14,5 +14,17 @@ function validateNumber(request, response, next) {
   next();
 }
 
+function notSameNumber(request, response, next) {
+  const { region, nearbyRegion } = request.body;
 
-export { validateNumber };
+  if(region === nearbyRegion) {
+    return response.status(400).json({
+      message: `Invalid data`,
+    });
+  }
+
+  next();
+}
+
+
+export { validateNumber, notSameNumber };
