@@ -32,11 +32,11 @@ routes.get(
     #swagger.tags = ['Estoques']
     #swagger.description = 'Rota para buscar apenas um estoque'
 
-    #swagger.parameters['local'] = {
+    #swagger.parameters['id'] = {
       in: 'body',
-      description: 'Local do estoque',
-      required: false,
-      type: 'string'
+      description: 'ID do estoque',
+      required: true,
+      type: 'integer'
     }
 
     #swagger.response[200] = {
@@ -81,6 +81,12 @@ routes.put(
     #swagger.tags = ['Estoques']
     #swagger.description = 'Rota para atualizar um estoque'
 
+    #swagger.parameters['id'] = {
+      in: 'body',
+      description: 'ID do estoque',
+      required: true,
+      type: 'integer'
+    }
     #swagger.parameters['local'] = {
       in: 'body',
       description: 'Local do estoque',
@@ -100,6 +106,26 @@ routes.put(
     }
   */
 );
-routes.delete('/stock/:id', validateStockExists, StockController.delete);
+routes.delete(
+  '/stock/:id',
+  validateStockExists,
+  StockController.delete
+  /*
+    #swagger.tags = ['Estoques']
+    #swagger.description = 'Rota para deletar um estoque'
+
+    #swagger.parameters['id'] = {
+      in: 'body',
+      description: 'ID do estoque',
+      required: true,
+      type: 'integer'
+    }
+
+    #swagger.response[204] = {
+      description: 'Estoque deletado',
+      schema: { $ref: "#/definitions/stock" }
+    }
+  */
+);
 
 export default routes;
