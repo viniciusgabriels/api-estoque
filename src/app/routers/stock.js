@@ -45,7 +45,33 @@ routes.get(
     }
   */
 );
-routes.post('/stock', validateData, StockController.store);
+routes.post(
+  '/stock',
+  validateData,
+  StockController.store
+  /*
+    #swagger.tags = ['Estoques']
+    #swagger.description = 'Rota para cadastrar um novo estoque'
+
+    #swagger.parameters['local'] = {
+      in: 'body',
+      description: 'Local do estoque',
+      required: true,
+      type: 'string'
+    }
+    #swagger.parameters['regionId'] = {
+      in: 'body',
+      description: 'ID da região do estoque',
+      required: true,
+      type: 'integer'
+    }
+
+    #swagger.response[201] = {
+      description: 'Estoque cadastrado',
+      schema: { $ref: "#/definitions/stock" }
+    }
+  */
+);
 routes.put(
   '/stock/:id',
   validateStockExists,
