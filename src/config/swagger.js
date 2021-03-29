@@ -5,6 +5,7 @@ const category = require('../app/documentation/category');
 const product = require('../app/documentation/product');
 const returnReason = require('../app/documentation/returnReason');
 const customer = require('../app/documentation/customer');
+const types = require('../app/documentation/types');
 
 module.exports = {
   info: {
@@ -31,5 +32,6 @@ module.exports = {
     product,
     returnReason,
     customer,
+    types,
   },
 };
