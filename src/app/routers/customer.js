@@ -23,11 +23,12 @@ routes.get(
       required: false,
       type: 'integer'
     }
+
     #swagger.response[200] = {
       description: 'Clientes listados',
       schema: { $ref: "#/definitions/customers" }
-  }
-*/
+    }
+  */
 );
 routes.get(
   '/customers/:id',
@@ -43,11 +44,12 @@ routes.get(
       required: true,
       type: 'integer'
     }
+
     #swagger.response[200] = {
       description: 'Cliente listado',
       schema: { $ref: "#/definitions/customers" }
-  }
-*/
+    }
+  */
 );
 routes.post(
   '/customers',
@@ -75,11 +77,12 @@ routes.post(
       required: true,
       type: 'integer'
     }
+
     #swagger.response[201] = {
-    description: 'Cliente cadastrado',
-    schema: { $ref: "#/definitions/customers" }
-  }
-*/
+      description: 'Cliente cadastrado',
+      schema: { $ref: "#/definitions/customers" }
+    }
+  */
 );
 routes.put(
   '/customers/:id',
@@ -114,16 +117,33 @@ routes.put(
       required: true,
       type: 'integer'
     }
+
     #swagger.response[200] = {
-    description: 'Cliente atualizado com sucesso',
-    schema: { $ref: "#/definitions/customers" }
-  }
-*/
+      description: 'Cliente atualizado com sucesso',
+      schema: { $ref: "#/definitions/customers" }
+    }
+  */
 );
 routes.delete(
   '/customers/:id',
   validateCustomerExists,
   CustomerController.delete
+  /*
+  #swagger.tags = ['Clientes']
+  #swagger.description = 'Rota para deletar um cliente'
+
+    #swagger.parameters['id'] = {
+      in: 'path',
+      description: 'ID do cliente',
+      required: true,
+      type: 'integer'
+    }
+    
+    #swagger.response[204] = {
+      description: 'Cliente deletado com sucesso',
+      schema: { $ref: "#/definitions/customers" }
+    }
+  */
 );
 
 export default routes;
