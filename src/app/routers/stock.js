@@ -77,6 +77,28 @@ routes.put(
   validateStockExists,
   validateData,
   StockController.update
+  /*
+    #swagger.tags = ['Estoques']
+    #swagger.description = 'Rota para atualizar um estoque'
+
+    #swagger.parameters['local'] = {
+      in: 'body',
+      description: 'Local do estoque',
+      required: true,
+      type: 'string'
+    }
+    #swagger.parameters['regionId'] = {
+      in: 'body',
+      description: 'ID da região do estoque',
+      required: true,
+      type: 'integer'
+    }
+
+    #swagger.response[200] = {
+      description: 'Estoque atualizado',
+      schema: { $ref: "#/definitions/stock" }
+    }
+  */
 );
 routes.delete('/stock/:id', validateStockExists, StockController.delete);
 
