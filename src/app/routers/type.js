@@ -24,7 +24,27 @@ routes.get(
     }
   */
 );
-routes.get('/types/:id', validateTypeExists, TypeController.show);
+routes.get(
+  '/types/:id',
+  validateTypeExists,
+  TypeController.show
+  /* 
+  #swagger.tags = ['Tipos de ordem']
+  #swagger.description = 'Rota para buscar apenas um tipos de ordem'
+
+    #swagger.parameters['id'] = {
+      in: 'path',
+      description: 'ID do tipo',
+      required: true,
+      type: 'integer'
+    }
+
+    #swagger.response[200] = {
+      description: 'Lista de todos os tipos de ordens',
+      schema: { $ref: "#/definitions/types" }
+    }
+  */
+);
 routes.post('/types', validateData, TypeController.store);
 routes.put(
   '/types/:id',
