@@ -1,16 +1,25 @@
 import ProductStock from '../models/ProductStock';
 import ReturnReason from '../models/ReturnReason';
+import Order from '../models/Order';
 
 function validateData(request, response, next) {
-  const { typeId, customerId, product, returnReasonId } = request.body;
+  const {
+    orderId,
+    quantity,
+    productStockId,
+    price,
+    returnReasonId,
+  } = request.body;
 
-  if (!typeId || !customerId || !product) {
+  if (!orderId || !quantity || !productStockId || !price) {
     return response.status(400).json({
       message: 'Invalid data',
     });
   }
 
-  if (typeId === 2 && !returnReasonId) {
+  const order = Order.findOne({ where: { orderId } });
+
+  if (order.type_id === 2 && !returnReasonId) {
     return response.status(400).json({
       message: 'Missing reason of returning',
     });
