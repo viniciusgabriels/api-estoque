@@ -40,12 +40,32 @@ routes.get(
     }
 
     #swagger.response[200] = {
-      description: 'Lista de todos os tipos de ordens',
+      description: 'Listado apenas um tipos de ordem',
       schema: { $ref: "#/definitions/types" }
     }
   */
 );
-routes.post('/types', validateData, TypeController.store);
+routes.post(
+  '/types',
+  validateData,
+  TypeController.store
+  /*
+  #swagger.tags = ['Tipos de ordem']
+  #swagger.description = 'Rota para cadatrar um novo tipo de ordem'
+
+    #swagger.parameters['description'] = {
+      in: 'body',
+      description: 'Descrição do tipo',
+      required: true,
+      type: 'string'
+    }
+
+    #swagger.response[201] = {
+      description: 'Tipo de ordem criado',
+      schema: { $ref: "#/definitions/types" }
+    }
+  */
+);
 routes.put(
   '/types/:id',
   validateTypeExists,
