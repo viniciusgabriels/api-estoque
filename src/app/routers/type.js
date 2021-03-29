@@ -19,7 +19,7 @@ routes.get(
     }
 
     #swagger.response[200] = {
-      description: 'Lista de todos os tipos de ordens',
+      description: 'Todos os tipos de ordens listados',
       schema: { $ref: "#/definitions/types" }
     }
   */
@@ -40,7 +40,7 @@ routes.get(
     }
 
     #swagger.response[200] = {
-      description: 'Listado apenas um tipos de ordem',
+      description: 'Apenas um tipos de ordem listado',
       schema: { $ref: "#/definitions/types" }
     }
   */
@@ -71,6 +71,28 @@ routes.put(
   validateTypeExists,
   validateData,
   TypeController.update
+  /*
+  #swagger.tags = ['Tipos de ordem']
+  #swagger.description = 'Rota para atualizar um tipo de ordem'
+
+    #swagger.parameters['id'] = {
+      in: 'path',
+      description: 'ID do tipo',
+      required: true,
+      type: 'integer'
+    }
+    #swagger.parameters['description'] = {
+      in: 'body',
+      description: 'Descrição do tipo',
+      required: true,
+      type: 'string'
+    }
+
+    #swagger.response[200] = {
+      description: 'Tipo de ordem atualizado',
+      schema: { $ref: "#/definitions/types" }
+    }
+  */
 );
 routes.delete('/types/:id', validateTypeExists, TypeController.delete);
 
