@@ -37,7 +37,34 @@ routes.get(
   }
 */
 );
-routes.get('/customers/:id', validateCustomerExists, CustomerController.show);
+routes.get(
+  '/customers/:id',
+  validateCustomerExists,
+  CustomerController.show
+  /*
+  #swagger.tags = ['Clientes']
+  #swagger.description = 'Rota para procurar e listar um cliente pelo ID'
+
+  #swagger.parameters['id'] = {
+    in: 'path',
+    description: 'ID do cliente',
+    required: true,
+    type: 'integer'
+  }
+  #swagger.response[200] = {
+    description: 'Cliente listado',
+    schema: {
+      minimum: 1
+      $ref: "#/definitions/customers"
+    }
+    responses: {
+      '200': {
+        description: "OK"
+      }
+    }
+  }
+*/
+);
 routes.post('/customers', validateData, CustomerController.store);
 routes.put(
   '/customers/:id',
