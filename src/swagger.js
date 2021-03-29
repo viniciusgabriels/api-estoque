@@ -6,6 +6,7 @@ const endpoints = [
   './src/app/routers/product.js',
   './src/app/routers/category.js',
   './src/app/routers/returnReason.js',
+  './src/app/routers/customer.js'
 ];
 
 swaggerAutogen(outputFile, endpoints, swaggerConfig);

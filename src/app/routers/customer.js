@@ -26,7 +26,7 @@ routes.get(
 
     #swagger.response[200] = {
       description: 'Clientes listados',
-      schema: { $ref: "#/definitions/customers" }
+      schema: { $ref: "#/definitions/customer" }
     }
   */
 );
@@ -47,7 +47,7 @@ routes.get(
 
     #swagger.response[200] = {
       description: 'Cliente listado',
-      schema: { $ref: "#/definitions/customers" }
+      schema: { $ref: "#/definitions/customer" }
     }
   */
 );
@@ -80,7 +80,7 @@ routes.post(
 
     #swagger.response[201] = {
       description: 'Cliente cadastrado',
-      schema: { $ref: "#/definitions/customers" }
+      schema: { $ref: "#/definitions/customer" }
     }
   */
 );
@@ -120,7 +120,7 @@ routes.put(
 
     #swagger.response[200] = {
       description: 'Cliente atualizado com sucesso',
-      schema: { $ref: "#/definitions/customers" }
+      schema: { $ref: "#/definitions/customer" }
     }
   */
 );
@@ -138,10 +138,10 @@ routes.delete(
       required: true,
       type: 'integer'
     }
-    
+
     #swagger.response[204] = {
       description: 'Cliente deletado com sucesso',
-      schema: { $ref: "#/definitions/customers" }
+      schema: { $ref: "#/definitions/customer" }
     }
   */
 );
