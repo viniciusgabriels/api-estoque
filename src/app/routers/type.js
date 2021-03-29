@@ -94,6 +94,26 @@ routes.put(
     }
   */
 );
-routes.delete('/types/:id', validateTypeExists, TypeController.delete);
+routes.delete(
+  '/types/:id',
+  validateTypeExists,
+  TypeController.delete
+  /*
+  #swagger.tags = ['Tipos de ordem']
+  #swagger.description = 'Rota para deletar um tipo de ordem'
+
+    #swagger.parameters['id'] = {
+      in: 'path',
+      description: 'ID do tipo',
+      required: true,
+      type: 'integer'
+    }
+
+    #swagger.response[204] = {
+      description: 'Tipo de ordem deletado',
+      schema: { $ref: "#/definitions/types" }
+    }
+  */
+);
 
 export default routes;
