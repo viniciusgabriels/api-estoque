@@ -17,7 +17,7 @@ class ReturnReason extends Model {
       },
       {
         sequelize,
-        tableName: 'return',
+        tableName: 'return_reason',
       }
     );
 

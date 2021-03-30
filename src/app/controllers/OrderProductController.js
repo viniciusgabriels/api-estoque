@@ -50,9 +50,8 @@ class OrderProductController {
         }
       })
     );
-    // console.log(insertOrderProduct);
 
-    // return response.status(200);
+    // return response.status(201);
   }
 
   async update(request, response) {
