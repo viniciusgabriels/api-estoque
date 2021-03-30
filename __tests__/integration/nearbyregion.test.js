@@ -88,7 +88,7 @@ describe('nearby egrion', () => {
       
       const idNearby = createNearby.body.id; 
 
-      const nearby7 = await request(app).delete(`/region/${idNearby}`);
+      const nearby7 = await request(app).delete(`/nearbyregion/${idNearby}`);
                
       expect(nearby7.status).toBe(204);
     });
