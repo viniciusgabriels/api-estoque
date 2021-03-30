@@ -4,6 +4,9 @@ const host = process.env.API_URL;
 const category = require('../app/documentation/category');
 const product = require('../app/documentation/product');
 const returnReason = require('../app/documentation/returnReason');
+const customer = require('../app/documentation/customer');
+const types = require('../app/documentation/types');
+const stock = require('../app/documentation/stock');
 
 module.exports = {
   info: {
@@ -29,5 +32,8 @@ module.exports = {
     category,
     product,
     returnReason,
+    customer,
+    types,
+    stock,
   },
 };
