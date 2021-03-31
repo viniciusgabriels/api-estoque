@@ -83,7 +83,6 @@ describe('nearby region', () => {
       const idNearby = createNearby.body.id;
 
       const nearby7 = await request(app).delete(`/nearbyregion/${idNearby}`);
-
       expect(nearby7.status).toBe(204);
     });
   });

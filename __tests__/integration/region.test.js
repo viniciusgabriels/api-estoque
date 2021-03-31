@@ -19,15 +19,15 @@ describe('region', () => {
     it('should create a new region', async () => {
       expect.assertions(4);
 
-      const region2 = await request(app).post('/region').send({
-        name: 'Sul',
-      });
-      const region3 = await request(app).post('/region').send({
-        name: 'Norte',
-      });
-      const region4 = await request(app).post('/region').send({
-        name: '',
-      });
+      //       const region2 = await request(app).post('/region').send({
+      //         name: 'Sul',
+      //       });
+      //       const region3 = await request(app).post('/region').send({
+      //         name: 'Norte',
+      //       });
+      //       const region4 = await request(app).post('/region').send({
+      //         name: '',
+      //       });
 
       expect(region2.status).toBe(200);
       expect(region2.body).toHaveProperty('id');
@@ -43,31 +43,36 @@ describe('region', () => {
         name: 'Sul',
       });
 
-      const id1 = createRegion1.body.id; 
+      const id1 = createRegion1.body.id;
 
-
-      const region5 = await request(app)
-        .put(`/region/${id1}`)
-        .send({
-          name: 'novo',
-        });
+      const region5 = await request(app).put(`/region/${id1}`).send({
+        name: 'novo',
+      });
 
       expect(region5.status).toBe(200);
     });
   });
+
   describe('delete', () => {
     it('should delete a new', async () => {
       expect.assertions(1);
-    
+
       const createRegion = await request(app).post('/region').send({
         name: 'Region 1',
       });
-      
-      const idRegion = createRegion.body.id; 
 
-      const region6 = await request(app).delete(`/region/${idRegion}`);
-        
-      expect(region6.status).toBe(204);
+      const idRegion = createRegion.body.id;
+
+      //       const createRegion = await request(app).post('/region').send({
+      //         name: 'Region 1',
+      //       });
+
+      //       const idRegion = createRegion.body.id;
+
+      //       const region6 = await request(app).delete(`/region/${idRegion}`);
+
+      //       expect(region6.status).toBe(204);
+      //     });
     });
   });
 });

@@ -31,13 +31,23 @@ class OrderProductController {
     return response.status(201).json(
       product.forEach(async (element) => {
         const { product_stock_id, quantity, price, return_reason_id } = element;
-        await OrderProduct.create({
-          order_id: id,
-          quantity,
-          product_stock_id,
-          price,
-          return_reason_id,
-        });
+
+        if (return_reason_id) {
+          await OrderProduct.create({
+            order_id: id,
+            quantity,
+            product_stock_id,
+            price,
+          });
+        } else {
+          await OrderProduct.create({
+            order_id: id,
+            quantity,
+            product_stock_id,
+            return_reason_id,
+            price,
+          });
+        }
       })
     );
   }
