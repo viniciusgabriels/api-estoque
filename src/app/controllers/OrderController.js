@@ -26,7 +26,7 @@ class OrderController {
   }
 
   async store(request, response) {
-    const { typeId, customerId } = request.body;
+    const { typeId, customerId, product } = request.body;
 
     const order = await Order.create({
       type_id: typeId,
@@ -34,19 +34,19 @@ class OrderController {
       date: new Date(),
     });
 
-    // const { id } = order;
+    const { id } = order;
 
-    // axios
-    //   .post(`http://localhost:3333/order-product`, {
-    //     data: {
-    //       id,
-    //       product,
-    //     },
-    //   })
-    //   .then((resProduct) => {
-    //     console.log(resProduct);
-    //   })
-    //   .catch((error) => console.log(error));
+    axios
+      .post(`http://localhost:3333/order-product`, {
+        data: {
+          id,
+          product,
+        },
+      })
+      .then((resProduct) => {
+        console.log(resProduct);
+      })
+      .catch((error) => console.log(error));
 
     return response.status(201).json(order);
   }
