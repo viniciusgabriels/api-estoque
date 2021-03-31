@@ -4,3 +4,5 @@
 
 /coverage/
 *.lcov
+
+__tests__/database 2.sqlite

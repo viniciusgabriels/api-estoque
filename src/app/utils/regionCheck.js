@@ -5,23 +5,30 @@
 
 //RETURN FALSE / TRUE
 
-import Customer from '../models/Customer';
-import StockController from '../controllers/StockController';
-import NearbyRegionController from '../controllers/NearbyRegionController';
-import RegionController from '../controllers/RegionController';
+import NearbyRegion from '../models/NearbyRegion';
 
-async function regionCheck (customerId, storageId) {
+
+async function regionCheck (customerRegion, storageRegion) {
   const result = false;
 
-  const customer = await Customer.findOne({
-    attributes: ['id', 'name', 'phone'],
-    where: { customerId },
-  });
-  
-  const storage = storageId;
+  const customer = await NearbyRegion.findOne({ where: { 
+    region_id: customerRegion,
+    nearby_region_id: storageRegion
+  } });
 
+  const storage = await NearbyRegion.findOne({ where: { 
+    region_id: storageRegion,
+    nearby_region_id: customerRegion
+  } });
 
-
+  if(costumer || storage) {
+    result = true;
+  } else {
+    result = false;
+    return response.status(400).json({
+      message: `Region not allow transference`,
+    });
+  }
   
   return result
 }

@@ -28,20 +28,28 @@ class OrderProductController {
   store(request, response) {
     const { id, product } = request.body;
 
-    return response.json(
+    return response.status(201).json(
       product.forEach(async (element) => {
-        const { product_stock_id, quantity, price } = element;
-        await OrderProduct.create({
-          order_id: id,
-          quantity,
-          product_stock_id,
-          price,
-        });
+        const { product_stock_id, quantity, price, return_reason_id } = element;
+
+        if (return_reason_id) {
+          await OrderProduct.create({
+            order_id: id,
+            quantity,
+            product_stock_id,
+            price,
+          });
+        } else {
+          await OrderProduct.create({
+            order_id: id,
+            quantity,
+            product_stock_id,
+            return_reason_id,
+            price,
+          });
+        }
       })
     );
-    // console.log(insertOrderProduct);
-
-    // return response.status(200);
   }
 
   async update(request, response) {

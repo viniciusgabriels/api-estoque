@@ -37,7 +37,7 @@ class NearbyRegionController {
 
     regions.save();
 
-    return response.json(regions);
+    return response.sendStatus(200);
   }
 
   async delete(request, response) {
