@@ -1,14 +1,14 @@
-// import request from 'supertest';
-// import app from '../../src/app';
+import request from 'supertest';
+import app from '../../src/app';
 
-describe('Order', () => {
-  describe('get',  () => {
-    it('Should list all orders', async () => {
+describe('order', () => {
+  describe('get', () => {
+    it('should list all orders', async () => {
       expect.assertions(1);
 
-//       const order = await request(app).get('/orders');
+      const order = await request(app).get('/orders');
 
-//       console.log(order);
-//     });
-//   });
-// });
+      expect(order.status).toBe(200);
+    });
+  });
+});
