@@ -28,7 +28,7 @@ class OrderProductController {
   store(request, response) {
     const { id, product } = request.body;
 
-    return response.json(
+    return response.status(201).json(
       product.forEach(async (element) => {
         const { product_stock_id, quantity, price, return_reason_id } = element;
         await OrderProduct.create({
@@ -40,8 +40,6 @@ class OrderProductController {
         });
       })
     );
-
-    // return response.status(201);
   }
 
   async update(request, response) {

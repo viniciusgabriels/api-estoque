@@ -1,7 +1,7 @@
 import request from 'supertest';
 import app from '../../src/app';
 
-describe('nearby egrion', () => {
+describe('nearby region', () => {
   describe('show', () => {
     it('should return one nearby region relation', async () => {
       expect.assertions(1);
@@ -82,7 +82,7 @@ describe('nearby egrion', () => {
 
       const idNearby = createNearby.body.id;
 
-      const nearby7 = await request(app).delete(`/region/${idNearby}`);
+      const nearby7 = await request(app).delete(`/nearbyregion/${idNearby}`);
 
       expect(nearby7.status).toBe(204);
     });
