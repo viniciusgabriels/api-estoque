@@ -5,13 +5,33 @@ import sequelize, { Op } from 'sequelize';
 
 import Category from '../models/Category';
 import Product from '../models/Product';
+import ProductStock from '../models/ProductStock';
+import OrderProduct from '../models/OrderProduct';
+import Order from '../models/Order';
+import Type from '../models/Type';
 
 class ReportCategoryController {
   async index(request, response) {
     const list = await Category.findAll({
+      attributes: ['name'],
       include: {
         model: Product,
-        as: 'category',
+        as: 'product',
+        include: {
+          model: ProductStock,
+          as: 'product_stock',
+          include: {
+            model: OrderProduct,
+            as: 'order_product',
+            include: {
+              model: Order,
+              as: 'order',
+              where: {
+                type_id: 2,
+              },
+            },
+          },
+        },
       },
     });
     return response.json(list);

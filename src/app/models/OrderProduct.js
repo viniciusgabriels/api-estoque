@@ -54,7 +54,7 @@ class OrderProduct extends Model {
 
   static associate(models) {
     this.belongsTo(models.Order, {
-      as: 'order_product',
+      as: 'order',
       foreignKey: 'order_id',
     });
     this.belongsTo(models.ProductStock, {
