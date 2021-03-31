@@ -11,6 +11,7 @@ import region from './region';
 import returnReason from './returnReason';
 import stock from './stock';
 import type from './type';
+import reportCategory from './reportCategory';
 
 // import nearbyRegions from './nearbyRegions';
 
@@ -23,6 +24,7 @@ export default [
   product,
   productStock,
   region,
+  reportCategory,
   returnReason,
   stock,
   swagger,
