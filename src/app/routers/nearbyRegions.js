@@ -21,9 +21,31 @@ routes.get('/nearbyregion', NearbyRegionController.index
       required: false,
       type: 'integer'
     }
+
+    #swagger.response[200] = {
+      description: 'Regiões listadas',
+      schema: { $ref: "#/definitions/nearbyRegion" }
+    }
   */
 );
-routes.get('/nearbyregion/:id', NearbyRegionController.show);
+routes.get('/nearbyregion/:id', NearbyRegionController.show
+  /*
+  #swagger.tags = ['Regiões próximas']
+  #swagger.description = 'Rota para listar uma região próxima'
+
+    #swagger.parameters['id'] = {
+      in: 'path',
+      description: 'ID do região',
+      required: true,
+      type: 'integer'
+    }
+
+    #swagger.response[200] = {
+      description: 'Região listada',
+      schema: { $ref: "#/definitions/nearbyRegion" }
+    }
+  */
+);
 routes.post('/nearbyregion', [validateNumber, notSameNumber], NearbyRegionController.store);
 routes.put('/nearbyregion/:id', [validateNumber, notSameNumber], NearbyRegionController.update);
 routes.delete('/nearbyregion/:id', NearbyRegionController.delete);
