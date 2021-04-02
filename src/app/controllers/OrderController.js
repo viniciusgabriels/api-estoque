@@ -1,4 +1,3 @@
-import axios from 'axios';
 import Order from '../models/Order';
 import OrderProduct from '../models/OrderProduct';
 
@@ -26,29 +25,41 @@ class OrderController {
   }
 
   async store(request, response) {
-    const { typeId, customerId, product } = request.body;
+    try {
+      const { typeId, customerId, originOrderId, product } = request.body;
 
-    const order = await Order.create({
-      type_id: typeId,
-      customer_id: customerId,
-      date: new Date(),
-    });
+      if (typeId == 2 && !originOrderId) {
+        return response.json({
+          message:
+            'Quando o tipo de retorno for 2 deve ser informada a ordem de origem.',
+        });
+      }
 
-    const { id } = order;
+      const order = await Order.create({
+        type_id: typeId,
+        customer_id: customerId,
+        origin_order_id: originOrderId,
+        date: new Date(),
+      });
 
-    axios
-      .post(`http://localhost:3333/order-product`, {
-        data: {
-          id,
-          product,
-        },
-      })
-      .then((resProduct) => {
-        console.log(resProduct);
-      })
-      .catch((error) => console.log(error));
+      const { id } = order;
 
-    return response.status(201).json(order);
+      product.forEach(async (element) => {
+        const { product_stock_id, quantity, price, return_reason_id } = element;
+
+        await OrderProduct.create({
+          order_id: id,
+          quantity,
+          product_stock_id,
+          return_reason_id,
+          price,
+        });
+      });
+
+      return response.status(201).json(order);
+    } catch (error) {
+      return response.status(400).json({ error });
+    }
   }
 
   async update(request, response) {

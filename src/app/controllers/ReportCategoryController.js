@@ -8,24 +8,26 @@ import Product from '../models/Product';
 import ProductStock from '../models/ProductStock';
 import OrderProduct from '../models/OrderProduct';
 import Order from '../models/Order';
-import Type from '../models/Type';
 
 class ReportCategoryController {
   async index(request, response) {
     const list = await Category.findAll({
-      attributes: ['name'],
       include: {
         model: Product,
         as: 'product',
+        attributes: [],
         include: {
           model: ProductStock,
           as: 'product_stock',
+          attributes: [],
           include: {
             model: OrderProduct,
             as: 'order_product',
+            attributes: [],
             include: {
               model: Order,
               as: 'order',
+              attributes: [],
               where: {
                 type_id: 2,
               },
@@ -33,6 +35,7 @@ class ReportCategoryController {
           },
         },
       },
+      attributes: ['name'],
     });
     return response.json(list);
   }
