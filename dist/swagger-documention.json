@@ -1,0 +1,968 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Documentação da API de controle de estoque",
+    "description": "API para controle de estoque desenvolvida em JavaScript"
+  },
+  "host": "localhost:3333",
+  "basePath": "/",
+  "tags": [],
+  "schemes": [
+    "http"
+  ],
+  "securityDefinitions": {
+    "Bearer": {
+      "description": "JWT Token",
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization"
+    }
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/products": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "description": "Endpoint para buscar todos os produtos",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string",
+            "description": "Nome do produto",
+            "required": false
+          },
+          {
+            "name": "categoryId",
+            "in": "query",
+            "type": "string",
+            "description": "ID da categoria",
+            "required": false
+          }
+        ],
+        "responses": {}
+      },
+      "post": {
+        "tags": [
+          "Products"
+        ],
+        "description": "Endpoint para cadastrar um novo produto",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "body",
+            "description": "Nome do produto",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "in": "body",
+            "description": "Descrição do produto",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "price",
+            "in": "body",
+            "description": "Valor do produto",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "status",
+            "in": "body",
+            "description": "Status do produto, ativo? true ou false",
+            "required": true,
+            "type": "boolean"
+          },
+          {
+            "name": "categoryId",
+            "in": "body",
+            "description": "ID da categoria do produto",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/products/{id}": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "description": "Endpoint para listar um produto",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do produto"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Products"
+        ],
+        "description": "Endpoint para atualizar um produto",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID da categoria"
+          },
+          {
+            "name": "name",
+            "in": "body",
+            "description": "Nome do produto",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "in": "body",
+            "description": "Descrição do produto",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "price",
+            "in": "body",
+            "description": "Valor do produto",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "status",
+            "in": "body",
+            "description": "Status do produto, ativo? true ou false",
+            "required": true,
+            "type": "boolean"
+          },
+          {
+            "name": "categoryId",
+            "in": "body",
+            "description": "ID da categoria do produto",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Products"
+        ],
+        "description": "Endpoint para deletar um produto",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do produto"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/categories": {
+      "get": {
+        "tags": [
+          "Categories"
+        ],
+        "description": "Endpoint para buscar todas as categorias",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string",
+            "description": "Nome da categoria",
+            "required": false
+          }
+        ],
+        "responses": {}
+      },
+      "post": {
+        "tags": [
+          "Categories"
+        ],
+        "description": "Endpoint para cadastrar uma categotia",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "body",
+            "description": "Nome da categoria",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/categories/{id}": {
+      "get": {
+        "tags": [
+          "Categories"
+        ],
+        "description": "Endpoint para buscar uma categotia",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID da categoria"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Categories"
+        ],
+        "description": "Endpoint para atualizar uma categotia",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID da categoria"
+          },
+          {
+            "name": "name",
+            "in": "body",
+            "description": "Nome da categoria",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Categories"
+        ],
+        "description": "Endpoint para deletar uma categotia",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID da categoria"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/return-reason": {
+      "get": {
+        "tags": [
+          "Motivo da devolução"
+        ],
+        "description": "Endpoint para buscar todas as categorias",
+        "parameters": [
+          {
+            "name": "description",
+            "in": "query",
+            "type": "string",
+            "description": "Descrição do motivo da devolução",
+            "required": false
+          }
+        ],
+        "responses": {}
+      },
+      "post": {
+        "tags": [
+          "Motivo da devolução"
+        ],
+        "description": "Endpoint para cadastrar uma motivo de devolução",
+        "parameters": [
+          {
+            "name": "description",
+            "in": "body",
+            "description": "Descrição do motivo de devolução",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/return-reason/{id}": {
+      "get": {
+        "tags": [
+          "Motivo da devolução"
+        ],
+        "description": "Endpoint para buscar um motivo de devolução",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do motivo"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Motivo da devolução"
+        ],
+        "description": "Endpoint para atualizar uma categotia",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do motivo"
+          },
+          {
+            "name": "description",
+            "in": "body",
+            "description": "Descrição do motivo de devolução",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Motivo da devolução"
+        ],
+        "description": "Endpoint para deletar um motivo de devolução",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do motivo"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/customers": {
+      "get": {
+        "tags": [
+          "Clientes"
+        ],
+        "description": "Rota para buscar todos os clientes",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "body",
+            "description": "Nome do cliente",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "in": "body",
+            "description": "Telefone do cliente",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {}
+      },
+      "post": {
+        "tags": [
+          "Clientes"
+        ],
+        "description": "Rota para cadastrar um novo cliente",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "body",
+            "description": "Nome do cliente",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "in": "body",
+            "description": "Telefone do cliente",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "regionId",
+            "in": "body",
+            "description": "ID da região do cliente",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/customers/{id}": {
+      "get": {
+        "tags": [
+          "Clientes"
+        ],
+        "description": "Rota para procurar e listar um cliente pelo ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do cliente"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Clientes"
+        ],
+        "description": "Rota para atualizar os dados de um cliente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do cliente"
+          },
+          {
+            "name": "name",
+            "in": "body",
+            "description": "Nome do cliente",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "in": "body",
+            "description": "Telefone do cliente",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "regionId",
+            "in": "body",
+            "description": "ID da região do cliente",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Clientes"
+        ],
+        "description": "Rota para deletar um cliente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do cliente"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/types": {
+      "get": {
+        "tags": [
+          "Tipos de ordem"
+        ],
+        "description": "Rota para buscar todos os tipos de ordem",
+        "parameters": [
+          {
+            "name": "description",
+            "in": "body",
+            "description": "Descrição do tipo",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      },
+      "post": {
+        "tags": [
+          "Tipos de ordem"
+        ],
+        "description": "Rota para cadatrar um novo tipo de ordem",
+        "parameters": [
+          {
+            "name": "description",
+            "in": "body",
+            "description": "Descrição do tipo",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/types/{id}": {
+      "get": {
+        "tags": [
+          "Tipos de ordem"
+        ],
+        "description": "Rota para buscar apenas um tipos de ordem",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do tipo"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Tipos de ordem"
+        ],
+        "description": "Rota para atualizar um tipo de ordem",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do tipo"
+          },
+          {
+            "name": "description",
+            "in": "body",
+            "description": "Descrição do tipo",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Tipos de ordem"
+        ],
+        "description": "Rota para deletar um tipo de ordem",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do tipo"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/stock": {
+      "get": {
+        "tags": [
+          "Estoques"
+        ],
+        "description": "Rota para buscar todos os estoques",
+        "parameters": [
+          {
+            "name": "local",
+            "in": "body",
+            "description": "Local do estoque",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      },
+      "post": {
+        "tags": [
+          "Estoques"
+        ],
+        "description": "Rota para cadastrar um novo estoque",
+        "parameters": [
+          {
+            "name": "local",
+            "in": "body",
+            "description": "Local do estoque",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "regionId",
+            "in": "body",
+            "description": "ID da região do estoque",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/stock/{id}": {
+      "get": {
+        "tags": [
+          "Estoques"
+        ],
+        "description": "Rota para buscar apenas um estoque",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "body",
+            "required": true,
+            "type": "integer",
+            "description": "ID do estoque"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Estoques"
+        ],
+        "description": "Rota para atualizar um estoque",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "body",
+            "required": true,
+            "type": "integer",
+            "description": "ID do estoque"
+          },
+          {
+            "name": "local",
+            "in": "body",
+            "description": "Local do estoque",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "regionId",
+            "in": "body",
+            "description": "ID da região do estoque",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Estoques"
+        ],
+        "description": "Rota para deletar um estoque",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "body",
+            "required": true,
+            "type": "integer",
+            "description": "ID do estoque"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "category": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "ID"
+        },
+        "name": {
+          "type": "string",
+          "example": "Nome"
+        }
+      }
+    },
+    "product": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "ID"
+        },
+        "name": {
+          "type": "string",
+          "example": "Nome"
+        },
+        "description": {
+          "type": "string",
+          "example": "Descrição"
+        },
+        "price": {
+          "type": "string",
+          "example": "Valor do produto"
+        },
+        "status": {
+          "type": "string",
+          "example": "Status"
+        },
+        "category_id": {
+          "type": "string",
+          "example": "ID da categoria"
+        }
+      }
+    },
+    "returnReason": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "ID"
+        },
+        "description": {
+          "type": "string",
+          "example": "Descrição"
+        }
+      }
+    },
+    "customer": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "ID"
+        },
+        "name": {
+          "type": "string",
+          "example": "Nome"
+        },
+        "phone": {
+          "type": "string",
+          "example": "Telefone"
+        },
+        "region_id": {
+          "type": "string",
+          "example": "ID da região"
+        }
+      }
+    },
+    "types": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "ID"
+        },
+        "description": {
+          "type": "string",
+          "example": "Descrição"
+        }
+      }
+    },
+    "stock": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "ID"
+        },
+        "local": {
+          "type": "string",
+          "example": "Local do estoque"
+        },
+        "region_id": {
+          "type": "string",
+          "example": "ID da região"
+        }
+      }
+    }
+  },
+  "defaultModelsExpandDepth": -1
+}
