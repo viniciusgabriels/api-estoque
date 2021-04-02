@@ -70,7 +70,36 @@ routes.post('/nearbyregion', [validateNumber, notSameNumber], NearbyRegionContro
     }
   */
 );
-routes.put('/nearbyregion/:id', [validateNumber, notSameNumber], NearbyRegionController.update);
+routes.put('/nearbyregion/:id', [validateNumber, notSameNumber], NearbyRegionController.update
+  /*
+  #swagger.tags = ['Regiões próximas']
+  #swagger.description = 'Rota para atualizar uma região próxima'
+
+    #swagger.parameters['id'] = {
+      in: 'path',
+      description: 'ID do região',
+      required: true,
+      type: 'integer'
+    }
+    #swagger.parameters['region'] = {
+      in: 'body',
+      description: 'ID da região',
+      required: true,
+      type: 'integer'
+    }
+    #swagger.parameters['ID da região próxima'] = {
+      in: 'body',
+      description: 'Região próxima',
+      required: true,
+      type: 'integer'
+    }
+
+    #swagger.response[200] = {
+      description: 'Região atualizada',
+      schema: { $ref: "#/definitions/nearbyRegion" }
+    }
+  */
+);
 routes.delete('/nearbyregion/:id', NearbyRegionController.delete);
 
 export default routes;
