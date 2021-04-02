@@ -908,6 +908,126 @@
           }
         }
       }
+    },
+    "/nearbyregion": {
+      "get": {
+        "tags": [
+          "Regiões próximas"
+        ],
+        "description": "Rota para listas todas as regiões próximas",
+        "parameters": [
+          {
+            "name": "region",
+            "in": "body",
+            "description": "ID da região",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "ID da região próxima",
+            "in": "body",
+            "description": "Região próxima",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {}
+      },
+      "post": {
+        "tags": [
+          "Regiões próximas"
+        ],
+        "description": "Rota para cadastrar uma região próxima",
+        "parameters": [
+          {
+            "name": "region",
+            "in": "body",
+            "description": "ID da região",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "ID da região próxima",
+            "in": "body",
+            "description": "Região próxima",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/nearbyregion/{id}": {
+      "get": {
+        "tags": [
+          "Regiões próximas"
+        ],
+        "description": "Rota para listar uma região próxima",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do região"
+          }
+        ],
+        "responses": {}
+      },
+      "put": {
+        "tags": [
+          "Regiões próximas"
+        ],
+        "description": "Rota para atualizar uma região próxima",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do região"
+          },
+          {
+            "name": "region",
+            "in": "body",
+            "description": "ID da região",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "ID da região próxima",
+            "in": "body",
+            "description": "Região próxima",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Regiões próximas"
+        ],
+        "description": "Rota para deletar uma região próxima",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do região"
+          }
+        ],
+        "responses": {}
+      }
     }
   },
   "definitions": {
@@ -1035,6 +1155,23 @@
         "region_id": {
           "type": "string",
           "example": "ID da região"
+        }
+      }
+    },
+    "nearbyRegion": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 2
+        },
+        "nearby_region_id": {
+          "type": "number",
+          "example": 1
+        },
+        "region_id": {
+          "type": "number",
+          "example": 2
         }
       }
     }
