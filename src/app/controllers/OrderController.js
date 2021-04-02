@@ -28,7 +28,7 @@ class OrderController {
     try {
       const { typeId, customerId, originOrderId, product } = request.body;
 
-      if (typeId == 2 && !originOrderId) {
+      if (typeId === 2 && !originOrderId) {
         return response.json({
           message:
             'Quando o tipo de retorno for 2 deve ser informada a ordem de origem.',
