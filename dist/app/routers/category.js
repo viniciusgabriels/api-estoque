@@ -13,71 +13,80 @@ const routes = new (0, _express.Router)();
 routes.get(
   '/categories',
   _CategoryController2.default.index
-  // #swagger.tags = ['Categories']
+  // #swagger.tags = ['Categorias']
   // #swagger.description = 'Endpoint para buscar todas as categorias'
-  /*
-  #swagger.parameters['name'] = {
-    in: 'query',
-    description: 'Nome da categoria',
-    required: false,
-    type: 'string'
-  } */
+  // #swagger.security = [{JWT: []}]
   /* 
   #swagger.response[200] = {
-    description: 'Categories list',
+    description: 'Lista de categorias',
     schema: {
-      minimum: 1
-      $ref: "#/definitions/categories"
-    }
-    responses: {
-      '200': {
-        description: "OK"
-      }
+      $ref: "#definitions/CategoryList"
     }
   }
+  */
+  /*
+    #swagger.responses[404] = {
+      schema: {
+        message: 'NOT_FOUND'
+      }
+    }
   */
 );
 routes.get(
   '/categories/:id',
   [_category.validateId, _category.validateCategoryExist],
   _CategoryController2.default.show
-  // #swagger.tags = ['Categories']
+  // #swagger.tags = ['Categorias']
   // #swagger.description = 'Endpoint para buscar uma categotia'
+  // #swagger.security = [{JWT: []}]
   /*  #swagger.parameters['id'] = {
     in: 'path',
     description: 'ID da categoria',
     required: true,
     type: 'integer',
+    schema: {
+      "$ref": "#definitions/CategoryList"
+    },
   } 
+  */
+  /*
+    #swagger.responses[404] = {
+      schema: {
+        message: 'NOT_FOUND'
+      }
+    }
   */
 );
 routes.post(
   '/categories',
   _category.validateData,
   _CategoryController2.default.store
-  // #swagger.tags = ['Categories']
+  // #swagger.tags = ['Categorias']
   // #swagger.description = 'Endpoint para cadastrar uma categotia'
   // #swagger.security = [{Bearer: []}]
   /*
-  #swagger.parameters['name'] = {
+  #swagger.parameters['Categories'] = {
     in: 'body',
-    description: 'Nome da categoria',
+    description: 'Informar nome para cadastro da categoria',
     required: true,
-    type: 'string'
-  } */
-  /* #swagger.response[200] = {
-    description: 'Categoria cadastrada com sucesso',
+    type: 'string',
     schema: {
-      $ref: "#/definitions/category"
+      $ref: "#definitions/CategoryStore"
     }
-  }
+  } */
+  /*
+    #swagger.responses[400] = {
+      schema: {
+        message: 'BAD_REQUEST'
+      }
+    }
   */
 );
 routes.put(
   '/categories/:id',
   [_category.validateData, _category.validateId, _category.validateCategoryExist],
   _CategoryController2.default.update
-  // #swagger.tags = ['Categories']
+  // #swagger.tags = ['Categorias']
   // #swagger.description = 'Endpoint para atualizar uma categotia'
   // #swagger.security = [{Bearer: []}]
   /* #swagger.parameters['id'] = {
@@ -95,7 +104,7 @@ routes.put(
   /* #swagger.response[200] = {
     description: 'Categoria atualizada com sucesso',
     schema: {
-      $ref: "#/definitions/category"
+      $ref: "#definitions/CategoryUpdate"
     }
   }
   */
@@ -104,7 +113,7 @@ routes.delete(
   '/categories/:id',
   [_category.validateId, _category.validateCategoryExist, _category.categoryExistInProducts],
   _CategoryController2.default.delete
-  // #swagger.tags = ['Categories']
+  // #swagger.tags = ['Categorias']
   // #swagger.description = 'Endpoint para deletar uma categotia'
   // #swagger.security = [{Bearer: []}]
   /*  #swagger.parameters['id'] = {

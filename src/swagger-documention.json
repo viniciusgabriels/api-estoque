@@ -223,37 +223,71 @@
     "/categories": {
       "get": {
         "tags": [
-          "Categories"
+          "Categorias"
         ],
         "description": "Endpoint para buscar todas as categorias",
         "parameters": [
           {
             "name": "name",
             "in": "query",
-            "type": "string",
-            "description": "Nome da categoria",
-            "required": false
-          }
-        ],
-        "responses": {}
-      },
-      "post": {
-        "tags": [
-          "Categories"
-        ],
-        "description": "Endpoint para cadastrar uma categotia",
-        "parameters": [
-          {
-            "name": "name",
-            "in": "body",
-            "description": "Nome da categoria",
-            "required": true,
             "type": "string"
           }
         ],
         "responses": {
+          "404": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "NOT_FOUND"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            },
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Categorias"
+        ],
+        "description": "Endpoint para cadastrar uma categotia",
+        "parameters": [
+          {
+            "name": "Categories",
+            "in": "body",
+            "description": "Informar nome para cadastro da categoria",
+            "required": true,
+            "type": "string",
+            "schema": {
+              "$ref": "#definitions/CategoryStore"
+            }
+          }
+        ],
+        "responses": {
           "400": {
-            "description": "Bad Request"
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "BAD_REQUEST"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           }
         },
         "security": [
@@ -266,7 +300,7 @@
     "/categories/{id}": {
       "get": {
         "tags": [
-          "Categories"
+          "Categorias"
         ],
         "description": "Endpoint para buscar uma categotia",
         "parameters": [
@@ -275,7 +309,10 @@
             "in": "path",
             "required": true,
             "type": "integer",
-            "description": "ID da categoria"
+            "description": "ID da categoria",
+            "schema": {
+              "$ref": "#definitions/CategoryList"
+            }
           }
         ],
         "responses": {
@@ -283,13 +320,30 @@
             "description": "Bad Request"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "NOT_FOUND"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       },
       "put": {
         "tags": [
-          "Categories"
+          "Categorias"
         ],
         "description": "Endpoint para atualizar uma categotia",
         "parameters": [
@@ -324,7 +378,7 @@
       },
       "delete": {
         "tags": [
-          "Categories"
+          "Categorias"
         ],
         "description": "Endpoint para deletar uma categotia",
         "parameters": [
@@ -857,16 +911,37 @@
     }
   },
   "definitions": {
-    "category": {
+    "CategoryList": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "ID"
+          },
+          "name": {
+            "type": "string",
+            "example": "Nome"
+          }
+        }
+      }
+    },
+    "CategoryStore": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string",
-          "example": "ID"
-        },
         "name": {
           "type": "string",
-          "example": "Nome"
+          "example": "Nome da categoria"
+        }
+      }
+    },
+    "CategoryUpdate": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Nome da categoria atualizado"
         }
       }
     },
