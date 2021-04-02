@@ -1,5 +1,5 @@
-import Order from '../models/Order';
-import OrderProduct from '../models/OrderProduct';
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _Order = require('../models/Order'); var _Order2 = _interopRequireDefault(_Order);
+var _OrderProduct = require('../models/OrderProduct'); var _OrderProduct2 = _interopRequireDefault(_OrderProduct);
 
 class OrderController {
   async index(request, response) {
@@ -11,7 +11,7 @@ class OrderController {
       where.type = type;
     }
 
-    const order = await Order.findAndCountAll({ where });
+    const order = await _Order2.default.findAndCountAll({ where });
 
     return response.json(order);
   }
@@ -19,7 +19,7 @@ class OrderController {
   async show(request, response) {
     const { parsed } = request.params;
 
-    const order = await Order.findOne({ where: { parsed } });
+    const order = await _Order2.default.findOne({ where: { parsed } });
 
     return response.json(order);
   }
@@ -35,7 +35,7 @@ class OrderController {
         });
       }
 
-      const order = await Order.create({
+      const order = await _Order2.default.create({
         type_id: typeId,
         customer_id: customerId,
         origin_order_id: originOrderId,
@@ -47,7 +47,7 @@ class OrderController {
       product.forEach(async (element) => {
         const { product_stock_id, quantity, price, return_reason_id } = element;
 
-        await OrderProduct.create({
+        await _OrderProduct2.default.create({
           order_id: id,
           quantity,
           product_stock_id,
@@ -66,7 +66,7 @@ class OrderController {
     const { parsed } = request.params;
     const { date, type } = request.body;
 
-    const order = await Order.findByPk(parsed);
+    const order = await _Order2.default.findByPk(parsed);
 
     order.date = date;
     order.type = type;
@@ -79,10 +79,10 @@ class OrderController {
   async delete(request, response) {
     const { parsed } = request.params;
 
-    await Order.destroy({ where: { parsed } });
+    await _Order2.default.destroy({ where: { parsed } });
 
     return response.sendStatus(202);
   }
 }
 
-export default new OrderController();
+exports. default = new OrderController();
