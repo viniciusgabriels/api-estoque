@@ -46,7 +46,30 @@ routes.get('/nearbyregion/:id', NearbyRegionController.show
     }
   */
 );
-routes.post('/nearbyregion', [validateNumber, notSameNumber], NearbyRegionController.store);
+routes.post('/nearbyregion', [validateNumber, notSameNumber], NearbyRegionController.store
+  /*
+  #swagger.tags = ['Regiões próximas']
+  #swagger.description = 'Rota para cadastrar uma região próxima'
+
+    #swagger.parameters['region'] = {
+      in: 'body',
+      description: 'ID da região',
+      required: true,
+      type: 'integer'
+    }
+    #swagger.parameters['ID da região próxima'] = {
+      in: 'body',
+      description: 'Região próxima',
+      required: true,
+      type: 'integer'
+    }
+
+    #swagger.response[201] = {
+      description: 'Região cadastrada',
+      schema: { $ref: "#/definitions/nearbyRegion" }
+    }
+  */
+);
 routes.put('/nearbyregion/:id', [validateNumber, notSameNumber], NearbyRegionController.update);
 routes.delete('/nearbyregion/:id', NearbyRegionController.delete);
 
