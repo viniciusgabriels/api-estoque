@@ -29,7 +29,7 @@
     "/products": {
       "get": {
         "tags": [
-          "Products"
+          "Produtos"
         ],
         "description": "Endpoint para buscar todos os produtos",
         "parameters": [
@@ -48,53 +48,71 @@
             "required": false
           }
         ],
-        "responses": {}
+        "responses": {
+          "400": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "BAD_REQUEST"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            },
+            "description": "Bad Request"
+          },
+          "404": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "NOT_FOUND"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            },
+            "description": "Not Found"
+          }
+        }
       },
       "post": {
         "tags": [
-          "Products"
+          "Produtos"
         ],
         "description": "Endpoint para cadastrar um novo produto",
         "parameters": [
           {
-            "name": "name",
+            "name": "Produtos",
             "in": "body",
-            "description": "Nome do produto",
+            "description": "Cadastro de produto",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "description",
-            "in": "body",
-            "description": "Descrição do produto",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "price",
-            "in": "body",
-            "description": "Valor do produto",
-            "required": true,
-            "type": "number"
-          },
-          {
-            "name": "status",
-            "in": "body",
-            "description": "Status do produto, ativo? true ou false",
-            "required": true,
-            "type": "boolean"
-          },
-          {
-            "name": "categoryId",
-            "in": "body",
-            "description": "ID da categoria do produto",
-            "required": true,
-            "type": "integer"
+            "type": "string",
+            "schema": {
+              "$ref": "#definitions/product"
+            }
           }
         ],
         "responses": {
           "400": {
-            "description": "Bad Request"
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "BAD_REQUEST"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           }
         },
         "security": [
@@ -107,7 +125,7 @@
     "/products/{id}": {
       "get": {
         "tags": [
-          "Products"
+          "Produtos"
         ],
         "description": "Endpoint para listar um produto",
         "parameters": [
@@ -121,16 +139,40 @@
         ],
         "responses": {
           "400": {
-            "description": "Bad Request"
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "BAD_REQUEST"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           },
           "404": {
-            "description": "Not Found"
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "NOT_FOUND"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           }
         }
       },
       "put": {
         "tags": [
-          "Products"
+          "Produtos"
         ],
         "description": "Endpoint para atualizar um produto",
         "parameters": [
@@ -139,50 +181,49 @@
             "in": "path",
             "required": true,
             "type": "integer",
-            "description": "ID da categoria"
+            "description": "ID do produto"
           },
           {
-            "name": "name",
+            "name": "Produtos",
             "in": "body",
-            "description": "Nome do produto",
+            "description": "Cadastro de produto",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "description",
-            "in": "body",
-            "description": "Descrição do produto",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "price",
-            "in": "body",
-            "description": "Valor do produto",
-            "required": true,
-            "type": "number"
-          },
-          {
-            "name": "status",
-            "in": "body",
-            "description": "Status do produto, ativo? true ou false",
-            "required": true,
-            "type": "boolean"
-          },
-          {
-            "name": "categoryId",
-            "in": "body",
-            "description": "ID da categoria do produto",
-            "required": true,
-            "type": "integer"
+            "type": "string",
+            "schema": {
+              "$ref": "#definitions/product"
+            }
           }
         ],
         "responses": {
           "400": {
-            "description": "Bad Request"
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "BAD_REQUEST"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           },
           "404": {
-            "description": "Not Found"
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "NOT_FOUND"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           }
         },
         "security": [
@@ -193,7 +234,7 @@
       },
       "delete": {
         "tags": [
-          "Products"
+          "Produtos"
         ],
         "description": "Endpoint para deletar um produto",
         "parameters": [
@@ -207,10 +248,34 @@
         ],
         "responses": {
           "400": {
-            "description": "Bad Request"
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "BAD_REQUEST"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           },
           "404": {
-            "description": "Not Found"
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "NOT_FOUND"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           }
         },
         "security": [
@@ -364,10 +429,34 @@
         ],
         "responses": {
           "400": {
-            "description": "Bad Request"
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "BAD_REQUEST"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           },
           "404": {
-            "description": "Not Found"
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "NOT_FOUND"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           }
         },
         "security": [
@@ -392,10 +481,34 @@
         ],
         "responses": {
           "400": {
-            "description": "Bad Request"
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "BAD_REQUEST"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           },
           "404": {
-            "description": "Not Found"
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "NOT_FOUND"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           }
         },
         "security": [
@@ -1068,10 +1181,6 @@
     "product": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string",
-          "example": "ID"
-        },
         "name": {
           "type": "string",
           "example": "Nome"

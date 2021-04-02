@@ -13,7 +13,7 @@ const routes = new (0, _express.Router)();
 routes.get(
   '/products',
   _ProductController2.default.index
-  // #swagger.tags = ['Products']
+  // #swagger.tags = ['Produtos']
   // #swagger.description = 'Endpoint para buscar todos os produtos'
   /*
   #swagger.parameters['name'] = {
@@ -34,7 +34,7 @@ routes.get(
     description: 'Products list',
     schema: {
       minimum: 1
-      $ref: "#/definitions/products"
+      $ref: "#definitions/product"
     }
     responses: {
       '200': {
@@ -43,12 +43,26 @@ routes.get(
     }
   }
   */
+  /*
+    #swagger.responses[400] = {
+      schema: {
+        message: 'BAD_REQUEST'
+      }
+    }
+  */
+  /*
+    #swagger.responses[404] = {
+      schema: {
+        message: 'NOT_FOUND'
+      }
+    }
+  */
 );
 routes.get(
   '/products/:id',
   [_product.validateId, _product.validateProductExist],
   _ProductController2.default.show
-  // #swagger.tags = ['Products']
+  // #swagger.tags = ['Produtos']
   // #swagger.description = 'Endpoint para listar um produto'
   /*  #swagger.parameters['id'] = {
     in: 'path',
@@ -61,7 +75,7 @@ routes.get(
   #swagger.response[200] = {
     description: 'List one product',
     schema: {
-      $ref: "#/definitions/products"
+      $ref: "#definitions/product"
     }
     responses: {
       '200': {
@@ -70,109 +84,101 @@ routes.get(
     }
   }
   */
+  /*
+    #swagger.responses[400] = {
+      schema: {
+        message: 'BAD_REQUEST'
+      }
+    }
+  */
+  /*
+    #swagger.responses[404] = {
+      schema: {
+        message: 'NOT_FOUND'
+      }
+    }
+  */
 );
 routes.post(
   '/products',
   _product.validateData,
   _ProductController2.default.store
-  // #swagger.tags = ['Products']
+  // #swagger.tags = ['Produtos']
   // #swagger.description = 'Endpoint para cadastrar um novo produto'
   // #swagger.security = [{Bearer: []}]
   /*
-  #swagger.parameters['name'] = {
+  #swagger.parameters['Produtos'] = {
     in: 'body',
-    description: 'Nome do produto',
+    description: 'Cadastro de produto',
     required: true,
-    type: 'string'
-  } */
-  /* #swagger.parameters['description'] = {
-    in: 'body',
-    description: 'Descrição do produto',
-    required: false,
-    type: 'string'
-  } */
-  /* #swagger.parameters['price'] = {
-    in: 'body',
-    description: 'Valor do produto',
-    required: true,
-    type: 'number'
-  } */
-  /* #swagger.parameters['status'] = {
-    in: 'body',
-    description: 'Status do produto, ativo? true ou false',
-    required: true,
-    type: 'boolean'
-  } */
-  /* #swagger.parameters['categoryId'] = {
-    in: 'body',
-    description: 'ID da categoria do produto',
-    required: true,
-    type: 'integer'
+    type: 'string',
+    schema: {
+      $ref: "#definitions/product"
+    }
   } */
   /* #swagger.response[200] = {
-    description: 'Categoria cadastrada com sucesso',
+    description: 'Produto cadastrado com sucesso',
     schema: {
-      $ref: "#/definitions/category"
+      $ref: "#definitions/products"
     }
-  }
+  } */
+  /*
+    #swagger.responses[400] = {
+      schema: {
+        message: 'BAD_REQUEST'
+      }
+    }
   */
 );
 routes.put(
   '/products/:id',
   [_product.validateData, _product.validateId, _product.validateProductExist],
   _ProductController2.default.update
-  // #swagger.tags = ['Products']
+  // #swagger.tags = ['Produtos']
   // #swagger.description = 'Endpoint para atualizar um produto'
   // #swagger.security = [{Bearer: []}]
   /* #swagger.parameters['id'] = {
     in: 'path',
-    description: 'ID da categoria',
+    description: 'ID do produto',
     required: true,
     type: 'integer',
   } */
-  /* #swagger.parameters['name'] = {
-    in: 'body',
-    description: 'Nome do produto',
-    required: true,
-    type: 'string'
-  } */
-  /* #swagger.parameters['description'] = {
-    in: 'body',
-    description: 'Descrição do produto',
-    required: false,
-    type: 'string'
-  } */
-  /* #swagger.parameters['price'] = {
-    in: 'body',
-    description: 'Valor do produto',
-    required: true,
-    type: 'number'
-  } */
-  /* #swagger.parameters['status'] = {
-    in: 'body',
-    description: 'Status do produto, ativo? true ou false',
-    required: true,
-    type: 'boolean'
-  } */
   /*
-  #swagger.parameters['categoryId'] = {
+  #swagger.parameters['Produtos'] = {
     in: 'body',
-    description: 'ID da categoria do produto',
+    description: 'Cadastro de produto',
     required: true,
-    type: 'integer'
+    type: 'string',
+    schema: {
+      $ref: "#definitions/product"
+    }
   } */
   /* #swagger.response[200] = {
     description: 'Produto atualizado com sucesso',
     schema: {
-      $ref: "#/definitions/products"
+      $ref: "#definitions/product"
     }
   } */
+  /*
+    #swagger.responses[400] = {
+      schema: {
+        message: 'BAD_REQUEST'
+      }
+    }
+  */
+  /*
+    #swagger.responses[404] = {
+      schema: {
+        message: 'NOT_FOUND'
+      }
+    }
+  */
 );
 routes.delete(
   '/products/:id',
   [_product.validateId, _product.validateProductExist, _product.productExistInProductStock],
   _ProductController2.default.delete
-  // #swagger.tags = ['Products']
+  // #swagger.tags = ['Produtos']
   // #swagger.description = 'Endpoint para deletar um produto'
   // #swagger.security = [{Bearer: []}]
   /*  #swagger.parameters['id'] = {
@@ -186,9 +192,23 @@ routes.delete(
   #swagger.response[204] = {
     description: 'Produto deletado com sucesso',
     schema: {
-      $ref: "#/definitions/products"
+      $ref: "#definitions/product"
     }
   }
+  */
+  /*
+    #swagger.responses[400] = {
+      schema: {
+        message: 'BAD_REQUEST'
+      }
+    }
+  */
+  /*
+    #swagger.responses[404] = {
+      schema: {
+        message: 'NOT_FOUND'
+      }
+    }
   */
 );
 

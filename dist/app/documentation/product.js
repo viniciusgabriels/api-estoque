@@ -1,5 +1,4 @@
 "use strict";module.exports = {
-  id: 'ID',
   name: 'Nome',
   description: 'Descrição',
   price: 'Valor do produto',

@@ -108,6 +108,20 @@ routes.put(
     }
   }
   */
+  /*
+    #swagger.responses[400] = {
+      schema: {
+        message: 'BAD_REQUEST'
+      }
+    }
+  */
+  /*
+    #swagger.responses[404] = {
+      schema: {
+        message: 'NOT_FOUND'
+      }
+    }
+  */
 );
 routes.delete(
   '/categories/:id',
@@ -130,6 +144,20 @@ routes.delete(
       $ref: "#/definitions/category"
     }
   }
+  */
+  /*
+    #swagger.responses[400] = {
+      schema: {
+        message: 'BAD_REQUEST'
+      }
+    }
+  */
+  /*
+    #swagger.responses[404] = {
+      schema: {
+        message: 'NOT_FOUND'
+      }
+    }
   */
 );
 
