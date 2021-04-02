@@ -1,5 +1,5 @@
-// import request from 'supertest';
-// import app from '../../src/app';
+import request from 'supertest';
+import app from '../../src/app';
 
 describe('orderProduct', () => {
   describe('create', () => {
@@ -49,19 +49,19 @@ describe('orderProduct', () => {
           customerId: customer.body.id,
           product: [
             {
-              product_stock_id: productStock.body.id,
+              productStockId: productStock.body.id,
               quantity: 5,
               price: 5.2,
             },
             {
-              product_stock_id: productStock.body.id,
+              productStockId: productStock.body.id,
               quantity: 4,
               price: 7.5,
             },
           ],
         });
 
-      expect(order.status).toBe(200);
+      expect(order.status).toBe(201);
       expect(order.body).toHaveProperty('id');
     });
   });
