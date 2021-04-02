@@ -100,6 +100,23 @@ routes.put('/nearbyregion/:id', [validateNumber, notSameNumber], NearbyRegionCon
     }
   */
 );
-routes.delete('/nearbyregion/:id', NearbyRegionController.delete);
+routes.delete('/nearbyregion/:id', NearbyRegionController.delete
+  /*
+  #swagger.tags = ['Regiões próximas']
+  #swagger.description = 'Rota para deletar uma região próxima'
+
+    #swagger.parameters['id'] = {
+      in: 'path',
+      description: 'ID do região',
+      required: true,
+      type: 'integer'
+    }
+
+    #swagger.response[204] = {
+      description: 'Região deletada',
+      schema: { $ref: "#/definitions/nearbyRegion" }
+    }
+  */
+);
 
 export default routes;
