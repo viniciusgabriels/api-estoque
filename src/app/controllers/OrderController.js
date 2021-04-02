@@ -11,17 +11,24 @@ class OrderController {
       where.type = type;
     }
 
-    const order = await Order.findAndCountAll({ where });
+    try {
+      const order = await Order.findAndCountAll({ where });
 
-    return response.json(order);
+      return response.json(order);
+    } catch (error) {
+      return response.status(error.status || 400).json(error);
+    }
   }
 
   async show(request, response) {
     const { parsed } = request.params;
+    try {
+      const order = await Order.findOne({ where: { parsed } });
 
-    const order = await Order.findOne({ where: { parsed } });
-
-    return response.json(order);
+      return response.json(order);
+    } catch (error) {
+      return response.status(error.status || 400).json(error);
+    }
   }
 
   async store(request, response) {
@@ -45,13 +52,13 @@ class OrderController {
       const { id } = order;
 
       product.forEach(async (element) => {
-        const { product_stock_id, quantity, price, return_reason_id } = element;
+        const { productStockId, quantity, price, returnReasonId } = element;
 
         await OrderProduct.create({
           order_id: id,
           quantity,
-          product_stock_id,
-          return_reason_id,
+          product_stock_id: productStockId,
+          return_reason_id: returnReasonId,
           price,
         });
       });
@@ -66,22 +73,30 @@ class OrderController {
     const { parsed } = request.params;
     const { date, type } = request.body;
 
-    const order = await Order.findByPk(parsed);
+    try {
+      const order = await Order.findByPk(parsed);
 
-    order.date = date;
-    order.type = type;
+      order.date = date;
+      order.type = type;
 
-    order.save();
+      order.save();
 
-    return response.json(order);
+      return response.json(order);
+    } catch (error) {
+      return response.status(error.status || 400).json(error);
+    }
   }
 
   async delete(request, response) {
     const { parsed } = request.params;
 
-    await Order.destroy({ where: { parsed } });
+    try {
+      await Order.destroy({ where: { parsed } });
 
-    return response.sendStatus(202);
+      return response.sendStatus(204);
+    } catch (error) {
+      return response.status(error.status || 400).json(error);
+    }
   }
 }
 

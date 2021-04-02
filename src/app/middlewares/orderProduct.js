@@ -1,6 +1,6 @@
-/* eslint-disable camelcase */
+/* eslint-disable consistent-return */
+
 import ProductStock from '../models/ProductStock';
-import ReturnReason from '../models/ReturnReason';
 import Order from '../models/Order';
 
 function validateData(request, response, next) {
@@ -9,14 +9,14 @@ function validateData(request, response, next) {
   const order = Order.findOne({ where: { id } });
 
   product.forEach((element) => {
-    const { quantity, product_stock_id, price, return_reason_id } = element;
-    if (!id || !quantity || !product_stock_id || !price) {
+    const { quantity, productStockId, price, returnReasonId } = element;
+    if (!id || !quantity || !productStockId || !price) {
       return response.status(400).json({
         message: 'Invalid data',
       });
     }
 
-    if (order.type_id === 2 && !return_reason_id) {
+    if (order.type_id === 2 && !returnReasonId) {
       return response.status(400).json({
         message: 'Missing reason of returning',
       });
@@ -27,8 +27,8 @@ function validateData(request, response, next) {
 }
 
 async function validateProductStock(request, response, next) {
-  const { product_stock_id } = request.body;
-  const productStock = await ProductStock.findByPk(product_stock_id);
+  const { productStockId } = request.body;
+  const productStock = await ProductStock.findByPk(productStockId);
 
   if (!productStock) {
     return response.status(404).json({
