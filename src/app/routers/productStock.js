@@ -3,10 +3,10 @@ import ProductStockController from '../controllers/ProductStockController';
 
 const routes = new Router();
 
-routes.get('/productStock', ProductStockController.index);
-routes.get('/productStock/:id', ProductStockController.show);
-routes.post('/productStock', ProductStockController.store);
-routes.put('/productStock/:id', ProductStockController.update);
-routes.delete('/productStock/:id', ProductStockController.delete);
+routes.get('/product-stock', ProductStockController.index);
+routes.get('/product-stock/:id', ProductStockController.show);
+routes.post('/product-stock', ProductStockController.store);
+routes.put('/product-stock/:id', ProductStockController.update);
+routes.delete('/product-stock/:id', ProductStockController.delete);
 
 export default routes;
