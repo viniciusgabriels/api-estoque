@@ -5,7 +5,7 @@
     "title": "Documentação da API de controle de estoque",
     "description": "API para controle de estoque desenvolvida em JavaScript"
   },
-  "host": "https://api-marvem.herokuapp.com",
+  "host": "localhost:3333",
   "basePath": "/",
   "tags": [],
   "schemes": [
@@ -1367,53 +1367,22 @@
         "tags": [
           "Produto-Ordem"
         ],
-        "description": "Rota para buscar todos os produtos de todas as ordens",
-        "parameters": [
+        "description": "Rota para buscar todos os produtos das ordens",
+        "parameters": [],
+        "responses": {},
+        "security": [
           {
-            "name": "order_id",
-            "in": "body",
-            "description": "Id da ordem",
-            "required": true,
-            "type": "integer"
-          },
-          {
-            "name": "product_stock_id",
-            "in": "body",
-            "description": "Id do produto-stock",
-            "required": true,
-            "type": "integer"
-          },
-          {
-            "name": "return_reason_id",
-            "in": "body",
-            "description": "Id do motivo de retorno do produto",
-            "required": false,
-            "type": "integer"
-          },
-          {
-            "name": "quantity",
-            "in": "body",
-            "description": "Quantidade",
-            "required": true,
-            "type": "integer"
-          },
-          {
-            "name": "price",
-            "in": "body",
-            "description": "Preço do produto",
-            "required": true,
-            "type": "float"
+            "Bearer": []
           }
-        ],
-        "responses": {}
+        ]
       }
     },
     "/order-product/{orderId}/{id}": {
       "get": {
         "tags": [
-          "Produto-Ordem"
+          "Ordem"
         ],
-        "description": "Rota para procurar e listar um produto de uma ordem pelo ir da ordem e id do produto em estoque",
+        "description": "Rota para procurar e listar um produto de uma ordem pelo ID da ordem e ID do produto em estoque",
         "parameters": [
           {
             "name": "orderId",
@@ -1430,7 +1399,12 @@
             "description": "ID do produto em estoque"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
       }
     }
   },

@@ -18,7 +18,7 @@ routes.get(
   '/order-product/:orderId/:id',
   OrderProductController.show
   /*
-  #swagger.tags = ['Ordem']
+  #swagger.tags = ['Produto-Ordem']
   #swagger.description = 'Rota para procurar e listar um produto de uma ordem pelo ID da ordem e ID do produto em estoque'
   #swagger.security = [{Bearer: []}]
     #swagger.parameters['orderId'] = {
