@@ -8,7 +8,7 @@
         primaryKey: true,
       },
       quantity: {
-        type: Sequelize.DataTypes.STRING,
+        type: Sequelize.DataTypes.INTEGER,
         allowNull: false,
       },
       stock_id: {
