@@ -15,7 +15,7 @@ routes.post(
   [validateData, validateProductStock],
   OrderProductController.store
 );
-routes.put('/order-product/:id', OrderProductController.update);
-routes.delete('/order-product/:id', OrderProductController.delete);
+// routes.put('/order-product/:id', OrderProductController.update);
+// routes.delete('/order-product/:id', OrderProductController.delete);
 
 export default routes;

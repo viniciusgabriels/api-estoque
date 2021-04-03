@@ -12,7 +12,7 @@ describe('product', () => {
 
       const response = await request(app).post('/products').send({
         name: 'Monitor LED 21Polegadas',
-        price: '799.99',
+        price: 799.99,
         status: true,
         categoryId: category.body.id,
       });
@@ -31,7 +31,7 @@ describe('product', () => {
 
       const response = await request(app).post('/products').send({
         name: 'mo',
-        price: '799.99',
+        price: 799.99,
         status: true,
         categoryId: category1.body.id,
       });
@@ -48,7 +48,7 @@ describe('product', () => {
 
       const response = await request(app).post('/products').send({
         name: 'Monitor',
-        price: '',
+        price: 123.0,
         status: true,
         categoryId: category2.body.id,
       });
@@ -61,7 +61,7 @@ describe('product', () => {
 
       const response = await request(app).post('/products').send({
         name: 'Monitor',
-        price: '899.59',
+        price: 899.59,
         status: true,
         categoryId: '',
       });
@@ -80,7 +80,7 @@ describe('product', () => {
 
       const product = await request(app).post('/products').send({
         name: 'Monitor LED 23Polegadas',
-        price: '1099.90',
+        price: 1099.9,
         status: true,
         categoryId: category.body.id,
       });
@@ -89,13 +89,13 @@ describe('product', () => {
         .put(`/products/${product.body.id}`)
         .send({
           name: 'Monitor LED 23Polegadas',
-          price: '1299.90',
+          price: 1299.9,
           status: true,
           categoryId: category.body.id,
         });
 
       expect(response.status).toBe(200);
-      expect(response.body.price).toBe('1299.90');
+      expect(response.body.price).toBe(1299.9);
     });
 
     it('shouldn´t update a exist product without data', async () => {
@@ -103,7 +103,7 @@ describe('product', () => {
 
       const response = await request(app).put('/products/1').send({
         name: '',
-        price: '999.99',
+        price: 999.99,
         status: true,
         categoryId: '',
       });
@@ -132,7 +132,7 @@ describe('product', () => {
 
       const insertProdut = await request(app).post('/products').send({
         name: 'Monitor LED 21Polegadas 5',
-        price: '799.99',
+        price: 799.99,
         status: true,
         categoryId: category.body.id,
       });
@@ -155,7 +155,7 @@ describe('product', () => {
 
       const insertProdut = await request(app).post('/products').send({
         name: 'Monitor LED 21Polegadas 6',
-        price: '799.99',
+        price: 799.99,
         status: true,
         categoryId: category.body.id,
       });

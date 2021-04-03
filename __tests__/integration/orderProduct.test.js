@@ -1,5 +1,5 @@
-// import request from 'supertest';
-// import app from '../../src/app';
+import request from 'supertest';
+import app from '../../src/app';
 
 describe('orderProduct', () => {
   describe('create', () => {
@@ -12,7 +12,7 @@ describe('orderProduct', () => {
 
       const product = await request(app).post('/products').send({
         name: 'Monitor LED 21Polegadas',
-        price: '799.99',
+        price: 799.99,
         status: true,
         categoryId: category.body.id,
       });

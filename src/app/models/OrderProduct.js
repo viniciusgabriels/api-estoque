@@ -39,7 +39,7 @@ class OrderProduct extends Model {
           allowNull: false,
         },
         price: {
-          type: Sequelize.DataTypes.FLOAT,
+          type: Sequelize.DataTypes.DECIMAL,
           allowNull: false,
         },
       },

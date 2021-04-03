@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Order from '../models/Order';
-import OrderProduct from '../models/OrderProduct';
+// import OrderProduct from '../models/OrderProduct';
 
 class OrderController {
   async index(request, response) {
