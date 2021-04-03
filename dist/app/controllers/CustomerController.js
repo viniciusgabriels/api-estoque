@@ -1,5 +1,6 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _Customer = require('../models/Customer'); var _Customer2 = _interopRequireDefault(_Customer);
 var _Order = require('../models/Order'); var _Order2 = _interopRequireDefault(_Order);
+var _Region = require('../models/Region'); var _Region2 = _interopRequireDefault(_Region);
 
 class CustomerController {
   async index(req, res) {
@@ -7,6 +8,11 @@ class CustomerController {
       const data = await _Customer2.default.findAll({
         attributes: ['id', 'name', 'phone'],
         order: [['id', 'DESC']],
+        include: {
+          model: _Region2.default,
+          as: 'region',
+          attributes: ['name'],
+        },
       });
 
       return res.json(data);

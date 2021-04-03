@@ -3,10 +3,10 @@ var _ProductStockController = require('../controllers/ProductStockController'); 
 
 const routes = new (0, _express.Router)();
 
-routes.get('/productStock', _ProductStockController2.default.index);
-routes.get('/productStock/:id', _ProductStockController2.default.show);
-routes.post('/productStock', _ProductStockController2.default.store);
-routes.put('/productStock/:id', _ProductStockController2.default.update);
-routes.delete('/productStock/:id', _ProductStockController2.default.delete);
+routes.get('/product-stock', _ProductStockController2.default.index);
+routes.get('/product-stock/:id', _ProductStockController2.default.show);
+routes.post('/product-stock', _ProductStockController2.default.store);
+routes.put('/product-stock/:id', _ProductStockController2.default.update);
+routes.delete('/product-stock/:id', _ProductStockController2.default.delete);
 
 exports. default = routes;

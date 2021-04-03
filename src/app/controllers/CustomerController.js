@@ -1,5 +1,6 @@
 import Customer from '../models/Customer';
 import Order from '../models/Order';
+import Region from '../models/Region';
 
 class CustomerController {
   async index(req, res) {
@@ -7,6 +8,11 @@ class CustomerController {
       const data = await Customer.findAll({
         attributes: ['id', 'name', 'phone'],
         order: [['id', 'DESC']],
+        include: {
+          model: Region,
+          as: 'region',
+          attributes: ['name'],
+        },
       });
 
       return res.json(data);

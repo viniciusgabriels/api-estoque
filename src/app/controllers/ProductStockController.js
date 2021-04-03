@@ -1,8 +1,26 @@
 import ProductStock from '../models/ProductStock';
+import Product from '../models/Product';
+import Stock from '../models/Stock';
 
 class ProductStockController {
   async index(request, response) {
-    return response.json(await ProductStock.findAll());
+    const data = await ProductStock.findAll({
+      attributes: ['id', 'quantity'],
+      include: [
+        {
+          model: Product,
+          as: 'product',
+          attributes: ['name'],
+        },
+        {
+          model: Stock,
+          as: 'stock',
+          attributes: ['local'],
+        },
+      ],
+    });
+
+    return response.json(data);
   }
 
   async show(request, response) {
