@@ -1,5 +1,6 @@
 import Order from '../models/Order';
 import OrderProduct from '../models/OrderProduct';
+import ProductService from '../service/ProductService';
 
 class OrderController {
   async index(request, response) {
@@ -53,7 +54,7 @@ class OrderController {
 
       product.forEach(async (element) => {
         const { productStockId, quantity, price, returnReasonId } = element;
-
+        await ProductService.discoutStock(productStockId, quantity);
         await OrderProduct.create({
           order_id: id,
           quantity,
