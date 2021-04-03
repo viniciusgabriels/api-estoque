@@ -15,7 +15,7 @@ routes.get(
   CategoryController.index
   // #swagger.tags = ['Categorias']
   // #swagger.description = 'Endpoint para buscar todas as categorias'
-  // #swagger.security = [{JWT: []}]
+  // #swagger.security = [{Bearer: []}]
   /* 
   #swagger.response[200] = {
     description: 'Lista de categorias',
@@ -38,7 +38,7 @@ routes.get(
   CategoryController.show
   // #swagger.tags = ['Categorias']
   // #swagger.description = 'Endpoint para buscar uma categotia'
-  // #swagger.security = [{JWT: []}]
+  // #swagger.security = [{Bearer: []}]
   /*  #swagger.parameters['id'] = {
     in: 'path',
     description: 'ID da categoria',
