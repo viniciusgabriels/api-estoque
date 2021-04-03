@@ -8,43 +8,9 @@ routes.get(
   OrderProductController.index
   /*
   #swagger.tags = ['Produto-Ordem']
-  #swagger.description = 'Rota para buscar todos os produtos de todas as ordens'
-
-    #swagger.parameters['order_id'] = {
-      in: 'body',
-      description: 'Id da ordem',
-      required: true,
-      type: 'integer'
-    }
-    #swagger.parameters['product_stock_id'] = {
-      in: 'body',
-      description: 'Id do produto-stock',
-      required: true,
-      type: 'integer'
-    }
-    #swagger.parameters['return_reason_id'] = {
-      in: 'body',
-      description: 'Id do motivo de retorno do produto',
-      required: false,
-      type: 'integer'
-    }
-    #swagger.parameters['quantity'] = {
-      in: 'body',
-      description: 'Quantidade',
-      required: true,
-      type: 'integer'
-    }
-    #swagger.parameters['price'] = {
-      in: 'body',
-      description: 'Preço do produto',
-      required: true,
-      type: 'float'
-    }
-
-    #swagger.response[200] = {
-      description: 'Produtos das ordens listadas',
-      schema: { $ref: "#/definitions/order-product" }
-    }
+  #swagger.description = 'Rota para buscar todos os produtos das ordens'
+  #swagger.security = [{Bearer: []}]
+  }
   */
 );
 
@@ -52,9 +18,9 @@ routes.get(
   '/order-product/:orderId/:id',
   OrderProductController.show
   /*
-  #swagger.tags = ['Produto-Ordem']
-  #swagger.description = 'Rota para procurar e listar um produto de uma ordem pelo ir da ordem e id do produto em estoque'
-
+  #swagger.tags = ['Ordem']
+  #swagger.description = 'Rota para procurar e listar um produto de uma ordem pelo ID da ordem e ID do produto em estoque'
+  #swagger.security = [{Bearer: []}]
     #swagger.parameters['orderId'] = {
       in: 'path',
       description: 'ID da ordem de venda ou devolução',
