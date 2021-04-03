@@ -18,6 +18,14 @@ class Order extends Model {
             key: 'id',
           },
         },
+        origin_order_id: {
+          type: Sequelize.DataTypes.INTEGER,
+          allowNull: true,
+          references: {
+            model: 'orders',
+            key: 'id',
+          },
+        },
         date: {
           type: Sequelize.DataTypes.DATE,
           allowNull: true,

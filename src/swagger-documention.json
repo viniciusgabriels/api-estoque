@@ -29,7 +29,7 @@
     "/products": {
       "get": {
         "tags": [
-          "Products"
+          "Produtos"
         ],
         "description": "Endpoint para buscar todos os produtos",
         "parameters": [
@@ -48,53 +48,71 @@
             "required": false
           }
         ],
-        "responses": {}
+        "responses": {
+          "400": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "BAD_REQUEST"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            },
+            "description": "Bad Request"
+          },
+          "404": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "NOT_FOUND"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            },
+            "description": "Not Found"
+          }
+        }
       },
       "post": {
         "tags": [
-          "Products"
+          "Produtos"
         ],
         "description": "Endpoint para cadastrar um novo produto",
         "parameters": [
           {
-            "name": "name",
+            "name": "Produtos",
             "in": "body",
-            "description": "Nome do produto",
+            "description": "Cadastro de produto",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "description",
-            "in": "body",
-            "description": "Descrição do produto",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "price",
-            "in": "body",
-            "description": "Valor do produto",
-            "required": true,
-            "type": "number"
-          },
-          {
-            "name": "status",
-            "in": "body",
-            "description": "Status do produto, ativo? true ou false",
-            "required": true,
-            "type": "boolean"
-          },
-          {
-            "name": "categoryId",
-            "in": "body",
-            "description": "ID da categoria do produto",
-            "required": true,
-            "type": "integer"
+            "type": "string",
+            "schema": {
+              "$ref": "#definitions/product"
+            }
           }
         ],
         "responses": {
           "400": {
-            "description": "Bad Request"
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "BAD_REQUEST"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           }
         },
         "security": [
@@ -107,7 +125,7 @@
     "/products/{id}": {
       "get": {
         "tags": [
-          "Products"
+          "Produtos"
         ],
         "description": "Endpoint para listar um produto",
         "parameters": [
@@ -121,16 +139,40 @@
         ],
         "responses": {
           "400": {
-            "description": "Bad Request"
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "BAD_REQUEST"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           },
           "404": {
-            "description": "Not Found"
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "NOT_FOUND"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           }
         }
       },
       "put": {
         "tags": [
-          "Products"
+          "Produtos"
         ],
         "description": "Endpoint para atualizar um produto",
         "parameters": [
@@ -139,50 +181,49 @@
             "in": "path",
             "required": true,
             "type": "integer",
-            "description": "ID da categoria"
+            "description": "ID do produto"
           },
           {
-            "name": "name",
+            "name": "Produtos",
             "in": "body",
-            "description": "Nome do produto",
+            "description": "Cadastro de produto",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "description",
-            "in": "body",
-            "description": "Descrição do produto",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "price",
-            "in": "body",
-            "description": "Valor do produto",
-            "required": true,
-            "type": "number"
-          },
-          {
-            "name": "status",
-            "in": "body",
-            "description": "Status do produto, ativo? true ou false",
-            "required": true,
-            "type": "boolean"
-          },
-          {
-            "name": "categoryId",
-            "in": "body",
-            "description": "ID da categoria do produto",
-            "required": true,
-            "type": "integer"
+            "type": "string",
+            "schema": {
+              "$ref": "#definitions/product"
+            }
           }
         ],
         "responses": {
           "400": {
-            "description": "Bad Request"
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "BAD_REQUEST"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           },
           "404": {
-            "description": "Not Found"
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "NOT_FOUND"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           }
         },
         "security": [
@@ -193,7 +234,7 @@
       },
       "delete": {
         "tags": [
-          "Products"
+          "Produtos"
         ],
         "description": "Endpoint para deletar um produto",
         "parameters": [
@@ -207,10 +248,34 @@
         ],
         "responses": {
           "400": {
-            "description": "Bad Request"
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "BAD_REQUEST"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           },
           "404": {
-            "description": "Not Found"
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "NOT_FOUND"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           }
         },
         "security": [
@@ -223,37 +288,71 @@
     "/categories": {
       "get": {
         "tags": [
-          "Categories"
+          "Categorias"
         ],
         "description": "Endpoint para buscar todas as categorias",
         "parameters": [
           {
             "name": "name",
             "in": "query",
-            "type": "string",
-            "description": "Nome da categoria",
-            "required": false
-          }
-        ],
-        "responses": {}
-      },
-      "post": {
-        "tags": [
-          "Categories"
-        ],
-        "description": "Endpoint para cadastrar uma categotia",
-        "parameters": [
-          {
-            "name": "name",
-            "in": "body",
-            "description": "Nome da categoria",
-            "required": true,
             "type": "string"
           }
         ],
         "responses": {
+          "404": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "NOT_FOUND"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            },
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Categorias"
+        ],
+        "description": "Endpoint para cadastrar uma categotia",
+        "parameters": [
+          {
+            "name": "Categories",
+            "in": "body",
+            "description": "Informar nome para cadastro da categoria",
+            "required": true,
+            "type": "string",
+            "schema": {
+              "$ref": "#definitions/CategoryStore"
+            }
+          }
+        ],
+        "responses": {
           "400": {
-            "description": "Bad Request"
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "BAD_REQUEST"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           }
         },
         "security": [
@@ -266,7 +365,7 @@
     "/categories/{id}": {
       "get": {
         "tags": [
-          "Categories"
+          "Categorias"
         ],
         "description": "Endpoint para buscar uma categotia",
         "parameters": [
@@ -275,7 +374,10 @@
             "in": "path",
             "required": true,
             "type": "integer",
-            "description": "ID da categoria"
+            "description": "ID da categoria",
+            "schema": {
+              "$ref": "#definitions/CategoryList"
+            }
           }
         ],
         "responses": {
@@ -283,13 +385,30 @@
             "description": "Bad Request"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "NOT_FOUND"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       },
       "put": {
         "tags": [
-          "Categories"
+          "Categorias"
         ],
         "description": "Endpoint para atualizar uma categotia",
         "parameters": [
@@ -310,10 +429,34 @@
         ],
         "responses": {
           "400": {
-            "description": "Bad Request"
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "BAD_REQUEST"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           },
           "404": {
-            "description": "Not Found"
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "NOT_FOUND"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           }
         },
         "security": [
@@ -324,7 +467,7 @@
       },
       "delete": {
         "tags": [
-          "Categories"
+          "Categorias"
         ],
         "description": "Endpoint para deletar uma categotia",
         "parameters": [
@@ -338,10 +481,34 @@
         ],
         "responses": {
           "400": {
-            "description": "Bad Request"
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "BAD_REQUEST"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           },
           "404": {
-            "description": "Not Found"
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "NOT_FOUND"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           }
         },
         "security": [
@@ -854,29 +1021,257 @@
           }
         }
       }
+    },
+    "/nearbyregion": {
+      "get": {
+        "tags": [
+          "Regiões próximas"
+        ],
+        "description": "Rota para listas todas as regiões próximas",
+        "parameters": [
+          {
+            "name": "region",
+            "in": "body",
+            "description": "ID da região",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "ID da região próxima",
+            "in": "body",
+            "description": "Região próxima",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {}
+      },
+      "post": {
+        "tags": [
+          "Regiões próximas"
+        ],
+        "description": "Rota para cadastrar uma região próxima",
+        "parameters": [
+          {
+            "name": "region",
+            "in": "body",
+            "description": "ID da região",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "ID da região próxima",
+            "in": "body",
+            "description": "Região próxima",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/nearbyregion/{id}": {
+      "get": {
+        "tags": [
+          "Regiões próximas"
+        ],
+        "description": "Rota para listar uma região próxima",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do região"
+          }
+        ],
+        "responses": {}
+      },
+      "put": {
+        "tags": [
+          "Regiões próximas"
+        ],
+        "description": "Rota para atualizar uma região próxima",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do região"
+          },
+          {
+            "name": "region",
+            "in": "body",
+            "description": "ID da região",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "ID da região próxima",
+            "in": "body",
+            "description": "Região próxima",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Regiões próximas"
+        ],
+        "description": "Rota para deletar uma região próxima",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do região"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/region": {
+      "get": {
+        "tags": [
+          "Regiões"
+        ],
+        "description": "Rota para buscar todas as regiões",
+        "parameters": [],
+        "responses": {}
+      },
+      "post": {
+        "tags": [
+          "Regiões"
+        ],
+        "description": "Rota para cadastrar uma nova Região",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "body",
+            "description": "Nome do cliente",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/region/{id}": {
+      "get": {
+        "tags": [
+          "Regiões"
+        ],
+        "description": "Rota para listar uma região",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID da região"
+          }
+        ],
+        "responses": {}
+      },
+      "put": {
+        "tags": [
+          "Regiões"
+        ],
+        "description": "Rota para atualizar os dados de uma Região",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID da região"
+          },
+          {
+            "name": "name",
+            "in": "body",
+            "description": "Nome da Região",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Regiões"
+        ],
+        "description": "Rota para deletar uma região",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID da Região"
+          }
+        ],
+        "responses": {}
+      }
     }
   },
   "definitions": {
-    "category": {
+    "CategoryList": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "ID"
+          },
+          "name": {
+            "type": "string",
+            "example": "Nome"
+          }
+        }
+      }
+    },
+    "CategoryStore": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string",
-          "example": "ID"
-        },
         "name": {
           "type": "string",
-          "example": "Nome"
+          "example": "Nome da categoria"
+        }
+      }
+    },
+    "CategoryUpdate": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Nome da categoria atualizado"
         }
       }
     },
     "product": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string",
-          "example": "ID"
-        },
         "name": {
           "type": "string",
           "example": "Nome"
@@ -960,6 +1355,36 @@
         "region_id": {
           "type": "string",
           "example": "ID da região"
+        }
+      }
+    },
+    "nearbyRegion": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 2
+        },
+        "nearby_region_id": {
+          "type": "number",
+          "example": 1
+        },
+        "region_id": {
+          "type": "number",
+          "example": 2
+        }
+      }
+    },
+    "region": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "ID"
+        },
+        "name": {
+          "type": "string",
+          "example": "Nome"
         }
       }
     }

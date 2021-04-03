@@ -1,6 +1,5 @@
-import axios from 'axios';
 import Order from '../models/Order';
-// import OrderProduct from '../models/OrderProduct';
+import OrderProduct from '../models/OrderProduct';
 
 class OrderController {
   async index(request, response) {
@@ -12,65 +11,92 @@ class OrderController {
       where.type = type;
     }
 
-    const order = await Order.findAndCountAll({ where });
+    try {
+      const order = await Order.findAndCountAll({ where });
 
-    return response.json(order);
+      return response.json(order);
+    } catch (error) {
+      return response.status(error.status || 400).json(error);
+    }
   }
 
   async show(request, response) {
     const { parsed } = request.params;
+    try {
+      const order = await Order.findOne({ where: { parsed } });
 
-    const order = await Order.findOne({ where: { parsed } });
-
-    return response.json(order);
+      return response.json(order);
+    } catch (error) {
+      return response.status(error.status || 400).json(error);
+    }
   }
 
   async store(request, response) {
-    const { typeId, customerId, product } = request.body;
+    try {
+      const { typeId, customerId, originOrderId, product } = request.body;
 
-    const order = await Order.create({
-      type_id: typeId,
-      customer_id: customerId,
-      date: new Date(),
-    });
+      if (typeId === 2 && !originOrderId) {
+        return response.json({
+          message:
+            'Quando o tipo de retorno for 2 deve ser informada a ordem de origem.',
+        });
+      }
 
-    const { id } = order;
+      const order = await Order.create({
+        type_id: typeId,
+        customer_id: customerId,
+        origin_order_id: originOrderId,
+        date: new Date(),
+      });
 
-    axios
-      .post(`http://localhost:3333/order-product`, {
-        data: {
-          id,
-          product,
-        },
-      })
-      .then((resProduct) => {
-        console.log(resProduct);
-      })
-      .catch((error) => console.log(error));
+      const { id } = order;
 
-    return response.status(201).json(order);
+      product.forEach(async (element) => {
+        const { productStockId, quantity, price, returnReasonId } = element;
+
+        await OrderProduct.create({
+          order_id: id,
+          quantity,
+          product_stock_id: productStockId,
+          return_reason_id: returnReasonId,
+          price,
+        });
+      });
+
+      return response.status(201).json(order);
+    } catch (error) {
+      return response.status(400).json({ error });
+    }
   }
 
   async update(request, response) {
     const { parsed } = request.params;
     const { date, type } = request.body;
 
-    const order = await Order.findByPk(parsed);
+    try {
+      const order = await Order.findByPk(parsed);
 
-    order.date = date;
-    order.type = type;
+      order.date = date;
+      order.type = type;
 
-    order.save();
+      order.save();
 
-    return response.json(order);
+      return response.json(order);
+    } catch (error) {
+      return response.status(error.status || 400).json(error);
+    }
   }
 
   async delete(request, response) {
     const { parsed } = request.params;
 
-    await Order.destroy({ where: { parsed } });
+    try {
+      await Order.destroy({ where: { parsed } });
 
-    return response.sendStatus(202);
+      return response.sendStatus(204);
+    } catch (error) {
+      return response.status(error.status || 400).json(error);
+    }
   }
 }
 

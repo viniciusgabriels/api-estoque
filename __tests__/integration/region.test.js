@@ -62,7 +62,6 @@ describe('region', () => {
       });
 
       const idRegion = createRegion.body.id;
-
       const region6 = await request(app).delete(`/region/${idRegion}`);
 
       expect(region6.status).toBe(204);

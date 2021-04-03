@@ -1,12 +1,18 @@
 require('dotenv').config();
 
 const host = process.env.API_URL;
-const category = require('../app/documentation/category');
+const {
+  Category,
+  CategoryStore,
+  CategoryUpdate,
+} = require('../app/documentation/category');
 const product = require('../app/documentation/product');
 const returnReason = require('../app/documentation/returnReason');
 const customer = require('../app/documentation/customer');
 const types = require('../app/documentation/types');
 const stock = require('../app/documentation/stock');
+const nearbyRegion = require('../app/documentation/nearbyRegion');
+const region = require ('../app/documentation/region');
 
 module.exports = {
   info: {
@@ -29,11 +35,15 @@ module.exports = {
     },
   },
   definitions: {
-    category,
+    CategoryList: [Category],
+    CategoryStore,
+    CategoryUpdate,
     product,
     returnReason,
     customer,
     types,
     stock,
+    nearbyRegion,
+    region,
   },
 };

@@ -2,7 +2,14 @@ import request from 'supertest';
 import app from '../../src/app';
 
 describe('order', () => {
-  describe('post', () => {
+  describe('get', () => {
+    it('should list all orders', async () => {
+      expect.assertions(1);
+
+      const order = await request(app).get('/orders');
+
+      expect(order.status).toBe(200);
+    });
     it('should create a new order', async () => {
       expect.assertions(2);
 
@@ -49,8 +56,8 @@ describe('order', () => {
           typeId: type.id,
           product: [
             {
-              product_stock_id: 1,
-              return_reason_id: type.id === 2 ? 'reason' : null,
+              productStockId: 1,
+              returnReasonId: type.id === 2 ? 'reason' : null,
               quantity: 2,
               price: 3.0,
             },
