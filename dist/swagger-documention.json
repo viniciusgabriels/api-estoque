@@ -8,9 +8,7 @@
   "host": "localhost:3333",
   "basePath": "/",
   "tags": [],
-  "schemes": [
-    "http"
-  ],
+  "schemes": ["http"],
   "securityDefinitions": {
     "Bearer": {
       "description": "JWT Token",
@@ -19,18 +17,12 @@
       "name": "Authorization"
     }
   },
-  "consumes": [
-    "application/json"
-  ],
-  "produces": [
-    "application/json"
-  ],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
   "paths": {
     "/products": {
       "get": {
-        "tags": [
-          "Produtos"
-        ],
+        "tags": ["Produtos"],
         "description": "Endpoint para buscar todos os produtos",
         "parameters": [
           {
@@ -82,9 +74,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Produtos"
-        ],
+        "tags": ["Produtos"],
         "description": "Endpoint para cadastrar um novo produto",
         "parameters": [
           {
@@ -124,9 +114,7 @@
     },
     "/products/{id}": {
       "get": {
-        "tags": [
-          "Produtos"
-        ],
+        "tags": ["Produtos"],
         "description": "Endpoint para listar um produto",
         "parameters": [
           {
@@ -171,9 +159,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Produtos"
-        ],
+        "tags": ["Produtos"],
         "description": "Endpoint para atualizar um produto",
         "parameters": [
           {
@@ -233,9 +219,7 @@
         ]
       },
       "delete": {
-        "tags": [
-          "Produtos"
-        ],
+        "tags": ["Produtos"],
         "description": "Endpoint para deletar um produto",
         "parameters": [
           {
@@ -287,9 +271,7 @@
     },
     "/categories": {
       "get": {
-        "tags": [
-          "Categorias"
-        ],
+        "tags": ["Categorias"],
         "description": "Endpoint para buscar todas as categorias",
         "parameters": [
           {
@@ -322,9 +304,7 @@
         ]
       },
       "post": {
-        "tags": [
-          "Categorias"
-        ],
+        "tags": ["Categorias"],
         "description": "Endpoint para cadastrar uma categotia",
         "parameters": [
           {
@@ -364,9 +344,7 @@
     },
     "/categories/{id}": {
       "get": {
-        "tags": [
-          "Categorias"
-        ],
+        "tags": ["Categorias"],
         "description": "Endpoint para buscar uma categotia",
         "parameters": [
           {
@@ -407,9 +385,7 @@
         ]
       },
       "put": {
-        "tags": [
-          "Categorias"
-        ],
+        "tags": ["Categorias"],
         "description": "Endpoint para atualizar uma categotia",
         "parameters": [
           {
@@ -466,9 +442,7 @@
         ]
       },
       "delete": {
-        "tags": [
-          "Categorias"
-        ],
+        "tags": ["Categorias"],
         "description": "Endpoint para deletar uma categotia",
         "parameters": [
           {
@@ -520,9 +494,7 @@
     },
     "/return-reason": {
       "get": {
-        "tags": [
-          "Motivo da devolução"
-        ],
+        "tags": ["Motivo da devolução"],
         "description": "Endpoint para buscar todas as categorias",
         "parameters": [
           {
@@ -536,9 +508,7 @@
         "responses": {}
       },
       "post": {
-        "tags": [
-          "Motivo da devolução"
-        ],
+        "tags": ["Motivo da devolução"],
         "description": "Endpoint para cadastrar uma motivo de devolução",
         "parameters": [
           {
@@ -558,9 +528,7 @@
     },
     "/return-reason/{id}": {
       "get": {
-        "tags": [
-          "Motivo da devolução"
-        ],
+        "tags": ["Motivo da devolução"],
         "description": "Endpoint para buscar um motivo de devolução",
         "parameters": [
           {
@@ -581,9 +549,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Motivo da devolução"
-        ],
+        "tags": ["Motivo da devolução"],
         "description": "Endpoint para atualizar uma categotia",
         "parameters": [
           {
@@ -611,9 +577,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Motivo da devolução"
-        ],
+        "tags": ["Motivo da devolução"],
         "description": "Endpoint para deletar um motivo de devolução",
         "parameters": [
           {
@@ -636,9 +600,7 @@
     },
     "/customers": {
       "get": {
-        "tags": [
-          "Clientes"
-        ],
+        "tags": ["Clientes"],
         "description": "Rota para buscar todos os clientes",
         "parameters": [
           {
@@ -659,9 +621,7 @@
         "responses": {}
       },
       "post": {
-        "tags": [
-          "Clientes"
-        ],
+        "tags": ["Clientes"],
         "description": "Rota para cadastrar um novo cliente",
         "parameters": [
           {
@@ -698,9 +658,7 @@
     },
     "/customers/{id}": {
       "get": {
-        "tags": [
-          "Clientes"
-        ],
+        "tags": ["Clientes"],
         "description": "Rota para procurar e listar um cliente pelo ID",
         "parameters": [
           {
@@ -718,9 +676,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Clientes"
-        ],
+        "tags": ["Clientes"],
         "description": "Rota para atualizar os dados de um cliente",
         "parameters": [
           {
@@ -762,9 +718,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Clientes"
-        ],
+        "tags": ["Clientes"],
         "description": "Rota para deletar um cliente",
         "parameters": [
           {
@@ -784,9 +738,7 @@
     },
     "/types": {
       "get": {
-        "tags": [
-          "Tipos de ordem"
-        ],
+        "tags": ["Tipos de ordem"],
         "description": "Rota para buscar todos os tipos de ordem",
         "parameters": [
           {
@@ -800,9 +752,7 @@
         "responses": {}
       },
       "post": {
-        "tags": [
-          "Tipos de ordem"
-        ],
+        "tags": ["Tipos de ordem"],
         "description": "Rota para cadatrar um novo tipo de ordem",
         "parameters": [
           {
@@ -825,9 +775,7 @@
     },
     "/types/{id}": {
       "get": {
-        "tags": [
-          "Tipos de ordem"
-        ],
+        "tags": ["Tipos de ordem"],
         "description": "Rota para buscar apenas um tipos de ordem",
         "parameters": [
           {
@@ -845,9 +793,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Tipos de ordem"
-        ],
+        "tags": ["Tipos de ordem"],
         "description": "Rota para atualizar um tipo de ordem",
         "parameters": [
           {
@@ -875,9 +821,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Tipos de ordem"
-        ],
+        "tags": ["Tipos de ordem"],
         "description": "Rota para deletar um tipo de ordem",
         "parameters": [
           {
@@ -897,9 +841,7 @@
     },
     "/stock": {
       "get": {
-        "tags": [
-          "Estoques"
-        ],
+        "tags": ["Estoques"],
         "description": "Rota para buscar todos os estoques",
         "parameters": [
           {
@@ -913,9 +855,7 @@
         "responses": {}
       },
       "post": {
-        "tags": [
-          "Estoques"
-        ],
+        "tags": ["Estoques"],
         "description": "Rota para cadastrar um novo estoque",
         "parameters": [
           {
@@ -945,9 +885,7 @@
     },
     "/stock/{id}": {
       "get": {
-        "tags": [
-          "Estoques"
-        ],
+        "tags": ["Estoques"],
         "description": "Rota para buscar apenas um estoque",
         "parameters": [
           {
@@ -965,9 +903,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Estoques"
-        ],
+        "tags": ["Estoques"],
         "description": "Rota para atualizar um estoque",
         "parameters": [
           {
@@ -1002,9 +938,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Estoques"
-        ],
+        "tags": ["Estoques"],
         "description": "Rota para deletar um estoque",
         "parameters": [
           {
@@ -1024,9 +958,7 @@
     },
     "/nearbyregion": {
       "get": {
-        "tags": [
-          "Regiões próximas"
-        ],
+        "tags": ["Regiões próximas"],
         "description": "Rota para listas todas as regiões próximas",
         "parameters": [
           {
@@ -1047,9 +979,7 @@
         "responses": {}
       },
       "post": {
-        "tags": [
-          "Regiões próximas"
-        ],
+        "tags": ["Regiões próximas"],
         "description": "Rota para cadastrar uma região próxima",
         "parameters": [
           {
@@ -1076,9 +1006,7 @@
     },
     "/nearbyregion/{id}": {
       "get": {
-        "tags": [
-          "Regiões próximas"
-        ],
+        "tags": ["Regiões próximas"],
         "description": "Rota para listar uma região próxima",
         "parameters": [
           {
@@ -1092,9 +1020,7 @@
         "responses": {}
       },
       "put": {
-        "tags": [
-          "Regiões próximas"
-        ],
+        "tags": ["Regiões próximas"],
         "description": "Rota para atualizar uma região próxima",
         "parameters": [
           {
@@ -1126,9 +1052,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Regiões próximas"
-        ],
+        "tags": ["Regiões próximas"],
         "description": "Rota para deletar uma região próxima",
         "parameters": [
           {

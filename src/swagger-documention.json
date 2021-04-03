@@ -5,7 +5,7 @@
     "title": "Documentação da API de controle de estoque",
     "description": "API para controle de estoque desenvolvida em JavaScript"
   },
-  "host": "localhost:3333",
+  "host": "https://api-marvem.herokuapp.com",
   "basePath": "/",
   "tags": [],
   "schemes": [
@@ -317,7 +317,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ]
       },
@@ -402,7 +402,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ]
       },
@@ -1165,11 +1165,7 @@
             "type": "string"
           }
         ],
-        "responses": {
-          "400": {
-            "description": "Bad Request"
-          }
-        }
+        "responses": {}
       }
     },
     "/region/{id}": {
@@ -1210,11 +1206,7 @@
             "type": "string"
           }
         ],
-        "responses": {
-          "400": {
-            "description": "Bad Request"
-          }
-        }
+        "responses": {}
       },
       "delete": {
         "tags": [
@@ -1228,6 +1220,214 @@
             "required": true,
             "type": "integer",
             "description": "ID da Região"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/orders": {
+      "get": {
+        "tags": [
+          "Ordem"
+        ],
+        "description": "Rota para buscar todas as ordens",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Ordem"
+        ],
+        "description": "Rota para registrar uma ordem",
+        "parameters": [
+          {
+            "name": "Ordem",
+            "in": "body",
+            "description": "Registrar uma ordem",
+            "required": true,
+            "type": "string",
+            "schema": {
+              "$ref": "#definitions/order"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/orders/{id}": {
+      "get": {
+        "tags": [
+          "Ordem"
+        ],
+        "description": "Rota para buscar uma ordem",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "Buscar uma ordem"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Ordem"
+        ],
+        "description": "Rota para registrar uma ordem",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Ordem",
+            "in": "body",
+            "description": "Registrar uma ordem",
+            "required": true,
+            "schema": {
+              "$ref": "#definitions/order"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Ordem"
+        ],
+        "description": "Rota para deletar uma ordem",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "Deletar uma ordem"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/order-product": {
+      "get": {
+        "tags": [
+          "Produto-Ordem"
+        ],
+        "description": "Rota para buscar todos os produtos de todas as ordens",
+        "parameters": [
+          {
+            "name": "order_id",
+            "in": "body",
+            "description": "Id da ordem",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "product_stock_id",
+            "in": "body",
+            "description": "Id do produto-stock",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "return_reason_id",
+            "in": "body",
+            "description": "Id do motivo de retorno do produto",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "quantity",
+            "in": "body",
+            "description": "Quantidade",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "price",
+            "in": "body",
+            "description": "Preço do produto",
+            "required": true,
+            "type": "float"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/order-product/{orderId}/{id}": {
+      "get": {
+        "tags": [
+          "Produto-Ordem"
+        ],
+        "description": "Rota para procurar e listar um produto de uma ordem pelo ir da ordem e id do produto em estoque",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID da ordem de venda ou devolução"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do produto em estoque"
           }
         ],
         "responses": {}
@@ -1385,6 +1585,47 @@
         "name": {
           "type": "string",
           "example": "Nome"
+        }
+      }
+    },
+    "order": {
+      "type": "object",
+      "properties": {
+        "customerId": {
+          "type": "number",
+          "example": 1
+        },
+        "typeId": {
+          "type": "number",
+          "example": 2
+        },
+        "originOrderId": {
+          "type": "string",
+          "example": "Informe o id da Ordem"
+        },
+        "product": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "productStockId": {
+                "type": "number",
+                "example": 1
+              },
+              "quantity": {
+                "type": "number",
+                "example": 10
+              },
+              "price": {
+                "type": "number",
+                "example": 10.5
+              },
+              "returnReasonId": {
+                "type": "number",
+                "example": 3
+              }
+            }
+          }
         }
       }
     }
