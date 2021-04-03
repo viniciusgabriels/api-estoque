@@ -1,7 +1,6 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _Region = require('../models/Region'); var _Region2 = _interopRequireDefault(_Region);
 var _NearbyRegion = require('../models/NearbyRegion'); var _NearbyRegion2 = _interopRequireDefault(_NearbyRegion);
 
-
 class RegionController {
   async index(request, response) {
     const regions = await _Region2.default.findAll();
@@ -16,7 +15,7 @@ class RegionController {
       await _Region2.default.findByPk(id, {
         attributes: ['id', 'name'],
       })
-    ); 
+    );
   }
 
   async store(request, response) {
@@ -29,9 +28,10 @@ class RegionController {
     const { id } = request.params;
     const { name } = request.body;
 
-    const region = await _Region2.default.update({
-      name
-    },
+    const region = await _Region2.default.update(
+      {
+        name,
+      },
       {
         where: {
           id,

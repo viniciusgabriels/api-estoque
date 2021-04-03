@@ -4,8 +4,10 @@ var _nearby = require('../middlewares/nearby');
 
 const routes = new (0, _express.Router)();
 
-routes.get('/nearbyregion', _NearbyRegionController2.default.index
-/*
+routes.get(
+  '/nearbyregion',
+  _NearbyRegionController2.default.index
+  /*
   #swagger.tags = ['Regiões próximas']
   #swagger.description = 'Rota para listas todas as regiões próximas'
 
@@ -28,7 +30,9 @@ routes.get('/nearbyregion', _NearbyRegionController2.default.index
     }
   */
 );
-routes.get('/nearbyregion/:id', _NearbyRegionController2.default.show
+routes.get(
+  '/nearbyregion/:id',
+  _NearbyRegionController2.default.show
   /*
   #swagger.tags = ['Regiões próximas']
   #swagger.description = 'Rota para listar uma região próxima'
@@ -46,7 +50,10 @@ routes.get('/nearbyregion/:id', _NearbyRegionController2.default.show
     }
   */
 );
-routes.post('/nearbyregion', [_nearby.validateNumber, _nearby.notSameNumber], _NearbyRegionController2.default.store
+routes.post(
+  '/nearbyregion',
+  [_nearby.validateNumber, _nearby.notSameNumber],
+  _NearbyRegionController2.default.store
   /*
   #swagger.tags = ['Regiões próximas']
   #swagger.description = 'Rota para cadastrar uma região próxima'
@@ -70,7 +77,10 @@ routes.post('/nearbyregion', [_nearby.validateNumber, _nearby.notSameNumber], _N
     }
   */
 );
-routes.put('/nearbyregion/:id', [_nearby.validateNumber, _nearby.notSameNumber], _NearbyRegionController2.default.update
+routes.put(
+  '/nearbyregion/:id',
+  [_nearby.validateNumber, _nearby.notSameNumber],
+  _NearbyRegionController2.default.update
   /*
   #swagger.tags = ['Regiões próximas']
   #swagger.description = 'Rota para atualizar uma região próxima'
@@ -100,7 +110,9 @@ routes.put('/nearbyregion/:id', [_nearby.validateNumber, _nearby.notSameNumber],
     }
   */
 );
-routes.delete('/nearbyregion/:id', _NearbyRegionController2.default.delete
+routes.delete(
+  '/nearbyregion/:id',
+  _NearbyRegionController2.default.delete
   /*
   #swagger.tags = ['Regiões próximas']
   #swagger.description = 'Rota para deletar uma região próxima'

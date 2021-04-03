@@ -5,7 +5,7 @@
     "title": "Documentação da API de controle de estoque",
     "description": "API para controle de estoque desenvolvida em JavaScript"
   },
-  "host": "api-marvem.herokuapp.com",
+  "host": "https://api-marvem.herokuapp.com",
   "basePath": "/",
   "tags": [],
   "schemes": [
@@ -1207,8 +1207,6 @@
           }
         ],
         "responses": {}
-<<<<<<< HEAD
-=======
       },
       "delete": {
         "tags": [
@@ -1337,7 +1335,6 @@
             "Bearer": []
           }
         ]
->>>>>>> 5f3b11fee1e56e995364200a4b5a5c6b5b7f02ab
       },
       "delete": {
         "tags": [
