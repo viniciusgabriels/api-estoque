@@ -1203,7 +1203,10 @@
             "in": "body",
             "description": "Nome da Região",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "schema": {
+              "$ref": "#/definitions/region"
+            }
           }
         ],
         "responses": {}
@@ -1380,7 +1383,7 @@
     "/order-product/{orderId}/{id}": {
       "get": {
         "tags": [
-          "Ordem"
+          "Produto-Ordem"
         ],
         "description": "Rota para procurar e listar um produto de uma ordem pelo ID da ordem e ID do produto em estoque",
         "parameters": [
@@ -1418,14 +1421,14 @@
             "name": "name",
             "in": "body",
             "description": "Id do produto",
-            "required": true,
+            "required": false,
             "type": "integer"
           },
           {
             "name": "local",
             "in": "body",
             "description": "Id do Estoque",
-            "required": true,
+            "required": false,
             "type": "integer"
           }
         ],

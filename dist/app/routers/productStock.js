@@ -13,13 +13,13 @@ routes.get(
     #swagger.parameters['name'] = {
       in: 'body',
       description: 'Id do produto',
-      required: true,
+      required: false,
       type: 'integer'
     }
     #swagger.parameters['local'] = {
       in: 'body',
       description: 'Id do Estoque',
-      required: true,
+      required: false,
       type: 'integer'
     }
 

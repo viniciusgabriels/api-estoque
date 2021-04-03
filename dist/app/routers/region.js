@@ -29,7 +29,7 @@ routes.get(
       in: 'path',
       description: 'ID da região',
       required: true,
-      type: 'integer'
+      type: 'integer',
     }
 
     #swagger.response[200] = {
@@ -50,7 +50,7 @@ routes.post(
       in: 'body',
       description: 'Nome do cliente',
       required: true,
-      type: 'string'
+      type: 'string',
     }
     #swagger.response[200] = {
       description: 'Região cadastrada',
@@ -76,8 +76,12 @@ routes.put(
       in: 'body',
       description: 'Nome da Região',
       required: true,
-      type: 'string'
+      type: 'string',
+            schema: {
+      $ref: "#/definitions/region"
     }
+    }
+
 
     #swagger.response[200] = {
       description: 'Região atualizada com sucesso',
