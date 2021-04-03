@@ -2,7 +2,7 @@
 
 class NearbyRegionController {
   async index(request, response) {
-    const regions = await _NearbyRegion2.default.findAll()
+    const regions = await _NearbyRegion2.default.findAll();
 
     return response.json(regions);
   }
@@ -20,10 +20,12 @@ class NearbyRegionController {
   async store(request, response) {
     const { region, nearbyRegion } = request.body;
 
-    return response.json(await _NearbyRegion2.default.create({ 
-      region_id: region,
-      nearby_region_id: nearbyRegion,
-     }));
+    return response.json(
+      await _NearbyRegion2.default.create({
+        region_id: region,
+        nearby_region_id: nearbyRegion,
+      })
+    );
   }
 
   async update(request, response) {

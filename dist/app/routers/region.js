@@ -1,12 +1,12 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _express = require('express');
 var _RegionController = require('../controllers/RegionController'); var _RegionController2 = _interopRequireDefault(_RegionController);
 
-var _region = require('../middlewares/region');
+var _region = require('../middlewares/region'); var _region2 = _interopRequireDefault(_region);
 
 const routes = new (0, _express.Router)();
 
 routes.get(
-  '/region', 
+  '/region',
   _RegionController2.default.index
   /*
   #swagger.tags = ['Regiões']
@@ -17,11 +17,11 @@ routes.get(
       schema: { $ref: "#/definitions/customer" }
     }
   */
-  );
+);
 routes.get(
-  '/region/:id', 
+  '/region/:id',
   _RegionController2.default.show
-    /*
+  /*
   #swagger.tags = ['Regiões']
   #swagger.description = 'Rota para listar uma região'
 
@@ -37,12 +37,12 @@ routes.get(
       schema: { $ref: "#/definitions/region" }
     }
   */
-  );
+);
 routes.post(
   '/region',
-  _region.validateData, 
+  _region2.default,
   _RegionController2.default.store
-    /*
+  /*
   #swagger.tags = ['Regiões']
   #swagger.description = 'Rota para cadastrar uma nova Região'
 
@@ -57,12 +57,12 @@ routes.post(
       schema: { $ref: "#/definitions/region" }
     }
   */
-  );
+);
 routes.put(
-  '/region/:id', 
-  _region.validateData, 
+  '/region/:id',
+  _region2.default,
   _RegionController2.default.update
-    /*
+  /*
   #swagger.tags = ['Regiões']
   #swagger.description = 'Rota para atualizar os dados de uma Região'
 
@@ -84,11 +84,11 @@ routes.put(
       schema: { $ref: "#/definitions/region" }
     }
   */
-  );
+);
 routes.delete(
-  '/region/:id', 
+  '/region/:id',
   _RegionController2.default.delete
-   /*
+  /*
   #swagger.tags = ['Regiões']
   #swagger.description = 'Rota para deletar uma região'
 
@@ -103,7 +103,7 @@ routes.delete(
       description: 'Região deletada com sucesso',
       schema: { $ref: "#/definitions/region" }
     }
-  */ 
-  );
+  */
+);
 
 exports. default = routes;
