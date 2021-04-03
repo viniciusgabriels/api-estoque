@@ -23,7 +23,7 @@ module.exports = {
   },
   host,
   basePath: '/',
-  schemes: ['http'],
+  schemes: ['https'],
   consumes: ['application/json'],
   produces: ['application/json'],
   defaultModelsExpandDepth: -1,
