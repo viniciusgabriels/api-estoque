@@ -14,7 +14,10 @@ const stock = require('../app/documentation/stock');
 const nearbyRegion = require('../app/documentation/nearbyRegion');
 const region = require('../app/documentation/region');
 const order = require('../app/documentation/order');
+<<<<<<< HEAD
 const productStock = require('../app/documentation/productStock');
+=======
+>>>>>>> 104417f600f24511be13e1f6293a5e1d440ad17f
 
 module.exports = {
   info: {
@@ -48,6 +51,9 @@ module.exports = {
     nearbyRegion,
     region,
     order,
+<<<<<<< HEAD
     productStock,
+=======
+>>>>>>> 104417f600f24511be13e1f6293a5e1d440ad17f
   },
 };

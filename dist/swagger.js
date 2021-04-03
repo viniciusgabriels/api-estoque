@@ -13,7 +13,10 @@ const endpoints = [
   './src/app/routers/region.js',
   './src/app/routers/order.js',
   './src/app/routers/orderProduct.js',
+<<<<<<< HEAD
   './src/app/routers/productStock.js',
+=======
+>>>>>>> 104417f600f24511be13e1f6293a5e1d440ad17f
 ];
 
 swaggerAutogen(outputFile, endpoints, swaggerConfig);

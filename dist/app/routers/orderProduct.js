@@ -8,6 +8,7 @@ routes.get(
   _OrderProductController2.default.index
   /*
   #swagger.tags = ['Produto-Ordem']
+<<<<<<< HEAD
   #swagger.description = 'Rota para buscar todos os produtos de todas as ordens'
 
     #swagger.parameters['order_id'] = {
@@ -45,6 +46,11 @@ routes.get(
       description: 'Produtos das ordens listadas',
       schema: { $ref: "#/definitions/order-product" }
     }
+=======
+  #swagger.description = 'Rota para buscar todos os produtos das ordens'
+  #swagger.security = [{Bearer: []}]
+  }
+>>>>>>> 104417f600f24511be13e1f6293a5e1d440ad17f
   */
 );
 
@@ -52,9 +58,15 @@ routes.get(
   '/order-product/:orderId/:id',
   _OrderProductController2.default.show
   /*
+<<<<<<< HEAD
   #swagger.tags = ['Produto-Ordem']
   #swagger.description = 'Rota para procurar e listar um produto de uma ordem pelo ir da ordem e id do produto em estoque'
 
+=======
+  #swagger.tags = ['Ordem']
+  #swagger.description = 'Rota para procurar e listar um produto de uma ordem pelo ID da ordem e ID do produto em estoque'
+  #swagger.security = [{Bearer: []}]
+>>>>>>> 104417f600f24511be13e1f6293a5e1d440ad17f
     #swagger.parameters['orderId'] = {
       in: 'path',
       description: 'ID da ordem de venda ou devolução',
