@@ -4,7 +4,7 @@ class StockController {
   async index(request, response) {
     try {
       const data = await Stock.findAll({
-        attributes: ['id', 'local'],
+        attributes: ['id', 'local', 'region_id'],
         order: [['id', 'DESC']],
       });
 

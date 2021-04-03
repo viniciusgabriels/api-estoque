@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import OrderController from '../controllers/OrderController';
 import { validateId } from '../middlewares/order';
+import { checkStorage, checkRegionCustomer, checkNearbyRegions } from '../middlewares/productStock';
 
 const routes = new Router();
 
@@ -32,7 +33,11 @@ routes.get(
 );
 routes.post(
   '/orders',
+  checkRegionCustomer,
+  checkNearbyRegions,
+  checkStorage,
   OrderController.store
+
   /*
   #swagger.tags = ['Ordem']
   #swagger.description = 'Rota para registrar uma ordem'

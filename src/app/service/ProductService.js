@@ -12,6 +12,9 @@ class ProductService {
     const product = productStock.dataValues.product_id;
     const stock = productStock.dataValues.stock_id;
 
+    if (stockQuantity <= 0) {
+      this.checkRegionStorage(stock);
+    }
     await ProductStock.update(
       {
         quantity: stockQuantity,
@@ -22,6 +25,10 @@ class ProductService {
         where: { id },
       }
     );
+  }
+
+  async checkRegionStorage(stock) {
+    console.log('sem stock', stock)
   }
 }
 

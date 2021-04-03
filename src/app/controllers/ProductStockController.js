@@ -10,7 +10,7 @@ class ProductStockController {
         {
           model: Product,
           as: 'product',
-          attributes: ['name'],
+          attributes: ['name', 'id'],
         },
         {
           model: Stock,

@@ -6,7 +6,7 @@ class CustomerController {
   async index(req, res) {
     try {
       const data = await Customer.findAll({
-        attributes: ['id', 'name', 'phone'],
+        attributes: ['id', 'name', 'phone', 'region_id'],
         order: [['id', 'DESC']],
         include: {
           model: Region,
