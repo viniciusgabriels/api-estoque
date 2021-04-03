@@ -12,6 +12,7 @@ const customer = require('../app/documentation/customer');
 const types = require('../app/documentation/types');
 const stock = require('../app/documentation/stock');
 const nearbyRegion = require('../app/documentation/nearbyRegion');
+const region = require ('../app/documentation/region');
 
 module.exports = {
   info: {
@@ -43,5 +44,6 @@ module.exports = {
     types,
     stock,
     nearbyRegion,
+    region,
   },
 };
