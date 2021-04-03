@@ -1141,6 +1141,97 @@
         ],
         "responses": {}
       }
+    },
+    "/region": {
+      "get": {
+        "tags": [
+          "Regiões"
+        ],
+        "description": "Rota para buscar todas as regiões",
+        "parameters": [],
+        "responses": {}
+      },
+      "post": {
+        "tags": [
+          "Regiões"
+        ],
+        "description": "Rota para cadastrar uma nova Região",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "body",
+            "description": "Nome do cliente",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/region/{id}": {
+      "get": {
+        "tags": [
+          "Regiões"
+        ],
+        "description": "Rota para listar uma região",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID da região"
+          }
+        ],
+        "responses": {}
+      },
+      "put": {
+        "tags": [
+          "Regiões"
+        ],
+        "description": "Rota para atualizar os dados de uma Região",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID da região"
+          },
+          {
+            "name": "name",
+            "in": "body",
+            "description": "Nome da Região",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Regiões"
+        ],
+        "description": "Rota para deletar uma região",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID da Região"
+          }
+        ],
+        "responses": {}
+      }
     }
   },
   "definitions": {
@@ -1281,6 +1372,19 @@
         "region_id": {
           "type": "number",
           "example": 2
+        }
+      }
+    },
+    "region": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "ID"
+        },
+        "name": {
+          "type": "string",
+          "example": "Nome"
         }
       }
     }

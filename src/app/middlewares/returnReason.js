@@ -10,13 +10,13 @@ function validateData(request, response, next) {
     });
   }
 
-  next();
+  return next();
 }
 
 function validateId(request, response, next) {
   const { id } = request.params;
 
-  const parsed = Number.parseInt(id);
+  const parsed = Number.parseInt(id, 10);
 
   if (Number.isNaN(parsed) || parsed < 1) {
     return response.status(400).json({
@@ -26,7 +26,7 @@ function validateId(request, response, next) {
 
   request.returnReasonId = parsed;
 
-  next();
+  return next();
 }
 
 async function validateReturnReasonExist(request, response, next) {
@@ -40,7 +40,7 @@ async function validateReturnReasonExist(request, response, next) {
 
   request.returnReason = returnReason;
 
-  next();
+  return next();
 }
 
 async function returnReasonExistInOrderProduct(request, response, next) {
@@ -54,7 +54,7 @@ async function returnReasonExistInOrderProduct(request, response, next) {
     });
   }
 
-  next();
+  return next();
 }
 
 export {

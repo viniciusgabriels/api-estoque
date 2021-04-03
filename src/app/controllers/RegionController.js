@@ -1,6 +1,5 @@
 import Region from '../models/Region';
 import NearbyRegion from '../models/NearbyRegion';
-import Region from '../models/Region';
 
 class RegionController {
   async index(request, response) {
@@ -16,7 +15,7 @@ class RegionController {
       await Region.findByPk(id, {
         attributes: ['id', 'name'],
       })
-    ); 
+    );
   }
 
   async store(request, response) {
@@ -29,9 +28,10 @@ class RegionController {
     const { id } = request.params;
     const { name } = request.body;
 
-    const region = await Region.update({
-      name
-    },
+    const region = await Region.update(
+      {
+        name,
+      },
       {
         where: {
           id,

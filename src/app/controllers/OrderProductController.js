@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import OrderProduct from '../models/OrderProduct';
-import Order from '../models/Order';
-import ProductStock from '../models/ProductStock';
+// import Order from '../models/Order';
+// import ProductStock from '../models/ProductStock';
 
 
 class OrderProductController {

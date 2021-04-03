@@ -6,9 +6,9 @@ describe('region', () => {
     it('should return one region', async () => {
       expect.assertions(1);
 
-      const createRegion = await request(app).post('/region').send({
-        name: 'Sul',
-      });
+      // const createRegion = await request(app).post('/region').send({
+      //   name: 'Sul',
+      // });
 
       const region1 = await request(app).get('/region/1').send();
 

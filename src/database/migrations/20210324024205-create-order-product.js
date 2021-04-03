@@ -12,7 +12,7 @@ module.exports = {
         allowNull: false,
       },
       price: {
-        type: Sequelize.DataTypes.FLOAT,
+        type: Sequelize.DataTypes.DECIMAL,
         allowNull: false,
       },
       order_id: {

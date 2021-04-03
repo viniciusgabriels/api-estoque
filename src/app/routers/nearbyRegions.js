@@ -4,8 +4,10 @@ import { validateNumber, notSameNumber } from '../middlewares/nearby';
 
 const routes = new Router();
 
-routes.get('/nearbyregion', NearbyRegionController.index
-/*
+routes.get(
+  '/nearbyregion',
+  NearbyRegionController.index
+  /*
   #swagger.tags = ['Regiões próximas']
   #swagger.description = 'Rota para listas todas as regiões próximas'
 
@@ -28,7 +30,9 @@ routes.get('/nearbyregion', NearbyRegionController.index
     }
   */
 );
-routes.get('/nearbyregion/:id', NearbyRegionController.show
+routes.get(
+  '/nearbyregion/:id',
+  NearbyRegionController.show
   /*
   #swagger.tags = ['Regiões próximas']
   #swagger.description = 'Rota para listar uma região próxima'
@@ -46,7 +50,10 @@ routes.get('/nearbyregion/:id', NearbyRegionController.show
     }
   */
 );
-routes.post('/nearbyregion', [validateNumber, notSameNumber], NearbyRegionController.store
+routes.post(
+  '/nearbyregion',
+  [validateNumber, notSameNumber],
+  NearbyRegionController.store
   /*
   #swagger.tags = ['Regiões próximas']
   #swagger.description = 'Rota para cadastrar uma região próxima'
@@ -70,7 +77,10 @@ routes.post('/nearbyregion', [validateNumber, notSameNumber], NearbyRegionContro
     }
   */
 );
-routes.put('/nearbyregion/:id', [validateNumber, notSameNumber], NearbyRegionController.update
+routes.put(
+  '/nearbyregion/:id',
+  [validateNumber, notSameNumber],
+  NearbyRegionController.update
   /*
   #swagger.tags = ['Regiões próximas']
   #swagger.description = 'Rota para atualizar uma região próxima'
@@ -100,7 +110,9 @@ routes.put('/nearbyregion/:id', [validateNumber, notSameNumber], NearbyRegionCon
     }
   */
 );
-routes.delete('/nearbyregion/:id', NearbyRegionController.delete
+routes.delete(
+  '/nearbyregion/:id',
+  NearbyRegionController.delete
   /*
   #swagger.tags = ['Regiões próximas']
   #swagger.description = 'Rota para deletar uma região próxima'
