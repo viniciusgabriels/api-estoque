@@ -2,7 +2,7 @@
 var _ProductStock = require('../models/ProductStock'); var _ProductStock2 = _interopRequireDefault(_ProductStock);
 
 function validateData(request, response, next) {
-  const { name, description, price, status, categoryId } = request.body;
+  const { name, price, status, categoryId } = request.body;
 
   if (!name || name.length < 3 || !price || !status || !categoryId) {
     return response.status(400).json({
@@ -10,13 +10,13 @@ function validateData(request, response, next) {
     });
   }
 
-  next();
+  return next();
 }
 
 function validateId(request, response, next) {
   const { id } = request.params;
 
-  const parsed = Number.parseInt(id);
+  const parsed = Number.parseInt(id, 10);
 
   if (Number.isNaN(parsed)) {
     return response.status(400).json({
@@ -26,7 +26,7 @@ function validateId(request, response, next) {
 
   request.productId = parsed;
 
-  next();
+  return next();
 }
 
 async function validateProductExist(request, response, next) {
@@ -40,7 +40,7 @@ async function validateProductExist(request, response, next) {
 
   request.product = product;
 
-  next();
+  return next();
 }
 
 async function productExistInProductStock(request, response, next) {
@@ -54,7 +54,7 @@ async function productExistInProductStock(request, response, next) {
     });
   }
 
-  next();
+  return next();
 }
 
 

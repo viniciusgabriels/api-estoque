@@ -1,5 +1,6 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _Order = require('../models/Order'); var _Order2 = _interopRequireDefault(_Order);
 var _OrderProduct = require('../models/OrderProduct'); var _OrderProduct2 = _interopRequireDefault(_OrderProduct);
+var _ProductService = require('../service/ProductService'); var _ProductService2 = _interopRequireDefault(_ProductService);
 
 class OrderController {
   async index(request, response) {
@@ -53,7 +54,7 @@ class OrderController {
 
       product.forEach(async (element) => {
         const { productStockId, quantity, price, returnReasonId } = element;
-
+        await _ProductService2.default.discoutStock(productStockId, quantity);
         await _OrderProduct2.default.create({
           order_id: id,
           quantity,

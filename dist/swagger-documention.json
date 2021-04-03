@@ -8,7 +8,9 @@
   "host": "localhost:3333",
   "basePath": "/",
   "tags": [],
-  "schemes": ["http"],
+  "schemes": [
+    "https"
+  ],
   "securityDefinitions": {
     "Bearer": {
       "description": "JWT Token",
@@ -17,12 +19,18 @@
       "name": "Authorization"
     }
   },
-  "consumes": ["application/json"],
-  "produces": ["application/json"],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
   "paths": {
     "/products": {
       "get": {
-        "tags": ["Produtos"],
+        "tags": [
+          "Produtos"
+        ],
         "description": "Endpoint para buscar todos os produtos",
         "parameters": [
           {
@@ -74,7 +82,9 @@
         }
       },
       "post": {
-        "tags": ["Produtos"],
+        "tags": [
+          "Produtos"
+        ],
         "description": "Endpoint para cadastrar um novo produto",
         "parameters": [
           {
@@ -114,7 +124,9 @@
     },
     "/products/{id}": {
       "get": {
-        "tags": ["Produtos"],
+        "tags": [
+          "Produtos"
+        ],
         "description": "Endpoint para listar um produto",
         "parameters": [
           {
@@ -159,7 +171,9 @@
         }
       },
       "put": {
-        "tags": ["Produtos"],
+        "tags": [
+          "Produtos"
+        ],
         "description": "Endpoint para atualizar um produto",
         "parameters": [
           {
@@ -219,7 +233,9 @@
         ]
       },
       "delete": {
-        "tags": ["Produtos"],
+        "tags": [
+          "Produtos"
+        ],
         "description": "Endpoint para deletar um produto",
         "parameters": [
           {
@@ -271,7 +287,9 @@
     },
     "/categories": {
       "get": {
-        "tags": ["Categorias"],
+        "tags": [
+          "Categorias"
+        ],
         "description": "Endpoint para buscar todas as categorias",
         "parameters": [
           {
@@ -299,12 +317,14 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ]
       },
       "post": {
-        "tags": ["Categorias"],
+        "tags": [
+          "Categorias"
+        ],
         "description": "Endpoint para cadastrar uma categotia",
         "parameters": [
           {
@@ -344,7 +364,9 @@
     },
     "/categories/{id}": {
       "get": {
-        "tags": ["Categorias"],
+        "tags": [
+          "Categorias"
+        ],
         "description": "Endpoint para buscar uma categotia",
         "parameters": [
           {
@@ -380,12 +402,14 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ]
       },
       "put": {
-        "tags": ["Categorias"],
+        "tags": [
+          "Categorias"
+        ],
         "description": "Endpoint para atualizar uma categotia",
         "parameters": [
           {
@@ -442,7 +466,9 @@
         ]
       },
       "delete": {
-        "tags": ["Categorias"],
+        "tags": [
+          "Categorias"
+        ],
         "description": "Endpoint para deletar uma categotia",
         "parameters": [
           {
@@ -494,7 +520,9 @@
     },
     "/return-reason": {
       "get": {
-        "tags": ["Motivo da devolução"],
+        "tags": [
+          "Motivo da devolução"
+        ],
         "description": "Endpoint para buscar todas as categorias",
         "parameters": [
           {
@@ -508,7 +536,9 @@
         "responses": {}
       },
       "post": {
-        "tags": ["Motivo da devolução"],
+        "tags": [
+          "Motivo da devolução"
+        ],
         "description": "Endpoint para cadastrar uma motivo de devolução",
         "parameters": [
           {
@@ -528,7 +558,9 @@
     },
     "/return-reason/{id}": {
       "get": {
-        "tags": ["Motivo da devolução"],
+        "tags": [
+          "Motivo da devolução"
+        ],
         "description": "Endpoint para buscar um motivo de devolução",
         "parameters": [
           {
@@ -549,7 +581,9 @@
         }
       },
       "put": {
-        "tags": ["Motivo da devolução"],
+        "tags": [
+          "Motivo da devolução"
+        ],
         "description": "Endpoint para atualizar uma categotia",
         "parameters": [
           {
@@ -577,7 +611,9 @@
         }
       },
       "delete": {
-        "tags": ["Motivo da devolução"],
+        "tags": [
+          "Motivo da devolução"
+        ],
         "description": "Endpoint para deletar um motivo de devolução",
         "parameters": [
           {
@@ -600,7 +636,9 @@
     },
     "/customers": {
       "get": {
-        "tags": ["Clientes"],
+        "tags": [
+          "Clientes"
+        ],
         "description": "Rota para buscar todos os clientes",
         "parameters": [
           {
@@ -621,7 +659,9 @@
         "responses": {}
       },
       "post": {
-        "tags": ["Clientes"],
+        "tags": [
+          "Clientes"
+        ],
         "description": "Rota para cadastrar um novo cliente",
         "parameters": [
           {
@@ -658,7 +698,9 @@
     },
     "/customers/{id}": {
       "get": {
-        "tags": ["Clientes"],
+        "tags": [
+          "Clientes"
+        ],
         "description": "Rota para procurar e listar um cliente pelo ID",
         "parameters": [
           {
@@ -676,7 +718,9 @@
         }
       },
       "put": {
-        "tags": ["Clientes"],
+        "tags": [
+          "Clientes"
+        ],
         "description": "Rota para atualizar os dados de um cliente",
         "parameters": [
           {
@@ -718,7 +762,9 @@
         }
       },
       "delete": {
-        "tags": ["Clientes"],
+        "tags": [
+          "Clientes"
+        ],
         "description": "Rota para deletar um cliente",
         "parameters": [
           {
@@ -738,7 +784,9 @@
     },
     "/types": {
       "get": {
-        "tags": ["Tipos de ordem"],
+        "tags": [
+          "Tipos de ordem"
+        ],
         "description": "Rota para buscar todos os tipos de ordem",
         "parameters": [
           {
@@ -752,7 +800,9 @@
         "responses": {}
       },
       "post": {
-        "tags": ["Tipos de ordem"],
+        "tags": [
+          "Tipos de ordem"
+        ],
         "description": "Rota para cadatrar um novo tipo de ordem",
         "parameters": [
           {
@@ -775,7 +825,9 @@
     },
     "/types/{id}": {
       "get": {
-        "tags": ["Tipos de ordem"],
+        "tags": [
+          "Tipos de ordem"
+        ],
         "description": "Rota para buscar apenas um tipos de ordem",
         "parameters": [
           {
@@ -793,7 +845,9 @@
         }
       },
       "put": {
-        "tags": ["Tipos de ordem"],
+        "tags": [
+          "Tipos de ordem"
+        ],
         "description": "Rota para atualizar um tipo de ordem",
         "parameters": [
           {
@@ -821,7 +875,9 @@
         }
       },
       "delete": {
-        "tags": ["Tipos de ordem"],
+        "tags": [
+          "Tipos de ordem"
+        ],
         "description": "Rota para deletar um tipo de ordem",
         "parameters": [
           {
@@ -841,7 +897,9 @@
     },
     "/stock": {
       "get": {
-        "tags": ["Estoques"],
+        "tags": [
+          "Estoques"
+        ],
         "description": "Rota para buscar todos os estoques",
         "parameters": [
           {
@@ -855,7 +913,9 @@
         "responses": {}
       },
       "post": {
-        "tags": ["Estoques"],
+        "tags": [
+          "Estoques"
+        ],
         "description": "Rota para cadastrar um novo estoque",
         "parameters": [
           {
@@ -885,7 +945,9 @@
     },
     "/stock/{id}": {
       "get": {
-        "tags": ["Estoques"],
+        "tags": [
+          "Estoques"
+        ],
         "description": "Rota para buscar apenas um estoque",
         "parameters": [
           {
@@ -903,7 +965,9 @@
         }
       },
       "put": {
-        "tags": ["Estoques"],
+        "tags": [
+          "Estoques"
+        ],
         "description": "Rota para atualizar um estoque",
         "parameters": [
           {
@@ -938,7 +1002,9 @@
         }
       },
       "delete": {
-        "tags": ["Estoques"],
+        "tags": [
+          "Estoques"
+        ],
         "description": "Rota para deletar um estoque",
         "parameters": [
           {
@@ -958,7 +1024,9 @@
     },
     "/nearbyregion": {
       "get": {
-        "tags": ["Regiões próximas"],
+        "tags": [
+          "Regiões próximas"
+        ],
         "description": "Rota para listas todas as regiões próximas",
         "parameters": [
           {
@@ -979,7 +1047,9 @@
         "responses": {}
       },
       "post": {
-        "tags": ["Regiões próximas"],
+        "tags": [
+          "Regiões próximas"
+        ],
         "description": "Rota para cadastrar uma região próxima",
         "parameters": [
           {
@@ -1006,7 +1076,9 @@
     },
     "/nearbyregion/{id}": {
       "get": {
-        "tags": ["Regiões próximas"],
+        "tags": [
+          "Regiões próximas"
+        ],
         "description": "Rota para listar uma região próxima",
         "parameters": [
           {
@@ -1020,7 +1092,9 @@
         "responses": {}
       },
       "put": {
-        "tags": ["Regiões próximas"],
+        "tags": [
+          "Regiões próximas"
+        ],
         "description": "Rota para atualizar uma região próxima",
         "parameters": [
           {
@@ -1052,7 +1126,9 @@
         }
       },
       "delete": {
-        "tags": ["Regiões próximas"],
+        "tags": [
+          "Regiões próximas"
+        ],
         "description": "Rota para deletar uma região próxima",
         "parameters": [
           {
@@ -1061,6 +1137,400 @@
             "required": true,
             "type": "integer",
             "description": "ID do região"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/region": {
+      "get": {
+        "tags": [
+          "Regiões"
+        ],
+        "description": "Rota para buscar todas as regiões",
+        "parameters": [],
+        "responses": {}
+      },
+      "post": {
+        "tags": [
+          "Regiões"
+        ],
+        "description": "Rota para cadastrar uma nova Região",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "body",
+            "description": "Nome do cliente",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/region/{id}": {
+      "get": {
+        "tags": [
+          "Regiões"
+        ],
+        "description": "Rota para listar uma região",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID da região"
+          }
+        ],
+        "responses": {}
+      },
+      "put": {
+        "tags": [
+          "Regiões"
+        ],
+        "description": "Rota para atualizar os dados de uma Região",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID da região"
+          },
+          {
+            "name": "name",
+            "in": "body",
+            "description": "Nome da Região",
+            "required": true,
+            "type": "string",
+            "schema": {
+              "$ref": "#/definitions/region"
+            }
+          }
+        ],
+        "responses": {}
+      },
+      "delete": {
+        "tags": [
+          "Regiões"
+        ],
+        "description": "Rota para deletar uma região",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID da Região"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/orders": {
+      "get": {
+        "tags": [
+          "Ordem"
+        ],
+        "description": "Rota para buscar todas as ordens",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Ordem"
+        ],
+        "description": "Rota para registrar uma ordem",
+        "parameters": [
+          {
+            "name": "Ordem",
+            "in": "body",
+            "description": "Registrar uma ordem",
+            "required": true,
+            "type": "string",
+            "schema": {
+              "$ref": "#definitions/order"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/orders/{id}": {
+      "get": {
+        "tags": [
+          "Ordem"
+        ],
+        "description": "Rota para buscar uma ordem",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "Buscar uma ordem"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Ordem"
+        ],
+        "description": "Rota para registrar uma ordem",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Ordem",
+            "in": "body",
+            "description": "Registrar uma ordem",
+            "required": true,
+            "schema": {
+              "$ref": "#definitions/order"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Ordem"
+        ],
+        "description": "Rota para deletar uma ordem",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "Deletar uma ordem"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/order-product": {
+      "get": {
+        "tags": [
+          "Produto-Ordem"
+        ],
+        "description": "Rota para buscar todos os produtos das ordens",
+        "parameters": [],
+        "responses": {},
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/order-product/{orderId}/{id}": {
+      "get": {
+        "tags": [
+          "Produto-Ordem"
+        ],
+        "description": "Rota para procurar e listar um produto de uma ordem pelo ID da ordem e ID do produto em estoque",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID da ordem de venda ou devolução"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do produto em estoque"
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/product-stock": {
+      "get": {
+        "tags": [
+          "Produto Estoque"
+        ],
+        "description": "Rota para buscar todos os Produtos / Estoque",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "body",
+            "description": "Id do produto",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "local",
+            "in": "body",
+            "description": "Id do Estoque",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {}
+      },
+      "post": {
+        "tags": [
+          "Produto Estoque"
+        ],
+        "description": "Rota para cadastrar um novo Produto Estoque",
+        "parameters": [
+          {
+            "name": "quantity",
+            "in": "body",
+            "description": "Quantidade de produto",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "productId",
+            "in": "body",
+            "description": "Id do produto",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "stockId",
+            "in": "body",
+            "description": "ID do estoque",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/product-stock/{id}": {
+      "get": {
+        "tags": [
+          "Produto Estoque"
+        ],
+        "description": "Rota para procurar e listar um Produto Estoque",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do Produto Estoque"
+          }
+        ],
+        "responses": {}
+      },
+      "put": {
+        "tags": [
+          "Produto Estoque"
+        ],
+        "description": "Rota para atualizar um Produto Estoque",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do cliente"
+          },
+          {
+            "name": "quantity",
+            "in": "body",
+            "description": "Quantidade de produto",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "productId",
+            "in": "body",
+            "description": "Id do produto",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "stockId",
+            "in": "body",
+            "description": "ID do estoque",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {}
+      },
+      "delete": {
+        "tags": [
+          "Produto Estoque"
+        ],
+        "description": "Rota para deletar um Produto Estoque",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do cliente"
           }
         ],
         "responses": {}
@@ -1205,6 +1675,81 @@
         "region_id": {
           "type": "number",
           "example": 2
+        }
+      }
+    },
+    "region": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "ID"
+        },
+        "name": {
+          "type": "string",
+          "example": "Nome"
+        }
+      }
+    },
+    "order": {
+      "type": "object",
+      "properties": {
+        "customerId": {
+          "type": "number",
+          "example": 1
+        },
+        "typeId": {
+          "type": "number",
+          "example": 2
+        },
+        "originOrderId": {
+          "type": "string",
+          "example": "Informe o id da Ordem"
+        },
+        "product": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "productStockId": {
+                "type": "number",
+                "example": 1
+              },
+              "quantity": {
+                "type": "number",
+                "example": 10
+              },
+              "price": {
+                "type": "number",
+                "example": 10.5
+              },
+              "returnReasonId": {
+                "type": "number",
+                "example": 3
+              }
+            }
+          }
+        }
+      }
+    },
+    "productStock": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "ID"
+        },
+        "quantity": {
+          "type": "string",
+          "example": "Quantidade"
+        },
+        "stock_id": {
+          "type": "string",
+          "example": "Id do estoque"
+        },
+        "product_id": {
+          "type": "string",
+          "example": "ID do produto"
         }
       }
     }

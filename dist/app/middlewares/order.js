@@ -12,7 +12,7 @@ function validateId(request, response, next) {
 
   request.orderID = parsed;
 
-  next();
+  return next();
 }
 
 exports.validateId = validateId;

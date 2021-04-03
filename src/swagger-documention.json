@@ -5,7 +5,7 @@
     "title": "Documentação da API de controle de estoque",
     "description": "API para controle de estoque desenvolvida em JavaScript"
   },
-  "host": "api-marvem.herokuapp.com",
+  "host": "localhost:3333",
   "basePath": "/",
   "tags": [],
   "schemes": [
@@ -1203,7 +1203,10 @@
             "in": "body",
             "description": "Nome da Região",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "schema": {
+              "$ref": "#/definitions/region"
+            }
           }
         ],
         "responses": {}
@@ -1367,45 +1370,14 @@
         "tags": [
           "Produto-Ordem"
         ],
-        "description": "Rota para buscar todos os produtos de todas as ordens",
-        "parameters": [
+        "description": "Rota para buscar todos os produtos das ordens",
+        "parameters": [],
+        "responses": {},
+        "security": [
           {
-            "name": "order_id",
-            "in": "body",
-            "description": "Id da ordem",
-            "required": true,
-            "type": "integer"
-          },
-          {
-            "name": "product_stock_id",
-            "in": "body",
-            "description": "Id do produto-stock",
-            "required": true,
-            "type": "integer"
-          },
-          {
-            "name": "return_reason_id",
-            "in": "body",
-            "description": "Id do motivo de retorno do produto",
-            "required": false,
-            "type": "integer"
-          },
-          {
-            "name": "quantity",
-            "in": "body",
-            "description": "Quantidade",
-            "required": true,
-            "type": "integer"
-          },
-          {
-            "name": "price",
-            "in": "body",
-            "description": "Preço do produto",
-            "required": true,
-            "type": "float"
+            "Bearer": []
           }
-        ],
-        "responses": {}
+        ]
       }
     },
     "/order-product/{orderId}/{id}": {
@@ -1413,7 +1385,7 @@
         "tags": [
           "Produto-Ordem"
         ],
-        "description": "Rota para procurar e listar um produto de uma ordem pelo ir da ordem e id do produto em estoque",
+        "description": "Rota para procurar e listar um produto de uma ordem pelo ID da ordem e ID do produto em estoque",
         "parameters": [
           {
             "name": "orderId",
@@ -1428,6 +1400,137 @@
             "required": true,
             "type": "integer",
             "description": "ID do produto em estoque"
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/product-stock": {
+      "get": {
+        "tags": [
+          "Produto Estoque"
+        ],
+        "description": "Rota para buscar todos os Produtos / Estoque",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "body",
+            "description": "Id do produto",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "local",
+            "in": "body",
+            "description": "Id do Estoque",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {}
+      },
+      "post": {
+        "tags": [
+          "Produto Estoque"
+        ],
+        "description": "Rota para cadastrar um novo Produto Estoque",
+        "parameters": [
+          {
+            "name": "quantity",
+            "in": "body",
+            "description": "Quantidade de produto",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "productId",
+            "in": "body",
+            "description": "Id do produto",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "stockId",
+            "in": "body",
+            "description": "ID do estoque",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/product-stock/{id}": {
+      "get": {
+        "tags": [
+          "Produto Estoque"
+        ],
+        "description": "Rota para procurar e listar um Produto Estoque",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do Produto Estoque"
+          }
+        ],
+        "responses": {}
+      },
+      "put": {
+        "tags": [
+          "Produto Estoque"
+        ],
+        "description": "Rota para atualizar um Produto Estoque",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do cliente"
+          },
+          {
+            "name": "quantity",
+            "in": "body",
+            "description": "Quantidade de produto",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "productId",
+            "in": "body",
+            "description": "Id do produto",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "stockId",
+            "in": "body",
+            "description": "ID do estoque",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {}
+      },
+      "delete": {
+        "tags": [
+          "Produto Estoque"
+        ],
+        "description": "Rota para deletar um Produto Estoque",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do cliente"
           }
         ],
         "responses": {}
@@ -1626,6 +1729,27 @@
               }
             }
           }
+        }
+      }
+    },
+    "productStock": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "ID"
+        },
+        "quantity": {
+          "type": "string",
+          "example": "Quantidade"
+        },
+        "stock_id": {
+          "type": "string",
+          "example": "Id do estoque"
+        },
+        "product_id": {
+          "type": "string",
+          "example": "ID do produto"
         }
       }
     }
